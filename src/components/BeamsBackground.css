@@ -1,0 +1,22 @@
+.beams-bg {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-ink);
+}
+
+.beams-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.beams-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 13, 13, 0.05);
+}
+
+.beams-content {
+  position: relative;
+  z-index: 10;
+}

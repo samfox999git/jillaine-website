@@ -1,0 +1,211 @@
+/* Contact Form — Dark Editorial */
+.contact-page .page-hero {
+  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-bottom: var(--space-2xl);
+  background: var(--color-bg-primary);
+  text-align: center;
+}
+
+.form-progress {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+}
+
+.progress-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  letter-spacing: 1px;
+  border: 1px solid rgba(232,224,213,0.15);
+  color: var(--color-text-muted);
+  background: var(--color-bg-elevated);
+  transition: all var(--transition-base);
+}
+
+.progress-step.active .progress-circle {
+  background: var(--color-red);
+  border-color: var(--color-red);
+  color: var(--color-bone);
+}
+
+.progress-step.completed .progress-circle {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.progress-label {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  letter-spacing: 2px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.progress-step.active .progress-label,
+.progress-step.completed .progress-label {
+  color: var(--color-bone);
+}
+
+/* Form fields */
+.form-card {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-2xl);
+  background: var(--color-bg-elevated);
+  border: var(--border-subtle);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  letter-spacing: 1px;
+  color: var(--color-bone);
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid rgba(232,224,213,0.1);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-light);
+  color: var(--color-bone);
+  background: var(--color-bg-surface);
+  transition: border-color var(--transition-base);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-red);
+  box-shadow: 0 0 0 3px var(--color-red-glow);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-group select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: space-between;
+  margin-top: var(--space-xl);
+}
+
+.form-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+/* File upload */
+.file-upload-area {
+  border: 2px dashed rgba(232,224,213,0.1);
+  padding: var(--space-2xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  background: var(--color-bg-surface);
+}
+
+.file-upload-area:hover {
+  border-color: var(--color-red);
+  background: rgba(192, 57, 43, 0.05);
+}
+
+.file-upload-area p {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-top: var(--space-sm);
+}
+
+/* Radio/checkbox groups */
+.radio-group, .checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.radio-option, .checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid rgba(232,224,213,0.1);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  transition: all var(--transition-base);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+}
+
+.radio-option:hover, .checkbox-option:hover {
+  border-color: var(--color-red);
+}
+
+.radio-option.selected, .checkbox-option.selected {
+  border-color: var(--color-red);
+  background: rgba(192, 57, 43, 0.1);
+  color: var(--color-bone);
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-progress {
+    gap: var(--space-md);
+  }
+
+  .form-card {
+    padding: var(--space-lg);
+  }
+}

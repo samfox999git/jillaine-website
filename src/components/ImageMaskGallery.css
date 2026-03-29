@@ -1,0 +1,51 @@
+.image-mask-gallery {
+  position: relative;
+}
+
+/* Hide the SVG defs visually */
+.clip-defs {
+  position: absolute;
+  top: -999px;
+  left: -999px;
+  width: 0;
+  height: 0;
+}
+
+.mask-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.mask-figure {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.mask-figure img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  min-height: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mask-figure:hover img {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .mask-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mask-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+}

@@ -1,0 +1,114 @@
+/* ============================================
+   DESIGN TOKENS — DARK EDITORIAL EDITION
+   Jillaine Tattoo • Ink-dark backgrounds, red & gold accents
+   Inspired by the Cover Up course landing page
+   ============================================ */
+
+:root {
+  /* ── Core Palette — Dark & Rich ── */
+  --color-ink:          #0d0d0d;
+  --color-ash:          #1a1a1a;
+  --color-smoke:        #2a2a2a;
+  --color-bone:         #e8e0d5;
+  --color-cream:        #f5f0e8;
+  --color-muted:        #888880;
+
+  /* ── Semantic Backgrounds ── */
+  --color-bg-primary:   var(--color-ink);
+  --color-bg-elevated:  var(--color-ash);
+  --color-bg-surface:   var(--color-smoke);
+
+  /* ── Text ── */
+  --color-text-primary:   var(--color-bone);
+  --color-text-secondary: var(--color-muted);
+  --color-text-muted:     #666660;
+  --color-text-light:     #555550;
+
+  /* ── Accent Palette ── */
+  --color-red:          #2dd4a8;
+  --color-red-dark:     #1aab87;
+  --color-red-glow:     rgba(45, 212, 168, 0.25);
+  --color-gold:         #a855f7;
+  --color-gold-soft:    rgba(168, 85, 247, 0.15);
+
+  /* ── Aurora Accents (for gradient touches) ── */
+  --color-aurora-teal:    #2dd4a8;
+  --color-aurora-cyan:    #22d3ee;
+  --color-aurora-purple:  #a855f7;
+  --color-aurora-pink:    #ec4899;
+  --color-aurora-rose:    #f43f5e;
+
+  /* ── Gradients ── */
+  --gradient-accent:       linear-gradient(135deg, #2dd4a8, #a855f7);
+  --gradient-aurora:       linear-gradient(135deg, #2dd4a8, #22d3ee, #a855f7, #ec4899);
+  --gradient-aurora-vivid: linear-gradient(135deg, #2dd4a8, #22d3ee, #a855f7, #ec4899, #f43f5e);
+  --gradient-text:         linear-gradient(135deg, #2dd4a8, #22d3ee, #a855f7);
+  --gradient-hero-right:   linear-gradient(135deg, #111 0%, #1e1e1e 50%, #141414 100%);
+  --gradient-section:      linear-gradient(180deg, var(--color-ink) 0%, var(--color-ash) 100%);
+  --gradient-divider:      linear-gradient(90deg, transparent, rgba(232,224,213,0.15), transparent);
+
+  /* ── Typography ── */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-accent:  'Playfair Display', serif;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+  --text-7xl:  4.5rem;
+  --text-hero: clamp(72px, 8vw, 110px);
+
+  --font-light:     300;
+  --font-regular:   400;
+  --font-medium:    500;
+  --font-semibold:  600;
+  --font-bold:      700;
+  --font-extrabold: 800;
+
+  --leading-tight:   0.95;
+  --leading-snug:    1.1;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;
+
+  /* ── Spacing ── */
+  --space-xs:   0.25rem;
+  --space-sm:   0.5rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2rem;
+  --space-2xl:  3rem;
+  --space-3xl:  4rem;
+  --space-4xl:  6rem;
+
+  /* ── Borders & Radius ── */
+  --border-radius-sm:   4px;
+  --border-radius-md:   8px;
+  --border-radius-lg:   12px;
+  --border-radius-xl:   16px;
+  --border-radius-full: 9999px;
+  --border-subtle:      1px solid rgba(232,224,213,0.08);
+
+  /* ── Shadows ── */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md:   0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg:   0 8px 30px rgba(0,0,0,0.5);
+  --shadow-xl:   0 20px 50px rgba(0,0,0,0.6);
+  --shadow-glow: 0 4px 20px var(--color-red-glow);
+
+  /* ── Transitions ── */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Layout ── */
+  --nav-height: 140px;
+  --max-width:  1200px;
+}

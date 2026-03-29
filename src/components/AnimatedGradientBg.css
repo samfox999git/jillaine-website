@@ -1,0 +1,11 @@
+.animated-gradient-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.animated-gradient-inner {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.1s;
+}

@@ -1,0 +1,191 @@
+/* AfterCare — Dark Editorial */
+
+/* ── Hero ── */
+.aftercare-hero {
+  padding-top: calc(var(--nav-height) + var(--space-xl));
+  padding-bottom: 0;
+}
+
+.aftercare-hero-sub {
+  max-width: 520px;
+  margin: var(--space-lg) auto 0;
+  color: #d4cfc9;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Section spacing ── */
+.ac-section--gap {
+  padding-top: calc(var(--space-xs) + 8cm);
+}
+
+.ac-section {
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-2xl);
+}
+
+.ac-section-title {
+  margin-bottom: var(--space-xl);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* ── Derm intro block ── */
+.derm-intro {
+  padding: var(--space-xl) var(--space-2xl);
+  border-left: 3px solid var(--color-red);
+  border-radius: var(--border-radius-lg);
+}
+
+.derm-intro-label {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-red);
+  margin-bottom: var(--space-md);
+  line-height: 1;
+}
+
+.derm-intro-body {
+  color: #d4cfc9;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.derm-intro-body + .derm-intro-body {
+  margin-top: var(--space-md);
+}
+
+/* ── Protocol rows ── */
+.protocol-rows {
+  border-top: 1px solid rgba(232, 224, 213, 0.08);
+}
+
+.protocol-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-xl);
+  align-items: baseline;
+  padding: var(--space-xl) 0;
+  border-bottom: 1px solid rgba(232, 224, 213, 0.08);
+  transition: background var(--transition-base);
+}
+
+.protocol-row:hover {
+  background: rgba(45, 212, 168, 0.03);
+  margin: 0 calc(-1 * var(--space-lg));
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.protocol-label {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.protocol-row.warn .protocol-label {
+  color: #fff;
+}
+
+.protocol-body {
+  color: #d4cfc9;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Saran wrap warning callout ── */
+.warn-callout {
+  padding: var(--space-lg) var(--space-xl);
+  border-left: 3px solid rgba(168, 85, 247, 0.5);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.warn-callout-label {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.warn-callout p {
+  color: #d4cfc9;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Change steps ── */
+.change-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.change-step {
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--color-bg-elevated);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(232, 224, 213, 0.06);
+}
+
+.change-step-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-red);
+  margin-bottom: var(--space-sm);
+  line-height: 1;
+}
+
+.change-step-body {
+  color: #d4cfc9;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Disclaimer ── */
+.disclaimer {
+  padding: var(--space-lg) var(--space-xl);
+  border-left: 3px solid rgba(45, 212, 168, 0.3);
+  border-radius: var(--border-radius-md);
+}
+
+.disclaimer p {
+  color: #d4cfc9;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .protocol-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .protocol-row:hover {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .derm-intro {
+    padding: var(--space-lg);
+  }
+
+  .warn-callout,
+  .disclaimer {
+    padding: var(--space-lg);
+  }
+}

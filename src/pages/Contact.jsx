@@ -1,0 +1,379 @@
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import './Contact.css'
+
+const skinTypes = [
+  'Very Pale', 'Pale', 'Lightly Tanned', 'Tanned', 'Dark', 'Freckled', 'Scarred/Stretch Marks'
+]
+
+const referralSources = [
+  'Instagram', 'TikTok', 'Word of Mouth', 'Google Search',
+  'AI (Chat GPT, Claude, etc)', 'Tattoo Convention', 'YouTube', 'Other'
+]
+
+export default function Contact() {
+  const [currentStep, setCurrentStep] = useState(0)
+  const [submitted, setSubmitted] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: '', lastName: '', email: '', phone: '', age: '', city: '',
+    tattooType: [], skinType: [], referencePhotos: [],
+    location: '', description: '', socialMedia: '', referral: ''
+  })
+
+  const updateField = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
+  const toggleArrayField = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: prev[field].includes(value)
+        ? prev[field].filter(v => v !== value)
+        : [...prev[field], value]
+    }))
+  }
+
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files).slice(0, 6)
+    updateField('referencePhotos', files)
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setUploading(true)
+
+    // TODO: Integrate EmailJS + Cloudinary here
+    // For now, simulate submission
+    await new Promise(resolve => setTimeout(resolve, 1500))
+
+    setUploading(false)
+    setSubmitted(true)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 2))
+  const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 0))
+
+  const steps = ['Personal Info', 'Tattoo Details', 'References & Submit']
+
+  if (submitted) {
+    return (
+      <main className="contact-page">
+        <div className="page-hero">
+          <div className="container">
+            <motion.div
+              className="submission-success"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <div className="success-icon">✨</div>
+              <h1>Thank You!</h1>
+              <p>Your consultation request has been sent successfully. I'll get back to you within 2 weeks.</p>
+              <p className="success-note">In the meantime, make sure you've read through the <a href="/faq">FAQ</a> and <a href="/aftercare">After Care</a> pages.</p>
+            </motion.div>
+          </div>
+        </div>
+      </main>
+    )
+  }
+
+  return (
+    <main className="contact-page">
+      <div className="page-hero">
+        <div className="container">
+          <motion.p className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            Let's Create Together
+          </motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+            Book A <span className="gradient-text">Consultation</span>
+          </motion.h1>
+        </div>
+      </div>
+
+      <div className="section container container-narrow">
+        {/* Pre-form Guidelines */}
+        <motion.div
+          className="booking-guidelines glass-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <h3>📋 Before You Fill This Out</h3>
+          <ul>
+            <li>I specialize in <strong>colour realism only</strong> — no script, neo-trad, traditional, or linework</li>
+            <li>I don't do pieces under <strong>2 hours</strong></li>
+            <li>Please review my <a href="https://www.instagram.com/jillaine.tattoo/" target="_blank" rel="noopener noreferrer">Instagram portfolio</a> to ensure you like my style</li>
+            <li>Read through the <a href="/faq">FAQ</a> before submitting</li>
+            <li>Please allow <strong>up to 2 weeks</strong> for a response</li>
+          </ul>
+        </motion.div>
+
+        {/* Progress Steps */}
+        <div className="form-progress">
+          {steps.map((label, i) => (
+            <div key={i} className={`progress-step ${i === currentStep ? 'active' : ''} ${i < currentStep ? 'completed' : ''}`}>
+              <div className="progress-dot">
+                {i < currentStep ? '✓' : i + 1}
+              </div>
+              <span className="progress-label">{label}</span>
+            </div>
+          ))}
+          <div className="progress-line">
+            <div className="progress-fill" style={{ width: `${(currentStep / 2) * 100}%` }} />
+          </div>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="booking-form">
+          <AnimatePresence mode="wait">
+            {/* Step 1: Personal Info */}
+            {currentStep === 0 && (
+              <motion.div
+                key="step-0"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                className="form-step"
+              >
+                <h3>Personal Information</h3>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="firstName">First Name *</label>
+                    <input
+                      id="firstName"
+                      type="text"
+                      value={formData.firstName}
+                      onChange={(e) => updateField('firstName', e.target.value)}
+                      required
+                      placeholder="Your first name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="lastName">Last Name *</label>
+                    <input
+                      id="lastName"
+                      type="text"
+                      value={formData.lastName}
+                      onChange={(e) => updateField('lastName', e.target.value)}
+                      required
+                      placeholder="Your last name"
+                    />
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="email">Email *</label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => updateField('email', e.target.value)}
+                      required
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone *</label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => updateField('phone', e.target.value)}
+                      required
+                      placeholder="(250) 555-0000"
+                    />
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="age">Age *</label>
+                    <input
+                      id="age"
+                      type="text"
+                      value={formData.age}
+                      onChange={(e) => updateField('age', e.target.value)}
+                      required
+                      placeholder="Your age"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="city">Residing City *</label>
+                    <input
+                      id="city"
+                      type="text"
+                      value={formData.city}
+                      onChange={(e) => updateField('city', e.target.value)}
+                      required
+                      placeholder="Your city"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 2: Tattoo Details */}
+            {currentStep === 1 && (
+              <motion.div
+                key="step-1"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                className="form-step"
+              >
+                <h3>Tattoo Details</h3>
+
+                <div className="form-group">
+                  <label>Tattoo Type *</label>
+                  <div className="checkbox-group">
+                    {['Colour', 'Black and Grey'].map(type => (
+                      <label key={type} className={`checkbox-btn ${formData.tattooType.includes(type) ? 'checked' : ''}`}>
+                        <input
+                          type="checkbox"
+                          checked={formData.tattooType.includes(type)}
+                          onChange={() => toggleArrayField('tattooType', type)}
+                        />
+                        {type}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Skin Type *</label>
+                  <div className="checkbox-group">
+                    {skinTypes.map(type => (
+                      <label key={type} className={`checkbox-btn ${formData.skinType.includes(type) ? 'checked' : ''}`}>
+                        <input
+                          type="checkbox"
+                          checked={formData.skinType.includes(type)}
+                          onChange={() => toggleArrayField('skinType', type)}
+                        />
+                        {type}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="location">Location and Size of Tattoo *</label>
+                  <input
+                    id="location"
+                    type="text"
+                    value={formData.location}
+                    onChange={(e) => updateField('location', e.target.value)}
+                    required
+                    placeholder="e.g., Right forearm, approximately 6 inches"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="description">Description of Your Tattoo Idea *</label>
+                  <textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={(e) => updateField('description', e.target.value)}
+                    required
+                    placeholder="Describe your tattoo idea in as much detail as possible. Include colours, themes, and any specific elements you'd like..."
+                    rows={5}
+                  />
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 3: References & Submit */}
+            {currentStep === 2 && (
+              <motion.div
+                key="step-2"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                className="form-step"
+              >
+                <h3>References & Final Details</h3>
+
+                <div className="form-group">
+                  <label htmlFor="referencePhotos">Reference Photos (Up to 6)</label>
+                  <div className="file-upload-area">
+                    <input
+                      id="referencePhotos"
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handleFileChange}
+                      className="file-input"
+                    />
+                    <div className="file-upload-label">
+                      <span className="file-upload-icon">📷</span>
+                      <p>Drop reference photos here or <span className="file-upload-link">browse</span></p>
+                      <p className="file-upload-hint">PNG, JPG up to 10MB each • Max 6 photos</p>
+                    </div>
+                  </div>
+                  {formData.referencePhotos.length > 0 && (
+                    <div className="file-preview">
+                      {formData.referencePhotos.map((file, i) => (
+                        <div key={i} className="file-preview-item">
+                          <img src={URL.createObjectURL(file)} alt={`Reference ${i + 1}`} />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="form-group">
+                  <label>Would you be interested in being on camera for social media? (filming the tattoo process)</label>
+                  <div className="checkbox-group">
+                    {["I'm interested!", 'No thank you'].map(option => (
+                      <label key={option} className={`checkbox-btn ${formData.socialMedia === option ? 'checked' : ''}`}>
+                        <input
+                          type="radio"
+                          name="socialMedia"
+                          checked={formData.socialMedia === option}
+                          onChange={() => updateField('socialMedia', option)}
+                        />
+                        {option}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="referral">How Did You Find Me? *</label>
+                  <select
+                    id="referral"
+                    value={formData.referral}
+                    onChange={(e) => updateField('referral', e.target.value)}
+                    required
+                  >
+                    <option value="">Select one...</option>
+                    {referralSources.map(src => (
+                      <option key={src} value={src}>{src}</option>
+                    ))}
+                  </select>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Navigation */}
+          <div className="form-nav">
+            {currentStep > 0 && (
+              <button type="button" className="btn btn-secondary" onClick={prevStep}>
+                ← Back
+              </button>
+            )}
+            <div className="form-nav-spacer" />
+            {currentStep < 2 ? (
+              <button type="button" className="btn btn-primary" onClick={nextStep}>
+                Next →
+              </button>
+            ) : (
+              <button type="submit" className="btn btn-primary btn-lg" disabled={uploading}>
+                {uploading ? 'Sending...' : 'Submit Consultation Request'}
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
+    </main>
+  )
+}
