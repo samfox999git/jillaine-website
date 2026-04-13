@@ -12,8 +12,10 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@paper-design/shaders-react": "^0.0.72",
+    "formidable": "^3.5.4",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.7.0",
+    "nodemailer": "^8.0.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.2",

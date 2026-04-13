@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import './Contact.css'
 
-const WEB3FORMS_KEY = '636ed392-820b-4594-a806-1d6281537f56'
-
 const skinTypes = [
   'Very Pale', 'Pale', 'Lightly Tanned', 'Tanned', 'Dark', 'Freckled', 'Scarred/Stretch Marks'
 ]
@@ -47,26 +45,23 @@ export default function Contact() {
     setErrorMsg('')
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key:  WEB3FORMS_KEY,
-          subject:     `New Consultation Request — ${formData.firstName} ${formData.lastName}`,
-          from_name:   `${formData.firstName} ${formData.lastName}`,
-          email:       formData.email,
-          phone:       formData.phone,
-          age:         formData.age,
-          city:        formData.city,
-          tattoo_type: formData.tattooType.join(', '),
-          skin_type:   formData.skinType.join(', '),
-          location:    formData.location,
-          description: formData.description,
-          social_media: formData.socialMedia,
-          referral:    formData.referral === 'Other' ? `Other: ${formData.referralOther}` : formData.referral,
-        }),
-      })
+      const body = new FormData()
+      body.append('from_name',   `${formData.firstName} ${formData.lastName}`)
+      body.append('email',       formData.email)
+      body.append('phone',       formData.phone)
+      body.append('age',         formData.age)
+      body.append('city',        formData.city)
+      body.append('tattoo_type', formData.tattooType.join(', '))
+      body.append('skin_type',   formData.skinType.join(', '))
+      body.append('location',    formData.location)
+      body.append('description', formData.description)
+      body.append('social_media', formData.socialMedia)
+      body.append('referral',    formData.referral === 'Other' ? `Other: ${formData.referralOther}` : formData.referral)
+      formData.referencePhotos.forEach(file => body.append('referencePhotos', file))
+
+      const res = await fetch('/api/submit', { method: 'POST', body })
       const data = await res.json()
+
       if (data.success) {
         setSubmitted(true)
         window.scrollTo({ top: 0, behavior: 'smooth' })
