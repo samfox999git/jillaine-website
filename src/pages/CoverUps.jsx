@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import BeforeAfter from '../components/BeforeAfter'
 import { WebGLShader } from '../components/WebGLShader'
+import PageMeta from '../components/PageMeta'
 import './Gallery.css'
 
 const coverUps = [
@@ -32,6 +33,11 @@ const fadeUp = {
 export default function CoverUps() {
   return (
     <main className="gallery-page">
+      <PageMeta
+        title="Cover-Up Tattoos"
+        description="Specializing in cover-up tattoos in Kelowna, BC. See Jillaine's before and after transformations — turning old or unwanted ink into vibrant colour realism artwork."
+        path="/cover-ups"
+      />
       <div className="page-hero">
         <div className="container">
           <motion.p className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

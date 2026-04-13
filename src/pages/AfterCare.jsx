@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import PageMeta from '../components/PageMeta'
 import './AfterCare.css'
 
 const protocol = [
@@ -48,6 +49,11 @@ const fadeUp = (delay = 0) => ({
 export default function AfterCare() {
   return (
     <main className="aftercare-page">
+      <PageMeta
+        title="Tattoo After Care"
+        description="Tattoo aftercare instructions from Jillaine — colour realism tattoo artist in Kelowna, BC. How to care for your new tattoo and keep it looking vibrant for years."
+        path="/aftercare"
+      />
 
       {/* Hero */}
       <div className="page-hero aftercare-hero">

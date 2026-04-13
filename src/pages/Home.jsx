@@ -5,6 +5,7 @@ import BeforeAfter from '../components/BeforeAfter'
 import BeamsBackground from '../components/BeamsBackground'
 import WarpHero from '../components/WarpHero'
 import { WebGLShader } from '../components/WebGLShader'
+import PageMeta from '../components/PageMeta'
 import './Home.css'
 
 /* ── Gallery data ── */
@@ -222,6 +223,11 @@ export default function Home() {
 
   return (
     <main className="home-page">
+      <PageMeta
+        title="Award-Winning Colour Realism Tattoo Artist"
+        description="Award-winning colour realism tattoo artist in Kelowna, BC. Vibrant nature, northern lights, space, animals, and cover-up tattoos. Book a free consultation."
+        path="/"
+      />
 
       {/* ═══════════════ HERO ═══════════════ */}
       <section className="hero">

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import './FAQ.css'
 import { useState } from 'react'
+import PageMeta from '../components/PageMeta'
+import './FAQ.css'
 
 const faqData = [
   {
@@ -117,6 +118,11 @@ function FAQItem({ question, answer }) {
 export default function FAQ() {
   return (
     <main className="faq-page">
+      <PageMeta
+        title="FAQ"
+        description="Frequently asked questions about booking a tattoo with Jillaine — colour realism tattoo artist in Kelowna, BC. Learn about deposits, touch-ups, pricing, and aftercare."
+        path="/faq"
+      />
       <div className="page-hero">
         <div className="container">
           <motion.p className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

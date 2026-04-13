@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { WebGLShader } from '../components/WebGLShader'
+import PageMeta from '../components/PageMeta'
 import './Gallery.css'
 
 const galleryItems = [
@@ -66,6 +67,11 @@ export default function Gallery() {
 
   return (
     <main className="gallery-page">
+      <PageMeta
+        title="Color Realism Tattoo Gallery"
+        description="Browse Jillaine's colour realism tattoo portfolio — northern lights, nature, space, animals, and cover-ups. Award-winning tattoo artist in Kelowna, BC."
+        path="/gallery"
+      />
       <div className="page-hero">
         <div className="container">
           <motion.p className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

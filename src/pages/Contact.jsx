@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import PageMeta from '../components/PageMeta'
 import './Contact.css'
 
 const skinTypes = [
@@ -98,6 +99,11 @@ export default function Contact() {
 
   return (
     <main className="contact-page">
+      <PageMeta
+        title="Book A Free Consultation"
+        description="Book a free tattoo consultation with Jillaine — award-winning colour realism tattoo artist in Kelowna, BC. Specializing in cover-ups, nature, space, and animal tattoos."
+        path="/contact"
+      />
       <div className="page-hero">
         <div className="container">
           <motion.p className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
