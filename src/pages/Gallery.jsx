@@ -45,6 +45,10 @@ const galleryItems = [
   { id: 25, src: '/images/gallery/space/astronaut-planet.jpg',                       categories: ['space'],                                        title: 'Astronaut on Planet' },
   { id: 28, src: '/images/gallery/space/astro-sleeve-3.jpg',                         categories: ['space'],                                        title: 'Astro Sleeve III' },
   { id: 41, src: '/images/gallery/other/fresh-vs-healed.png',                        categories: ['other'],                                        title: 'Fresh vs Healed' },
+  { id: 42, src: '/images/gallery/black-and-grey/formula-1-ayrton-senna.webp',       categories: ['black-and-grey'],                               title: 'Ayrton Senna Formula 1' },
+  { id: 43, src: '/images/gallery/space/cosmic-woman-space.webp',                    categories: ['space'],                                        title: 'Cosmic Woman' },
+  { id: 44, src: '/images/gallery/space/space-nebula-sleeve.webp',                   categories: ['space'],                                        title: 'Space Nebula Sleeve' },
+  { id: 45, src: '/images/gallery/space/star-wars-princess-leia.webp',               categories: ['space'],                                        title: 'Star Wars — Princess Leia' },
 ]
 
 const categories = [
