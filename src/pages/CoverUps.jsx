@@ -116,8 +116,8 @@ export default function CoverUps() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          <p>I specialize in cover-up tattoos and love helping clients transform old or unwanted ink into custom designs they'll be proud to wear. From small touch-ups to full tattoo makeovers, I focus on creating pieces that are unique, meaningful, and perfectly suited to your style. Explore my before and after gallery to see the transformations I've done, and get in touch to book a consultation for your own cover-up tattoo.</p>
-          <p>Based in Kelowna, British Columbia, Canada, I serve clients worldwide and I'm dedicated to making every tattoo experience personal, professional, and unforgettable.</p>
+          <p>Cover-up tattoos are one of my favourite things to do. Whether you're dealing with an old name, faded tribal work, dark solid ink, or a tattoo you simply outgrew — I can cover pretty much anything and transform it into something you'll love wearing again.</p>
+          <p>Based in Kelowna, British Columbia, I work with clients locally and from around the world. Every cover-up is approached as a completely new custom piece — designed specifically around your existing tattoo to create a seamless, vibrant result. Book a free consultation and let's talk about what's possible.</p>
         </motion.div>
       </section>
 
