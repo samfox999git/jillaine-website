@@ -34,9 +34,34 @@ export default function CoverUps() {
   return (
     <main className="gallery-page">
       <PageMeta
-        title="Cover-Up Tattoos"
-        description="Specializing in cover-up tattoos in Kelowna, BC. See Jillaine's before and after transformations — turning old or unwanted ink into vibrant colour realism artwork."
+        title="Cover-Up Tattoo Specialist | Before & After Transformations"
+        description="One of Canada's best cover-up tattoo artists. Jillaine transforms old, unwanted, or faded tattoos into stunning colour realism artwork in Kelowna, BC. See before & after photos."
         path="/cover-ups"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Cover-Up Tattoos",
+          "alternateName": ["cover up tattoo", "tattoo cover up", "cover-up tattoo specialist"],
+          "description": "Expert cover-up tattoo services in Kelowna, BC. Jillaine specializes in transforming old, unwanted, faded, or poorly done tattoos into vibrant colour realism artwork. One of the best cover-up tattoo artists in Canada.",
+          "provider": {
+            "@type": "Person",
+            "name": "Jillaine",
+            "jobTitle": "Cover-Up Tattoo Specialist",
+            "worksFor": {
+              "@type": "TattooParlor",
+              "name": "District Ink Tattoo Studio",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1990 Landsdowne Pl #3",
+                "addressLocality": "Kelowna",
+                "addressRegion": "BC",
+                "addressCountry": "CA"
+              }
+            }
+          },
+          "areaServed": ["Kelowna", "British Columbia", "Canada"],
+          "url": "https://www.jillaine.ca/cover-ups"
+        }}
       />
       <div className="page-hero">
         <div className="container">
