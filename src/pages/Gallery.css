@@ -12,6 +12,30 @@
   text-align: center;
 }
 
+.coverups-blurb {
+  padding: var(--space-3xl) var(--space-xl);
+  text-align: center;
+}
+
+.coverups-blurb p {
+  color: #d4cfc9;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.coverups-blurb p + p {
+  margin-top: var(--space-lg);
+}
+
+.coverups-hero-sub {
+  margin-top: var(--space-md);
+  color: #d4cfc9;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
 .gallery-filters {
   display: flex;
   justify-content: center;
@@ -117,7 +141,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
-  max-width: 900px;
+  max-width: 648px;
   margin: 0 auto;
 }
 
@@ -145,5 +169,6 @@
 
   .coverups-grid {
     grid-template-columns: 1fr;
+    max-width: 270px;
   }
 }

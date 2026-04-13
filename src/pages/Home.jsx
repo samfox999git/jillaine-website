@@ -9,19 +9,23 @@ import './Home.css'
 
 /* ── Gallery data ── */
 const galleryItems = [
+  // Top row (cols 1–5)
+  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora.png', title: 'Campfire Northern Lights' },
+  { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg', title: 'Dog Portrait' },
+  { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png', title: 'Grizzly Bear Aurora' },
   { id: 17, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg', title: 'Kayak Aurora & Campfire' },
   { id: 11, src: '/images/gallery/nature-landscapes/black-widow-flowers.png', title: 'Black Widow & Flowers' },
-  { id: 3, src: '/images/gallery/northern-lights/grizzly-aurora.png', title: 'Grizzly Bear Aurora' },
-  { id: 16, src: '/images/gallery/other/snake-sleeve.jpg', title: 'Snake Sleeve' },
-  { id: 14, src: '/images/gallery/northern-lights/moose-river-aurora.jpg', title: 'Moose River Aurora' },
-  { id: 7, src: '/images/gallery/northern-lights/campfire-aurora.png', title: 'Campfire Northern Lights' },
-  { id: 1, src: '/images/gallery/animals/wolf-aurora.png', title: 'Howling Wolf Aurora' },
-  { id: 15, src: '/images/gallery/space/pyramid-portal-space.jpg', title: 'Pyramid Portal' },
-  { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg', title: 'Dog Portrait' },
-  { id: 6, src: '/images/gallery/northern-lights/aurora-wolf-mountain.png', title: 'Aurora Wolf Landscape' },
+  // Row 2+
+  { id: 25, src: '/images/gallery/space/astro-sleeve-1.jpg', title: 'Astro Sleeve' },
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png', title: 'Tropical Hibiscus' },
-  { id: 5, src: '/images/gallery/space/lobster-space.png', title: 'Space Lobster' },
-  { id: 8, src: '/images/gallery/nature-landscapes/unicorn-sunset.png', title: 'Unicorn at Sunset' },
+  { id: 1,  src: '/images/gallery/animals/wolf-aurora.png', title: 'Howling Wolf Aurora' },
+  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg', title: 'Waterfall Aurora' },
+  { id: 5,  src: '/images/gallery/space/lobster-space.png', title: 'Space Lobster' },
+  { id: 14, src: '/images/gallery/northern-lights/moose-river-aurora.jpg', title: 'Moose River Aurora' },
+  { id: 8,  src: '/images/gallery/nature-landscapes/unicorn-sunset.png', title: 'Unicorn at Sunset' },
+  { id: 6,  src: '/images/gallery/northern-lights/aurora-wolf-mountain.png', title: 'Aurora Wolf Landscape' },
+  { id: 16, src: '/images/gallery/other/snake-sleeve.jpg', title: 'Snake Sleeve' },
+  { id: 15, src: '/images/gallery/space/pyramid-portal-space.jpg', title: 'Pyramid Portal' },
 ]
 
 const testimonials = [
@@ -244,13 +248,13 @@ export default function Home() {
         <div className="hero-gradient-transition" />
       </section>
 
-      {/* ═══════════════ MASONRY GALLERY ═══════════════ */}
+      {/* ═══════════════ GALLERY GRID ═══════════════ */}
       <section className="home-gallery">
-        <div className="masonry-grid">
-          {galleryItems.map((item, i) => (
+        <div className="gallery-grid">
+          {galleryItems.slice(0, 10).map((item, i) => (
             <motion.div
               key={item.id}
-              className="masonry-item"
+              className="gallery-grid-item"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -261,6 +265,17 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
+        <motion.div
+          className="gallery-grid-cta"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
+          <Link to="/gallery" className="btn btn-secondary">
+            <span>View Full Gallery →</span>
+          </Link>
+        </motion.div>
       </section>
 
       <div className="divider" />
@@ -275,7 +290,6 @@ export default function Home() {
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
           >
-            <p className="section-label">Transformations</p>
             <h2>Cover-Up <span className="gradient-text">Magic</span></h2>
             <p>Drag the slider to reveal each transformation.</p>
           </motion.div>
@@ -297,17 +311,17 @@ export default function Home() {
             </div>
             <div className="coverup-item">
               <BeforeAfter
-                beforeSrc="/images/gallery/cover-ups/coverup-10-before.png"
-                afterSrc="/images/gallery/cover-ups/coverup-10-after.png"
-                beforeAlt="Before: Old tattoo"
-                afterAlt="After: Mountain landscape by Jillaine"
+                beforeSrc="/images/gallery/cover-ups/coverup-fineline-before.jpg"
+                afterSrc="/images/gallery/cover-ups/coverup-fineline-after.jpg"
+                beforeAlt="Before: Fine line tattoo"
+                afterAlt="After: Campfire nature fire cover-up by Jillaine"
               />
             </div>
           </motion.div>
 
           <div className="coverup-cta">
-            <Link to="/gallery#cover-ups" className="btn btn-secondary">
-              <span>View All Transformations →</span>
+            <Link to="/cover-ups" className="btn btn-secondary">
+              <span>View All Cover-Ups →</span>
             </Link>
           </div>
         </div>

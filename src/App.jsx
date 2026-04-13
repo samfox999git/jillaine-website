@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Gallery from './pages/Gallery'
+import CoverUps from './pages/CoverUps'
 import FAQ from './pages/FAQ'
 import AfterCare from './pages/AfterCare'
 import Contact from './pages/Contact'
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/cover-ups" element={<CoverUps />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/aftercare" element={<AfterCare />} />
         <Route path="/contact" element={<Contact />} />

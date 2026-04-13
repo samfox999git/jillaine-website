@@ -22,6 +22,7 @@ export default function Navbar() {
         <div className={`nav-links ${mobileOpen ? 'open' : ''}`}>
           <NavLink to="/" end onClick={() => setMobileOpen(false)}>Home</NavLink>
           <NavLink to="/gallery" onClick={() => setMobileOpen(false)}>Gallery</NavLink>
+          <NavLink to="/cover-ups" onClick={() => setMobileOpen(false)}>Cover Ups</NavLink>
           <NavLink to="/faq" onClick={() => setMobileOpen(false)}>FAQ</NavLink>
           <NavLink to="/aftercare" onClick={() => setMobileOpen(false)}>After Care</NavLink>
           <Link to="/contact" className="btn btn-primary nav-cta-mobile-only" onClick={() => setMobileOpen(false)}>

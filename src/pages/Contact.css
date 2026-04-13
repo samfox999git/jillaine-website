@@ -1,65 +1,205 @@
 /* Contact Form — Dark Editorial */
+
+/* ── Before You Fill This Out ── */
+.booking-guidelines {
+  margin-bottom: var(--space-2xl);
+  background: var(--color-bg-elevated);
+  border: 1px solid rgba(232, 224, 213, 0.08);
+  border-top: 2px solid var(--color-red);
+  padding: var(--space-xl);
+}
+
+.guidelines-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: var(--space-lg);
+}
+
+.guidelines-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.guidelines-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.guidelines-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.guidelines-row p {
+  color: #d4cfc9;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.guidelines-row strong {
+  color: #fff;
+  font-weight: var(--font-medium);
+}
+
+.guidelines-row a {
+  color: var(--color-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity var(--transition-base);
+}
+
+.guidelines-row a:hover {
+  opacity: 0.8;
+}
+
 .contact-page .page-hero {
   padding-top: calc(var(--nav-height) + var(--space-3xl));
-  padding-bottom: var(--space-2xl);
+  padding-bottom: var(--space-sm);
   background: var(--color-bg-primary);
   text-align: center;
 }
 
-.form-progress {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-xl);
-  margin-bottom: var(--space-3xl);
+.form-section {
+  padding: var(--space-lg) 0 var(--space-sm);
 }
 
-.progress-step {
+.form-section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  letter-spacing: 2px;
+  color: rgba(232, 224, 213, 0.4);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.form-submit {
+  padding-top: var(--space-lg);
+  text-align: center;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.checkbox-btn {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid rgba(232,224,213,0.1);
   cursor: pointer;
-}
-
-.progress-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  letter-spacing: 1px;
-  border: 1px solid rgba(232,224,213,0.15);
-  color: var(--color-text-muted);
-  background: var(--color-bg-elevated);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
   transition: all var(--transition-base);
 }
 
-.progress-step.active .progress-circle {
-  background: var(--color-red);
+.checkbox-btn input {
+  display: none;
+}
+
+.checkbox-btn:hover {
   border-color: var(--color-red);
   color: var(--color-bone);
 }
 
-.progress-step.completed .progress-circle {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
-  color: var(--color-ink);
-}
-
-.progress-label {
-  font-family: var(--font-heading);
-  font-size: var(--text-xs);
-  letter-spacing: 2px;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-}
-
-.progress-step.active .progress-label,
-.progress-step.completed .progress-label {
+.checkbox-btn.checked {
+  border-color: var(--color-red);
+  background: rgba(45, 212, 168, 0.08);
   color: var(--color-bone);
+}
+
+.file-upload-link {
+  color: var(--color-red);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.file-upload-hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.file-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.file-preview-item {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border: 1px solid rgba(232,224,213,0.1);
+}
+
+.file-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.file-upload-icon {
+  font-size: var(--text-2xl);
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.file-upload-label {
+  pointer-events: none;
+}
+
+.form-nav {
+  display: flex;
+  align-items: center;
+  margin-top: var(--space-2xl);
+}
+
+.form-nav-spacer {
+  flex: 1;
+}
+
+.submission-success {
+  text-align: center;
+  padding: var(--space-3xl) 0;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-lg);
+}
+
+.success-note {
+  color: #c8c2bb;
+  font-size: var(--text-sm);
+  margin-top: var(--space-md);
+}
+
+.success-note a {
+  color: var(--color-red);
 }
 
 /* Form fields */
@@ -147,6 +287,7 @@
 
 /* File upload */
 .file-upload-area {
+  position: relative;
   border: 2px dashed rgba(232,224,213,0.1);
   padding: var(--space-2xl);
   text-align: center;
@@ -201,11 +342,7 @@
     grid-template-columns: 1fr;
   }
 
-  .form-progress {
-    gap: var(--space-md);
-  }
-
-  .form-card {
-    padding: var(--space-lg);
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }

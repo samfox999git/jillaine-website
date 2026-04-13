@@ -86,3 +86,58 @@
 .ba-label-after {
   right: var(--space-md);
 }
+
+/* Drag hint */
+.ba-hint {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(232, 224, 213, 0.12);
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  white-space: nowrap;
+}
+
+.ba-hint--visible {
+  opacity: 1;
+}
+
+.ba-hint-arrow {
+  color: rgba(232, 224, 213, 0.7);
+  animation: ba-arrow-pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.ba-hint-center {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+}
+
+@keyframes ba-arrow-pulse {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50%       { opacity: 1;   transform: translateX(3px); }
+}
+
+.ba-hint-arrow--right svg {
+  animation: ba-arrow-pulse-right 1.4s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+@keyframes ba-arrow-pulse-right {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50%       { opacity: 1;   transform: translateX(-3px); }
+}

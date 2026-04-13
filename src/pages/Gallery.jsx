@@ -1,56 +1,49 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import BeforeAfter from '../components/BeforeAfter'
 import { WebGLShader } from '../components/WebGLShader'
 import './Gallery.css'
 
 const galleryItems = [
-  { id: 1, src: '/images/gallery/animals/wolf-aurora.png', category: 'animals', title: 'Howling Wolf Aurora' },
-  { id: 2, src: '/images/gallery/nature-landscapes/peony-butterflies.png', category: 'nature-landscapes', title: 'Peony & Butterflies' },
-  { id: 3, src: '/images/gallery/northern-lights/grizzly-aurora.png', category: 'northern-lights', title: 'Grizzly Bear Aurora' },
-  { id: 4, src: '/images/gallery/nature-landscapes/hawaii-sunset.png', category: 'nature-landscapes', title: 'Hawaii Sunset' },
-  { id: 5, src: '/images/gallery/space/lobster-space.png', category: 'space', title: 'Space Lobster' },
-  { id: 6, src: '/images/gallery/northern-lights/aurora-wolf-mountain.png', category: 'northern-lights', title: 'Aurora Wolf Landscape' },
-  { id: 7, src: '/images/gallery/northern-lights/campfire-aurora.png', category: 'northern-lights', title: 'Campfire Northern Lights' },
-  { id: 8, src: '/images/gallery/nature-landscapes/unicorn-sunset.png', category: 'nature-landscapes', title: 'Unicorn at Sunset' },
-  { id: 9, src: '/images/gallery/space/galaxy-feathers.png', category: 'space', title: 'Galaxy Feathers' },
-  { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png', category: 'nature-landscapes', title: 'Tropical Hibiscus' },
-  { id: 11, src: '/images/gallery/nature-landscapes/black-widow-flowers.png', category: 'nature-landscapes', title: 'Black Widow & Flowers' },
-  { id: 12, src: '/images/gallery/black-and-grey/cowboy-eagle.png', category: 'black-and-grey', title: 'Cowboy & Eagle' },
-  { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg', category: 'animals', title: 'Dog Portrait' },
-  { id: 14, src: '/images/gallery/northern-lights/moose-river-aurora.jpg', category: 'northern-lights', title: 'Moose River Aurora' },
-  { id: 15, src: '/images/gallery/space/pyramid-portal-space.jpg', category: 'space', title: 'Pyramid Portal' },
-  { id: 16, src: '/images/gallery/other/snake-sleeve.jpg', category: 'animals', title: 'Snake Sleeve' },
-  { id: 17, src: '/images/gallery/nature-landscapes/forest-woman-ravens.jpg', category: 'nature-landscapes', title: 'Forest Woman & Ravens' },
-  { id: 18, src: '/images/gallery/animals/raven-pinecones.jpg', category: 'animals', title: 'Raven & Pinecones' },
-  { id: 19, src: '/images/gallery/space/jellyfish-galaxy.jpg', category: 'space', title: 'Jellyfish Galaxy' },
-  { id: 20, src: '/images/gallery/northern-lights/maple-leaf-moose-aurora.jpg', category: 'northern-lights', title: 'Maple Leaf Moose Aurora' },
-  { id: 21, src: '/images/gallery/black-and-grey/wwii-pilot-planes.jpg', category: 'black-and-grey', title: 'WWII Pilot & Planes' },
-  { id: 22, src: '/images/gallery/black-and-grey/skull-forest.jpg', category: 'black-and-grey', title: 'Skull & Forest' },
-  { id: 23, src: '/images/gallery/northern-lights/mountain-aurora-triangle.jpg', category: 'northern-lights', title: 'Mountain Aurora Triangle' },
-  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg', category: 'northern-lights', title: 'Waterfall Aurora' },
-  { id: 25, src: '/images/gallery/space/astronaut-planet.jpg', category: 'space', title: 'Astronaut on Planet' },
-  { id: 26, src: '/images/gallery/space/astro-sleeve-1.jpg', category: 'space', title: 'Astro Sleeve' },
-  { id: 27, src: '/images/gallery/space/astro-sleeve-2.jpg', category: 'space', title: 'Astro Sleeve II' },
-  { id: 28, src: '/images/gallery/space/astro-sleeve-3.jpg', category: 'space', title: 'Astro Sleeve III' },
-  { id: 29, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg', category: 'northern-lights', title: 'Kayak Aurora & Campfire' },
-]
-
-const coverUps = [
-  { id: 1, before: '/images/gallery/cover-ups/coverup-1-before.jpg', after: '/images/gallery/cover-ups/coverup-1-after.jpg', title: 'Tribal to Galaxy Spiral' },
-  { id: 2, before: '/images/gallery/cover-ups/coverup-2-before.jpg', after: '/images/gallery/cover-ups/coverup-2-after.jpg', title: 'Cover-Up Transformation' },
-  { id: 3, before: '/images/gallery/cover-ups/coverup-3-before.jpg', after: '/images/gallery/cover-ups/coverup-3-after.jpg', title: 'Cover-Up Transformation' },
-  { id: 4, before: '/images/gallery/cover-ups/coverup-4-before.jpg', after: '/images/gallery/cover-ups/coverup-4-after.jpg', title: 'Cover-Up Transformation' },
-  { id: 5, before: '/images/gallery/cover-ups/coverup-5-before.jpg', after: '/images/gallery/cover-ups/coverup-5-after.jpg', title: 'Cover-Up Transformation' },
-  { id: 6, before: '/images/gallery/cover-ups/coverup-6-before.jpg', after: '/images/gallery/cover-ups/coverup-6-after.jpg', title: 'Cover-Up Transformation' },
-  { id: 7, before: '/images/gallery/cover-ups/coverup-7-before.jpg', after: '/images/gallery/cover-ups/coverup-7-after.jpg', title: 'Cover-Up Transformation' },
-  { id: 8, before: '/images/gallery/cover-ups/coverup-8-before.jpg', after: '/images/gallery/cover-ups/coverup-8-after.jpg', title: 'Cover-Up Transformation' },
-  { id: 9, before: '/images/gallery/cover-ups/coverup-9-before.jpg', after: '/images/gallery/cover-ups/coverup-9-after.jpg', title: 'Cover-Up Transformation' },
-  { id: 10, before: '/images/gallery/cover-ups/coverup-10-before.png', after: '/images/gallery/cover-ups/coverup-10-after.png', title: 'Mountain Landscape Cover-Up' },
-  { id: 11, before: '/images/gallery/cover-ups/coverup-wolf-before.jpg', after: '/images/gallery/cover-ups/coverup-wolf-after.jpg', title: 'Wolf Space Cover-Up' },
-  { id: 12, before: '/images/gallery/cover-ups/coverup-polarbear-before.jpg', after: '/images/gallery/cover-ups/coverup-polarbear-after.jpg', title: 'Polar Bear Northern Lights Cover-Up' },
-  { id: 13, before: '/images/gallery/cover-ups/coverup-snake-before.jpg', after: '/images/gallery/cover-ups/coverup-snake-after.jpg', title: 'Full Sleeve Snake Lady Cover-Up' },
+  { id: 36, src: '/images/gallery/space/galaxy-butterfly.jpg',                       categories: ['space', 'animals'],                             title: 'Galaxy Butterfly' },
+  { id: 14, src: '/images/gallery/northern-lights/moose-river-aurora.jpg',           categories: ['northern-lights', 'animals', 'nature-landscapes'], title: 'Moose River Aurora' },
+  { id: 31, src: '/images/gallery/animals/octopus-vibrant.png',                      categories: ['animals'],                                      title: 'Vibrant Octopus' },
+  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora.png',              categories: ['northern-lights', 'nature-landscapes'],         title: 'Campfire Northern Lights' },
+  { id: 39, src: '/images/gallery/nature-landscapes/coral-turtle-jellyfish.jpg',     categories: ['nature-landscapes', 'animals'],                 title: 'Coral, Turtle & Jellyfish' },
+  { id: 22, src: '/images/gallery/black-and-grey/skull-forest.jpg',                  categories: ['black-and-grey', 'nature-landscapes'],          title: 'Skull & Forest' },
+  { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png',               categories: ['northern-lights', 'animals'],                   title: 'Grizzly Bear Aurora' },
+  { id: 17, src: '/images/gallery/nature-landscapes/forest-woman-ravens.jpg',        categories: ['nature-landscapes', 'animals'],                 title: 'Forest Woman & Ravens' },
+  { id: 26, src: '/images/gallery/space/astro-sleeve-1.jpg',                         categories: ['space'],                                        title: 'Astro Sleeve' },
+  { id: 38, src: '/images/gallery/northern-lights/bear-northern-lights.jpg',         categories: ['northern-lights', 'animals'],                   title: 'Bear & Northern Lights' },
+  { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png',          categories: ['nature-landscapes'],                            title: 'Tropical Hibiscus' },
+  { id: 20, src: '/images/gallery/northern-lights/maple-leaf-moose-aurora.jpg',      categories: ['northern-lights', 'animals', 'nature-landscapes'], title: 'Maple Leaf Moose Aurora' },
+  { id: 33, src: '/images/gallery/animals/octopus-sleeve.jpg',                       categories: ['animals'],                                      title: 'Octopus Sleeve' },
+  { id: 5,  src: '/images/gallery/space/lobster-space.png',                          categories: ['space', 'animals'],                             title: 'Space Lobster' },
+  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg',             categories: ['northern-lights', 'nature-landscapes'],         title: 'Waterfall Aurora' },
+  { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg',                 categories: ['animals'],                                      title: 'Dog Portrait' },
+  { id: 37, src: '/images/gallery/northern-lights/alaska-northern-lights-elk.jpg',   categories: ['northern-lights', 'animals'],                   title: 'Alaska Northern Lights & Elk' },
+  { id: 2,  src: '/images/gallery/nature-landscapes/peony-butterflies.png',          categories: ['nature-landscapes', 'animals'],                 title: 'Peony & Butterflies' },
+  { id: 19, src: '/images/gallery/space/jellyfish-galaxy.jpg',                       categories: ['space', 'animals'],                             title: 'Jellyfish Galaxy' },
+  { id: 35, src: '/images/gallery/nature-landscapes/fall-forest-river.jpg',          categories: ['nature-landscapes'],                            title: 'Fall Forest River' },
+  { id: 6,  src: '/images/gallery/northern-lights/aurora-wolf-mountain.png',         categories: ['northern-lights', 'animals', 'nature-landscapes'], title: 'Aurora Wolf Landscape' },
+  { id: 30, src: '/images/gallery/animals/portrait-dogs-frame.png',                  categories: ['animals'],                                      title: 'Dog Portrait Triptych' },
+  { id: 15, src: '/images/gallery/space/pyramid-portal-space.jpg',                   categories: ['space'],                                        title: 'Pyramid Portal' },
+  { id: 11, src: '/images/gallery/nature-landscapes/black-widow-flowers.png',        categories: ['nature-landscapes', 'animals'],                 title: 'Black Widow & Flowers' },
+  { id: 29, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg',        categories: ['northern-lights', 'nature-landscapes'],         title: 'Kayak Aurora & Campfire' },
+  { id: 1,  src: '/images/gallery/animals/wolf-aurora.png',                          categories: ['animals', 'northern-lights'],                   title: 'Howling Wolf Aurora' },
+  { id: 40, src: '/images/gallery/nature-landscapes/flowers-moon-mountain.jpg',      categories: ['nature-landscapes'],                            title: 'Flowers, Moon & Mountain' },
+  { id: 21, src: '/images/gallery/black-and-grey/wwii-pilot-planes.jpg',             categories: ['black-and-grey'],                               title: 'WWII Pilot & Planes' },
+  { id: 32, src: '/images/gallery/space/jellyfish-thigh.jpg',                        categories: ['space', 'animals'],                             title: 'Glowing Jellyfish' },
+  { id: 8,  src: '/images/gallery/nature-landscapes/unicorn-sunset.png',             categories: ['nature-landscapes', 'animals'],                 title: 'Unicorn at Sunset' },
+  { id: 34, src: '/images/gallery/northern-lights/mountain-aurora-diamond.jpg',      categories: ['northern-lights', 'nature-landscapes'],         title: 'Mountain Aurora Diamond' },
+  { id: 18, src: '/images/gallery/animals/raven-pinecones.jpg',                      categories: ['animals', 'nature-landscapes'],                 title: 'Raven & Pinecones' },
+  { id: 27, src: '/images/gallery/space/astro-sleeve-2.jpg',                         categories: ['space'],                                        title: 'Astro Sleeve II' },
+  { id: 4,  src: '/images/gallery/nature-landscapes/hawaii-sunset.png',              categories: ['nature-landscapes'],                            title: 'Hawaii Sunset' },
+  { id: 12, src: '/images/gallery/black-and-grey/cowboy-eagle.png',                  categories: ['black-and-grey', 'animals'],                    title: 'Cowboy & Eagle' },
+  { id: 16, src: '/images/gallery/other/snake-sleeve.jpg',                           categories: ['animals'],                                      title: 'Snake Sleeve' },
+  { id: 25, src: '/images/gallery/space/astronaut-planet.jpg',                       categories: ['space'],                                        title: 'Astronaut on Planet' },
+  { id: 28, src: '/images/gallery/space/astro-sleeve-3.jpg',                         categories: ['space'],                                        title: 'Astro Sleeve III' },
+  { id: 41, src: '/images/gallery/other/fresh-vs-healed.png',                        categories: ['other'],                                        title: 'Fresh vs Healed' },
 ]
 
 const categories = [
@@ -62,39 +55,24 @@ const categories = [
   { id: 'black-and-grey', label: 'Black & Grey' },
 ]
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { delay: i * 0.04, duration: 0.5 }
-  })
-}
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [lightboxImage, setLightboxImage] = useState(null)
 
-  useEffect(() => {
-    if (window.location.hash === '#cover-ups') {
-      setTimeout(() => {
-        document.getElementById('cover-ups')?.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
-    }
-  }, [])
-
   const filteredItems = activeCategory === 'all'
     ? galleryItems
-    : galleryItems.filter(item => item.category === activeCategory)
+    : galleryItems.filter(item => item.categories.includes(activeCategory))
 
   return (
     <main className="gallery-page">
       <div className="page-hero">
         <div className="container">
           <motion.p className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            Colour Realism Gallery
+            Portfolio
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-            <span className="gradient-text">Portfolio</span>
+            Color Realism <span className="gradient-text">Tattoos</span>
           </motion.h1>
         </div>
       </div>
@@ -113,12 +91,6 @@ export default function Gallery() {
               )}
             </button>
           ))}
-          <button
-            className="gallery-filter-btn gallery-filter-btn--coverups"
-            onClick={() => document.getElementById('cover-ups')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Cover-Ups ↓
-          </button>
         </div>
 
         <motion.div className="gallery-masonry" layout>
@@ -139,37 +111,6 @@ export default function Gallery() {
             </motion.div>
           ))}
         </motion.div>
-      </section>
-
-      <section className="section coverups-gallery" id="cover-ups">
-        <div className="container">
-          <div className="section-header">
-            <p className="section-label">Transformations</p>
-            <h2>Cover-Up <span className="gradient-text">Gallery</span></h2>
-            <p>Drag the slider to reveal each transformation.</p>
-          </div>
-
-          <div className="coverups-grid">
-            {coverUps.map((item) => (
-              <motion.div
-                key={item.id}
-                className="coverup-item"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-              >
-                <BeforeAfter
-                  beforeSrc={item.before}
-                  afterSrc={item.after}
-                  beforeAlt={`Before: ${item.title}`}
-                  afterAlt={`After: ${item.title}`}
-                />
-                <p className="coverup-title">{item.title}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* CTA */}
