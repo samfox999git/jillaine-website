@@ -22,9 +22,9 @@ export default async function handler(req, res) {
 
   const field = (label, value) => `
     <tr>
-      <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;vertical-align:top;">
-        <p style="margin:0 0 2px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2dd4a8;">${label}</p>
-        <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#ffffff;line-height:1.4;">${value}</p>
+      <td style="padding:8px 0;border-bottom:1px solid #1e1e1e;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.4;">
+        <span style="color:#2dd4a8;font-weight:700;">${label}:</span>
+        <span style="color:#ffffff;"> ${value}</span>
       </td>
     </tr>`
 
@@ -74,9 +74,9 @@ export default async function handler(req, res) {
           </tr>
 
           <!-- Description full width -->
-          <tr><td colspan="2" style="padding:10px 28px 16px;border-top:1px solid #1e1e1e;">
-            <p style="margin:0 0 2px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2dd4a8;">Description</p>
-            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#ffffff;line-height:1.5;">${get('description')}</p>
+          <tr><td colspan="2" style="padding:10px 28px 16px;border-top:1px solid #1e1e1e;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.5;">
+            <span style="color:#2dd4a8;font-weight:700;">Description:</span>
+            <span style="color:#ffffff;"> ${get('description')}</span>
           </td></tr>
 
           <!-- Quoted Rate footnote -->
