@@ -20,25 +20,64 @@ export default async function handler(req, res) {
 
   const get = (f) => (Array.isArray(fields[f]) ? fields[f][0] : fields[f]) ?? ''
 
+  const row = (label, value, accent = false) => `
+    <tr>
+      <td style="padding:12px 16px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#2dd4a8;width:160px;vertical-align:top;border-bottom:1px solid #1e1e1e;">${label}</td>
+      <td style="padding:12px 16px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;color:${accent ? '#2dd4a8' : '#e8e0d5'};vertical-align:top;border-bottom:1px solid #1e1e1e;">${value}</td>
+    </tr>`
+
   const html = `
-    <h2 style="color:#2dd4a8">New Consultation Request</h2>
-    <table style="border-collapse:collapse;width:100%;font-family:sans-serif;font-size:15px">
-      <tr><td style="padding:8px;font-weight:bold;width:200px">Name</td><td style="padding:8px">${get('from_name')}</td></tr>
-      <tr style="background:#f9f9f9"><td style="padding:8px;font-weight:bold">Email</td><td style="padding:8px"><a href="mailto:${get('email')}">${get('email')}</a></td></tr>
-      <tr><td style="padding:8px;font-weight:bold">Phone</td><td style="padding:8px">${get('phone')}</td></tr>
-      <tr style="background:#f9f9f9"><td style="padding:8px;font-weight:bold">Age</td><td style="padding:8px">${get('age')}</td></tr>
-      <tr><td style="padding:8px;font-weight:bold">City</td><td style="padding:8px">${get('city')}</td></tr>
-      <tr style="background:#f9f9f9"><td style="padding:8px;font-weight:bold">Tattoo Type</td><td style="padding:8px">${get('tattoo_type')}</td></tr>
-      <tr><td style="padding:8px;font-weight:bold">Skin Type</td><td style="padding:8px">${get('skin_type')}</td></tr>
-      <tr style="background:#f9f9f9"><td style="padding:8px;font-weight:bold">Location & Size</td><td style="padding:8px">${get('location')}</td></tr>
-      <tr><td style="padding:8px;font-weight:bold">Description</td><td style="padding:8px">${get('description')}</td></tr>
-      <tr style="background:#f9f9f9"><td style="padding:8px;font-weight:bold">On Camera?</td><td style="padding:8px">${get('social_media')}</td></tr>
-      <tr><td style="padding:8px;font-weight:bold">How They Found You</td><td style="padding:8px">${get('referral')}</td></tr>
+  <!DOCTYPE html>
+  <html>
+  <body style="margin:0;padding:0;background:#0d0d0d;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d0d0d;padding:32px 0;">
+      <tr><td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#111111;border-radius:12px;overflow:hidden;border:1px solid #222;">
+
+          <!-- Teal accent bar -->
+          <tr><td style="height:4px;background:linear-gradient(90deg,#2dd4a8,#22d3ee);"></td></tr>
+
+          <!-- Header -->
+          <tr><td style="padding:32px 32px 24px;background:#111;">
+            <p style="margin:0 0 6px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#2dd4a8;">Jillaine Tattoo</p>
+            <h1 style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;font-weight:700;color:#ffffff;line-height:1.2;">New Consultation Request</h1>
+            <p style="margin:8px 0 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;color:#888880;">${get('from_name')} &mdash; ${get('city')}</p>
+          </td></tr>
+
+          <!-- Divider -->
+          <tr><td style="padding:0 32px;"><div style="height:1px;background:#1e1e1e;"></div></td></tr>
+
+          <!-- Fields -->
+          <tr><td style="padding:8px 16px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              ${row('Name',          get('from_name'), true)}
+              ${row('Email',         `<a href="mailto:${get('email')}" style="color:#2dd4a8;text-decoration:none;">${get('email')}</a>`)}
+              ${row('Phone',         get('phone'))}
+              ${row('Age',           get('age'))}
+              ${row('City',          get('city'))}
+              ${row('Tattoo Type',   get('tattoo_type'))}
+              ${row('Skin Type',     get('skin_type'))}
+              ${row('Location & Size', get('location'))}
+              ${row('Description',   get('description'))}
+              ${row('On Camera?',    get('social_media'))}
+              ${row('How They Found You', get('referral'))}
+            </table>
+          </td></tr>
+
+          <!-- Quoted Rate -->
+          <tr><td style="padding:24px 32px;background:#0d0d0d;border-top:1px solid #1e1e1e;">
+            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:#888880;letter-spacing:1px;text-transform:uppercase;">Quoted Rate</p>
+            <p style="margin:4px 0 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:20px;font-weight:700;color:#2dd4a8;">$3,000 CAD / full day</p>
+          </td></tr>
+
+          <!-- Bottom bar -->
+          <tr><td style="height:3px;background:#1a1a1a;"></td></tr>
+
+        </table>
+      </td></tr>
     </table>
-    <hr style="margin:24px 0;border:none;border-top:1px solid #ddd" />
-    <p style="font-family:sans-serif;font-size:13px;color:#888">
-      <strong>Quoted Rate:</strong> $3,000 CAD / full day
-    </p>
+  </body>
+  </html>
   `
 
   // Build attachments from uploaded files
@@ -66,7 +105,7 @@ export default async function handler(req, res) {
       from: `"Jillaine Website" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_USER,
       replyTo: get('email'),
-      subject: `New Consultation — ${get('from_name')}`,
+      subject: `New Consultation Request — ${get('from_name')} — ${get('city')}`,
       html,
       attachments,
     })
