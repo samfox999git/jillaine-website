@@ -37,6 +37,10 @@ export default async function handler(req, res) {
       <tr style="background:#f9f9f9"><td style="padding:8px;font-weight:bold">On Camera?</td><td style="padding:8px">${get('social_media')}</td></tr>
       <tr><td style="padding:8px;font-weight:bold">How They Found You</td><td style="padding:8px">${get('referral')}</td></tr>
     </table>
+    <hr style="margin:24px 0;border:none;border-top:1px solid #ddd" />
+    <p style="font-family:sans-serif;font-size:13px;color:#888">
+      <strong>Quoted Rate:</strong> $3,000 CAD / full day
+    </p>
   `
 
   // Build attachments
