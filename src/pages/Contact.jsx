@@ -35,9 +35,34 @@ export default function Contact() {
     }))
   }
 
-  const handleFileChange = (e) => {
+  const compressImage = (file) => new Promise((resolve) => {
+    const img = new Image()
+    const url = URL.createObjectURL(file)
+    img.onload = () => {
+      const maxWidth = 1600
+      let { width, height } = img
+      if (width > maxWidth) {
+        height = Math.round((height * maxWidth) / width)
+        width = maxWidth
+      }
+      const canvas = document.createElement('canvas')
+      canvas.width = width
+      canvas.height = height
+      canvas.getContext('2d').drawImage(img, 0, 0, width, height)
+      URL.revokeObjectURL(url)
+      canvas.toBlob(
+        (blob) => resolve(new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), { type: 'image/jpeg' })),
+        'image/jpeg',
+        0.82
+      )
+    }
+    img.src = url
+  })
+
+  const handleFileChange = async (e) => {
     const files = Array.from(e.target.files).slice(0, 6)
-    updateField('referencePhotos', files)
+    const compressed = await Promise.all(files.map(compressImage))
+    updateField('referencePhotos', compressed)
   }
 
   const handleSubmit = async (e) => {
