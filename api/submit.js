@@ -20,11 +20,13 @@ export default async function handler(req, res) {
 
   const get = (f) => (Array.isArray(fields[f]) ? fields[f][0] : fields[f]) ?? ''
 
-  const cell = (label, value) => `
-    <td style="padding:12px 14px;vertical-align:top;width:50%;border-bottom:1px solid #1e1e1e;">
-      <p style="margin:0 0 3px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2dd4a8;">${label}</p>
-      <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#e8e0d5;line-height:1.4;">${value}</p>
-    </td>`
+  const field = (label, value) => `
+    <tr>
+      <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;vertical-align:top;">
+        <p style="margin:0 0 2px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2dd4a8;">${label}</p>
+        <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#ffffff;line-height:1.4;">${value}</p>
+      </td>
+    </tr>`
 
   const html = `
   <!DOCTYPE html>
@@ -38,52 +40,48 @@ export default async function handler(req, res) {
           <tr><td colspan="2" style="height:4px;background:linear-gradient(90deg,#2dd4a8,#22d3ee);"></td></tr>
 
           <!-- Header -->
-          <tr><td colspan="2" style="padding:28px 28px 20px;background:#111;">
+          <tr><td colspan="2" style="padding:24px 28px 18px;">
             <p style="margin:0 0 4px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#2dd4a8;">Jillaine Tattoo</p>
             <h1 style="margin:0 0 4px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;font-weight:700;color:#ffffff;line-height:1.2;">New Consultation Request</h1>
-            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#888880;">${get('from_name')} &mdash; ${get('city')}</p>
+            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#888880;">${get('from_name')} &mdash; ${get('city')}</p>
           </td></tr>
 
           <!-- Divider -->
           <tr><td colspan="2" style="height:1px;background:#1e1e1e;"></td></tr>
 
-          <!-- Two-column fields -->
-          <tr><td colspan="2" style="padding:4px 14px;">
-            <table width="100%" cellpadding="0" cellspacing="0">
-              <tr>
-                ${cell('Name',  `<span style="color:#2dd4a8;font-weight:600;">${get('from_name')}</span>`)}
-                ${cell('Email', `<a href="mailto:${get('email')}" style="color:#2dd4a8;text-decoration:none;">${get('email')}</a>`)}
-              </tr>
-              <tr>
-                ${cell('Phone', get('phone'))}
-                ${cell('Age',   get('age'))}
-              </tr>
-              <tr>
-                ${cell('City',      get('city'))}
-                ${cell('Skin Type', get('skin_type'))}
-              </tr>
-              <tr>
-                ${cell('Tattoo Type',    get('tattoo_type'))}
-                ${cell('Location & Size', get('location'))}
-              </tr>
-              <tr>
-                ${cell('On Camera?',        get('social_media'))}
-                ${cell('How They Found You', get('referral'))}
-              </tr>
-              <!-- Description full width -->
-              <tr>
-                <td colspan="2" style="padding:12px 14px;vertical-align:top;border-bottom:1px solid #1e1e1e;">
-                  <p style="margin:0 0 3px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2dd4a8;">Description</p>
-                  <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#e8e0d5;line-height:1.5;">${get('description')}</p>
-                </td>
-              </tr>
-            </table>
+          <!-- Two columns of stacked fields -->
+          <tr>
+            <!-- Left column -->
+            <td style="padding:8px 16px 8px 28px;vertical-align:top;width:50%;border-right:1px solid #1e1e1e;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                ${field('Name',          get('from_name'))}
+                ${field('City',          get('city'))}
+                ${field('Age',           get('age'))}
+                ${field('Phone',         get('phone'))}
+                ${field('On Camera?',    get('social_media'))}
+                ${field('How They Found You', get('referral'))}
+              </table>
+            </td>
+            <!-- Right column -->
+            <td style="padding:8px 28px 8px 16px;vertical-align:top;width:50%;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                ${field('Email',          `<a href="mailto:${get('email')}" style="color:#ffffff;text-decoration:none;">${get('email')}</a>`)}
+                ${field('Tattoo Type',    get('tattoo_type'))}
+                ${field('Skin Type',      get('skin_type'))}
+                ${field('Location & Size', get('location'))}
+              </table>
+            </td>
+          </tr>
+
+          <!-- Description full width -->
+          <tr><td colspan="2" style="padding:10px 28px 16px;border-top:1px solid #1e1e1e;">
+            <p style="margin:0 0 2px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2dd4a8;">Description</p>
+            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#ffffff;line-height:1.5;">${get('description')}</p>
           </td></tr>
 
-          <!-- Quoted Rate -->
-          <tr><td colspan="2" style="padding:18px 28px;background:#0d0d0d;border-top:1px solid #1e1e1e;">
-            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;color:#888880;letter-spacing:1.5px;text-transform:uppercase;">Quoted Rate</p>
-            <p style="margin:3px 0 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:18px;font-weight:700;color:#2dd4a8;">$3,000 CAD / full day</p>
+          <!-- Quoted Rate footnote -->
+          <tr><td colspan="2" style="padding:10px 28px 14px;border-top:1px solid #1e1e1e;">
+            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:#555550;">Quoted rate: $3,000 CAD / full day</p>
           </td></tr>
 
           <!-- Bottom bar -->
