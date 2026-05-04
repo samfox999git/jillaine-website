@@ -71,35 +71,21 @@ export default function Contact() {
     setErrorMsg('')
 
     try {
-      // Upload photos to Blob first, one at a time
-      const photoUrls = []
-      for (const file of formData.referencePhotos) {
-        const fd = new FormData()
-        fd.append('photo', file)
-        const uploadRes = await fetch('/api/upload-photo', { method: 'POST', body: fd })
-        const uploadData = await uploadRes.json()
-        if (uploadData.url) photoUrls.push(uploadData.url)
-      }
+      const body = new FormData()
+      body.append('from_name',    `${formData.firstName} ${formData.lastName}`)
+      body.append('email',        formData.email)
+      body.append('phone',        formData.phone)
+      body.append('age',          formData.age)
+      body.append('city',         formData.city)
+      body.append('tattoo_type',  formData.tattooType.join(', '))
+      body.append('skin_type',    formData.skinType.join(', '))
+      body.append('location',     formData.location)
+      body.append('description',  formData.description)
+      body.append('social_media', formData.socialMedia)
+      body.append('referral',     formData.referral === 'Other' ? `Other: ${formData.referralOther}` : formData.referral)
+      formData.referencePhotos.forEach(file => body.append('referencePhotos', file))
 
-      // Submit form data as JSON with blob URLs
-      const res = await fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          from_name:    `${formData.firstName} ${formData.lastName}`,
-          email:        formData.email,
-          phone:        formData.phone,
-          age:          formData.age,
-          city:         formData.city,
-          tattoo_type:  formData.tattooType.join(', '),
-          skin_type:    formData.skinType.join(', '),
-          location:     formData.location,
-          description:  formData.description,
-          social_media: formData.socialMedia,
-          referral:     formData.referral === 'Other' ? `Other: ${formData.referralOther}` : formData.referral,
-          photoUrls,
-        }),
-      })
+      const res = await fetch('/api/submit', { method: 'POST', body })
       const data = await res.json()
 
       if (data.success) {

@@ -1,22 +1,24 @@
-import { del } from '@vercel/blob'
+import { formidable } from 'formidable'
 import nodemailer from 'nodemailer'
+import fs from 'fs'
+
+export const config = { api: { bodyParser: false } }
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  let body
+  let fields, files
   try {
-    const chunks = []
-    for await (const chunk of req) chunks.push(chunk)
-    body = JSON.parse(Buffer.concat(chunks).toString())
+    const form = formidable({ multiples: true, maxFileSize: 4 * 1024 * 1024 })
+    ;[fields, files] = await form.parse(req)
   } catch (err) {
-    return res.status(400).json({ error: 'Invalid request body' })
+    console.error('Form parse error:', err)
+    return res.status(500).json({ error: 'Failed to parse form data' })
   }
 
-  const get = (f) => body[f] ?? ''
-  const photoUrls = Array.isArray(body.photoUrls) ? body.photoUrls : []
+  const get = (f) => (Array.isArray(fields[f]) ? fields[f][0] : fields[f]) ?? ''
 
   const html = `
     <h2 style="color:#2dd4a8">New Consultation Request</h2>
@@ -39,16 +41,15 @@ export default async function handler(req, res) {
     </p>
   `
 
-  // Fetch photos from Blob and build attachments
+  // Build attachments from uploaded files
   const attachments = []
-  for (const url of photoUrls) {
-    try {
-      const response = await fetch(url)
-      const buffer = Buffer.from(await response.arrayBuffer())
-      const filename = url.split('/').pop() || 'reference.jpg'
-      attachments.push({ filename, content: buffer })
-    } catch (err) {
-      console.error('Failed to fetch photo:', url, err)
+  if (files.referencePhotos) {
+    const photos = Array.isArray(files.referencePhotos) ? files.referencePhotos : [files.referencePhotos]
+    for (const file of photos) {
+      attachments.push({
+        filename: file.originalFilename || 'reference.jpg',
+        content: fs.readFileSync(file.filepath),
+      })
     }
   }
 
@@ -69,11 +70,6 @@ export default async function handler(req, res) {
       html,
       attachments,
     })
-
-    // Delete photos from Blob after sending
-    for (const url of photoUrls) {
-      try { await del(url, { token: process.env.BLOB_READ_WRITE_TOKEN }) } catch {}
-    }
 
     return res.status(200).json({ success: true })
   } catch (err) {
