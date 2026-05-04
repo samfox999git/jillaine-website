@@ -38,6 +38,7 @@ export default function Contact() {
   const compressImage = (file) => new Promise((resolve) => {
     const img = new Image()
     const url = URL.createObjectURL(file)
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file) }
     img.onload = () => {
       const maxWidth = 1200
       let { width, height } = img
@@ -67,8 +68,19 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setUploading(true)
     setErrorMsg('')
+
+    if (!formData.firstName.trim() || !formData.lastName.trim()) {
+      return setErrorMsg('Please enter your full name.')
+    }
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      return setErrorMsg('Please enter a valid email address.')
+    }
+    if (!formData.description.trim()) {
+      return setErrorMsg('Please describe your tattoo idea.')
+    }
+
+    setUploading(true)
 
     try {
       const body = new FormData()

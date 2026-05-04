@@ -19,6 +19,25 @@ export default async function handler(req, res) {
   }
 
   const get = (f) => (Array.isArray(fields[f]) ? fields[f][0] : fields[f]) ?? ''
+  const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+
+  // Basic server-side validation
+  if (!get('from_name').trim() || !get('email').trim()) {
+    return res.status(400).json({ error: 'Name and email are required.' })
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(get('email'))) {
+    return res.status(400).json({ error: 'Invalid email address.' })
+  }
+
+  // File type validation
+  if (files.referencePhotos) {
+    const photos = Array.isArray(files.referencePhotos) ? files.referencePhotos : [files.referencePhotos]
+    for (const file of photos) {
+      if (!file.mimetype?.startsWith('image/')) {
+        return res.status(400).json({ error: 'Only image files are allowed.' })
+      }
+    }
+  }
 
   const field = (label, value) => `
     <tr>
@@ -43,7 +62,7 @@ export default async function handler(req, res) {
           <tr><td colspan="2" style="padding:24px 28px 18px;">
             <p style="margin:0 0 4px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#2dd4a8;">Jillaine Tattoo</p>
             <h1 style="margin:0 0 4px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;font-weight:700;color:#ffffff;line-height:1.2;">New Consultation Request</h1>
-            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#888880;">${get('from_name')} &mdash; ${get('city')}</p>
+            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#888880;">${esc(get('from_name'))} &mdash; ${esc(get('city'))}</p>
           </td></tr>
 
           <!-- Divider -->
@@ -54,21 +73,21 @@ export default async function handler(req, res) {
             <!-- Left column -->
             <td style="padding:8px 16px 8px 28px;vertical-align:top;width:50%;border-right:1px solid #1e1e1e;">
               <table width="100%" cellpadding="0" cellspacing="0">
-                ${field('Name',          get('from_name'))}
-                ${field('City',          get('city'))}
-                ${field('Age',           get('age'))}
-                ${field('Phone',         get('phone'))}
-                ${field('Email',         `<a href="mailto:${get('email')}" style="color:#ffffff;text-decoration:none;">${get('email')}</a>`)}
+                ${field('Name',          esc(get('from_name')))}
+                ${field('City',          esc(get('city')))}
+                ${field('Age',           esc(get('age')))}
+                ${field('Phone',         esc(get('phone')))}
+                ${field('Email',         `<a href="mailto:${esc(get('email'))}" style="color:#ffffff;text-decoration:none;">${esc(get('email'))}</a>`)}
               </table>
             </td>
             <!-- Right column -->
             <td style="padding:8px 28px 8px 16px;vertical-align:top;width:50%;">
               <table width="100%" cellpadding="0" cellspacing="0">
-                ${field('Tattoo Type',    get('tattoo_type'))}
-                ${field('Skin Type',      get('skin_type'))}
-                ${field('Location & Size', get('location'))}
-                ${field('How They Found You', get('referral'))}
-                ${field('On Camera?',    get('social_media'))}
+                ${field('Tattoo Type',    esc(get('tattoo_type')))}
+                ${field('Skin Type',      esc(get('skin_type')))}
+                ${field('Location & Size', esc(get('location')))}
+                ${field('How They Found You', esc(get('referral')))}
+                ${field('On Camera?',    esc(get('social_media')))}
               </table>
             </td>
           </tr>
@@ -76,7 +95,7 @@ export default async function handler(req, res) {
           <!-- Description full width -->
           <tr><td colspan="2" style="padding:10px 28px 16px;border-top:1px solid #1e1e1e;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.5;">
             <span style="color:#2dd4a8;font-weight:400;">Description:</span>
-            <span style="color:#ffffff;font-weight:700;"> ${get('description')}</span>
+            <span style="color:#ffffff;font-weight:700;"> ${esc(get('description'))}</span>
           </td></tr>
 
           <!-- Quoted Rate footnote -->
