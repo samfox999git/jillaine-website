@@ -134,7 +134,7 @@ export default function Contact() {
             </div>
             <div className="guidelines-row">
               <span className="guidelines-dot" />
-              <p>My Rates: <strong>Half Day: $1500 (CAD)</strong> | <strong>Full Day: $3000 (CAD)</strong> | Rates for ongoing work may differ.</p>
+              <p>My Rates: <strong>Full Day: $3000 (CAD)</strong> | Rates for ongoing work may differ.</p>
             </div>
             <div className="guidelines-row">
               <span className="guidelines-dot" />
