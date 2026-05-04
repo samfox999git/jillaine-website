@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { pathname } = useLocation()
+  const onContactPage = pathname === '/contact'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -25,14 +27,18 @@ export default function Navbar() {
           <NavLink to="/cover-ups" onClick={() => setMobileOpen(false)}>Cover Ups</NavLink>
           <NavLink to="/faq" onClick={() => setMobileOpen(false)}>FAQ</NavLink>
           <NavLink to="/aftercare" onClick={() => setMobileOpen(false)}>After Care</NavLink>
-          <Link to="/contact" className="btn btn-primary nav-cta-mobile-only" onClick={() => setMobileOpen(false)}>
-            Book A Consultation
-          </Link>
+          {!onContactPage && (
+            <Link to="/contact" className="btn btn-primary nav-cta-mobile-only" onClick={() => setMobileOpen(false)}>
+              Book A Consultation
+            </Link>
+          )}
         </div>
 
-        <Link to="/contact" className="btn btn-primary nav-cta">
-          Book A<br />Consultation
-        </Link>
+        {!onContactPage && (
+          <Link to="/contact" className="btn btn-primary nav-cta">
+            Book A<br />Consultation
+          </Link>
+        )}
 
         <button
           className={`nav-hamburger ${mobileOpen ? 'open' : ''}`}
