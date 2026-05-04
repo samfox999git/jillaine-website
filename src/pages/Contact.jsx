@@ -39,7 +39,7 @@ export default function Contact() {
     const img = new Image()
     const url = URL.createObjectURL(file)
     img.onload = () => {
-      const maxWidth = 1600
+      const maxWidth = 1200
       let { width, height } = img
       if (width > maxWidth) {
         height = Math.round((height * maxWidth) / width)
@@ -53,7 +53,7 @@ export default function Contact() {
       canvas.toBlob(
         (blob) => resolve(new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), { type: 'image/jpeg' })),
         'image/jpeg',
-        0.82
+        0.70
       )
     }
     img.src = url
