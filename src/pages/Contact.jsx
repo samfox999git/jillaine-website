@@ -14,6 +14,7 @@ const referralSources = [
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [failed, setFailed] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [errors, setErrors] = useState({})
@@ -116,13 +117,36 @@ export default function Contact() {
         setSubmitted(true)
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
-        setErrorMsg(JSON.stringify(data, null, 2))
+        setFailed(true)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } catch (err) {
-      setErrorMsg(String(err))
+      setFailed(true)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } finally {
       setUploading(false)
     }
+  }
+
+  if (failed) {
+    return (
+      <main className="contact-page">
+        <div className="page-hero">
+          <div className="container">
+            <motion.div
+              className="submission-success"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <div className="success-icon">⚠️</div>
+              <h1>Message Didn't Go Through</h1>
+              <p>Sorry, our form had an error.</p>
+              <p className="success-note">Please email <a href="mailto:jillainetattoo.book@gmail.com">jillainetattoo.book@gmail.com</a> directly to set up a consultation.</p>
+            </motion.div>
+          </div>
+        </div>
+      </main>
+    )
   }
 
   if (submitted) {
@@ -329,9 +353,7 @@ export default function Contact() {
           </div>
 
           {errorMsg && (
-            <pre style={{ background: '#1a0000', color: '#ff6b6b', padding: '16px', fontSize: '12px', overflowX: 'auto', marginBottom: '16px', whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
-              {errorMsg}
-            </pre>
+            <p style={{ color: '#ff6b6b', fontSize: '14px', marginBottom: '16px' }}>{errorMsg}</p>
           )}
 
           <div className="form-submit">
