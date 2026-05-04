@@ -58,7 +58,7 @@ export default async function handler(req, res) {
                 ${field('City',          get('city'))}
                 ${field('Age',           get('age'))}
                 ${field('Phone',         get('phone'))}
-                ${field('On Camera?',    get('social_media'))}
+                ${field('Email',         `<a href="mailto:${get('email')}" style="color:#ffffff;text-decoration:none;">${get('email')}</a>`)}
               </table>
             </td>
             <!-- Right column -->
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
                 ${field('Skin Type',      get('skin_type'))}
                 ${field('Location & Size', get('location'))}
                 ${field('How They Found You', get('referral'))}
-                ${field('Email',          `<a href="mailto:${get('email')}" style="color:#ffffff;text-decoration:none;">${get('email')}</a>`)}
+                ${field('On Camera?',    get('social_media'))}
               </table>
             </td>
           </tr>
@@ -81,7 +81,7 @@ export default async function handler(req, res) {
 
           <!-- Quoted Rate footnote -->
           <tr><td colspan="2" style="padding:10px 28px 14px;border-top:1px solid #1e1e1e;">
-            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:#aaaaaa;">Quoted rate: $3,000 CAD / full day</p>
+            <p style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:#aaaaaa;">QR3</p>
           </td></tr>
 
           <!-- Bottom bar -->
