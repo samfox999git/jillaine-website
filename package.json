@@ -12,6 +12,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@paper-design/shaders-react": "^0.0.72",
+    "@vercel/blob": "^2.3.3",
     "formidable": "^3.5.4",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.7.0",
