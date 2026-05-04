@@ -126,7 +126,7 @@ export default function Contact() {
           <div className="guidelines-rows">
             <div className="guidelines-row">
               <span className="guidelines-dot" />
-              <p>I specialize in <strong>colour realism only</strong> — no script, neo-trad, traditional, or linework</p>
+              <p>I specialize in <strong>colour realism</strong> — no script, neo-trad, traditional, or linework</p>
             </div>
             <div className="guidelines-row">
               <span className="guidelines-dot" />

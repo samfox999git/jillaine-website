@@ -296,7 +296,7 @@ export default function Home() {
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
           >
-            <h2>Cover-Up <span className="gradient-text">Magic</span></h2>
+            <h2>Cover-Up Tattoo <span className="gradient-text">Magic</span></h2>
             <p>Drag the slider to reveal each transformation.</p>
           </motion.div>
 
