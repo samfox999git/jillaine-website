@@ -16,6 +16,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+  const [errors, setErrors] = useState({})
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', phone: '', age: '', city: '',
     tattooType: [], skinType: [], referencePhotos: [],
@@ -33,6 +34,10 @@ export default function Contact() {
         ? prev[field].filter(v => v !== value)
         : [...prev[field], value]
     }))
+  }
+
+  const clearError = (field) => {
+    if (errors[field]) setErrors(prev => ({ ...prev, [field]: false }))
   }
 
   const compressImage = (file) => new Promise((resolve) => {
@@ -70,14 +75,21 @@ export default function Contact() {
     e.preventDefault()
     setErrorMsg('')
 
-    if (!formData.firstName.trim() || !formData.lastName.trim()) {
-      return setErrorMsg('Please enter your full name.')
-    }
-    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      return setErrorMsg('Please enter a valid email address.')
-    }
-    if (!formData.description.trim()) {
-      return setErrorMsg('Please describe your tattoo idea.')
+    const newErrors = {}
+    if (!formData.firstName.trim()) newErrors.firstName = true
+    if (!formData.lastName.trim()) newErrors.lastName = true
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = true
+    if (!formData.phone.trim()) newErrors.phone = true
+    if (!formData.age.trim()) newErrors.age = true
+    if (!formData.city.trim()) newErrors.city = true
+    if (!formData.location.trim()) newErrors.location = true
+    if (!formData.description.trim()) newErrors.description = true
+    if (!formData.referral) newErrors.referral = true
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      setErrorMsg('Please fill in all required fields.')
+      return
     }
 
     setUploading(true)
@@ -196,33 +208,33 @@ export default function Contact() {
           <div className="form-section">
             <h3 className="form-section-title">Personal Information</h3>
             <div className="form-row">
-              <div className="form-group">
+              <div className={`form-group${errors.firstName ? ' has-error' : ''}`}>
                 <label htmlFor="firstName">First Name *</label>
-                <input id="firstName" type="text" value={formData.firstName} onChange={e => updateField('firstName', e.target.value)} required placeholder="Your first name" />
+                <input id="firstName" type="text" value={formData.firstName} onChange={e => { updateField('firstName', e.target.value); clearError('firstName') }} placeholder="Your first name" />
               </div>
-              <div className="form-group">
+              <div className={`form-group${errors.lastName ? ' has-error' : ''}`}>
                 <label htmlFor="lastName">Last Name *</label>
-                <input id="lastName" type="text" value={formData.lastName} onChange={e => updateField('lastName', e.target.value)} required placeholder="Your last name" />
+                <input id="lastName" type="text" value={formData.lastName} onChange={e => { updateField('lastName', e.target.value); clearError('lastName') }} placeholder="Your last name" />
               </div>
             </div>
             <div className="form-row">
-              <div className="form-group">
+              <div className={`form-group${errors.email ? ' has-error' : ''}`}>
                 <label htmlFor="email">Email *</label>
-                <input id="email" type="email" value={formData.email} onChange={e => updateField('email', e.target.value)} required placeholder="your@email.com" />
+                <input id="email" type="email" value={formData.email} onChange={e => { updateField('email', e.target.value); clearError('email') }} placeholder="your@email.com" />
               </div>
-              <div className="form-group">
+              <div className={`form-group${errors.phone ? ' has-error' : ''}`}>
                 <label htmlFor="phone">Phone *</label>
-                <input id="phone" type="tel" value={formData.phone} onChange={e => updateField('phone', e.target.value)} required placeholder="(250) 555-0000" />
+                <input id="phone" type="tel" value={formData.phone} onChange={e => { updateField('phone', e.target.value); clearError('phone') }} placeholder="(250) 555-0000" />
               </div>
             </div>
             <div className="form-row">
-              <div className="form-group">
+              <div className={`form-group${errors.age ? ' has-error' : ''}`}>
                 <label htmlFor="age">Age *</label>
-                <input id="age" type="text" value={formData.age} onChange={e => updateField('age', e.target.value)} required placeholder="Your age" />
+                <input id="age" type="text" value={formData.age} onChange={e => { updateField('age', e.target.value); clearError('age') }} placeholder="Your age" />
               </div>
-              <div className="form-group">
+              <div className={`form-group${errors.city ? ' has-error' : ''}`}>
                 <label htmlFor="city">Residing City *</label>
-                <input id="city" type="text" value={formData.city} onChange={e => updateField('city', e.target.value)} required placeholder="Your city" />
+                <input id="city" type="text" value={formData.city} onChange={e => { updateField('city', e.target.value); clearError('city') }} placeholder="Your city" />
               </div>
             </div>
           </div>
@@ -252,13 +264,13 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-            <div className="form-group">
+            <div className={`form-group${errors.location ? ' has-error' : ''}`}>
               <label htmlFor="location">Location and Size of Tattoo *</label>
-              <input id="location" type="text" value={formData.location} onChange={e => updateField('location', e.target.value)} required placeholder="e.g., Right forearm, approximately 6 inches" />
+              <input id="location" type="text" value={formData.location} onChange={e => { updateField('location', e.target.value); clearError('location') }} placeholder="e.g., Right forearm, approximately 6 inches" />
             </div>
-            <div className="form-group">
+            <div className={`form-group${errors.description ? ' has-error' : ''}`}>
               <label htmlFor="description">Description of Your Tattoo Idea *</label>
-              <textarea id="description" value={formData.description} onChange={e => updateField('description', e.target.value)} required placeholder="Describe your tattoo idea in as much detail as possible. Include colours, themes, and any specific elements you'd like..." rows={5} />
+              <textarea id="description" value={formData.description} onChange={e => { updateField('description', e.target.value); clearError('description') }} placeholder="Describe your tattoo idea in as much detail as possible. Include colours, themes, and any specific elements you'd like..." rows={5} />
             </div>
           </div>
 
@@ -296,9 +308,9 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-            <div className="form-group">
+            <div className={`form-group${errors.referral ? ' has-error' : ''}`}>
               <label htmlFor="referral">How Did You Find Me? *</label>
-              <select id="referral" value={formData.referral} onChange={e => updateField('referral', e.target.value)} required>
+              <select id="referral" value={formData.referral} onChange={e => { updateField('referral', e.target.value); clearError('referral') }}>
                 <option value="">Select one...</option>
                 {referralSources.map(src => (
                   <option key={src} value={src}>{src}</option>

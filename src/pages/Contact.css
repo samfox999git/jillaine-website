@@ -262,6 +262,17 @@
   color: var(--color-text-muted);
 }
 
+.form-group.has-error label {
+  color: #ff6b6b;
+}
+
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
 .form-group select {
   appearance: none;
   cursor: pointer;
