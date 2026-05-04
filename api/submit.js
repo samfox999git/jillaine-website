@@ -23,8 +23,8 @@ export default async function handler(req, res) {
   const field = (label, value) => `
     <tr>
       <td style="padding:8px 0;border-bottom:1px solid #1e1e1e;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.4;">
-        <span style="color:#2dd4a8;font-weight:700;">${label}:</span>
-        <span style="color:#ffffff;"> ${value}</span>
+        <span style="color:#2dd4a8;font-weight:400;">${label}:</span>
+        <span style="color:#ffffff;font-weight:700;"> ${value}</span>
       </td>
     </tr>`
 
@@ -75,8 +75,8 @@ export default async function handler(req, res) {
 
           <!-- Description full width -->
           <tr><td colspan="2" style="padding:10px 28px 16px;border-top:1px solid #1e1e1e;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.5;">
-            <span style="color:#2dd4a8;font-weight:700;">Description:</span>
-            <span style="color:#ffffff;"> ${get('description')}</span>
+            <span style="color:#2dd4a8;font-weight:400;">Description:</span>
+            <span style="color:#ffffff;font-weight:700;"> ${get('description')}</span>
           </td></tr>
 
           <!-- Quoted Rate footnote -->
