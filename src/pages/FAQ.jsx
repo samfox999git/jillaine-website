@@ -30,7 +30,7 @@ const faqData = [
       },
       {
         q: 'What payment methods do you accept?',
-        a: 'Only cash or e-transfer is accepted at this time. I currently do not have a machine to take debit or credit.'
+        a: 'Only cash, e-transfer, or PayPal is accepted at this time. I currently do not have a machine to take debit or credit.'
       },
     ]
   },
@@ -51,7 +51,7 @@ const faqData = [
       },
       {
         q: 'Do your style of colour tattoos stay vibrant forever?',
-        a: 'With proper client care, the tattoos I do should stay vibrant for a very long time. I have a full sleeve that is 6 years old and a large leg piece that is 5 years old, both done by my mentor in a similar style to mine. Over time both pieces have held up really well.'
+        a: 'With proper client care, the tattoos I do should stay vibrant for a very long time. I have a full sleeve that is 10 years old and a large leg piece that is 9 years old, both done by my mentor in a similar style to mine. Over time both pieces have held up really well.'
       },
       {
         q: 'Is the ink you use safe?',
@@ -68,7 +68,7 @@ const faqData = [
       },
       {
         q: 'Can I bring a friend to my appointment?',
-        a: 'I\'d prefer it if you did not bring a friend as I focus better in a one on one setting. You may have a friend pop by the shop to bring you a snack or something and hang out for a little while, but I prefer if they don\'t stay for the whole appointment. If you feel you absolutely must bring a friend for emotional support, please let me know ahead of time.'
+        a: 'You are welcome to bring one friend to your appointment. Please do not bring more than one guest, as too many people can be distracting to the artists.'
       },
     ]
   },

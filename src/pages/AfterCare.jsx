@@ -5,11 +5,11 @@ import './AfterCare.css'
 const protocol = [
   {
     label: 'First 24 Hours',
-    body: 'There may be a build up of plasma and ink under the wrap. This is completely normal but means the wrap must be changed once. If the wrap starts leaking, absorb the leaks with paper towel. The fluid will continue to build for about 24 hours so it is best to wait to change it.',
+    body: 'There may be a build up of plasma and ink under the wrap. This is completely normal but means the wrap must be changed once. If the wrap starts leaking, absorb the leaks with paper towel. The fluid will continue to build for about 24 hours so it is best to wait to change it. You might experience heavy swelling, that is normal. Take Advil to reduce swelling. Keep your tattoo elevated as much as possible. Ice the tattoo no more than 15 mins at a time.',
   },
   {
     label: 'Days 1–7',
-    body: 'The wrap should be left on for a full 7 days after it is changed. Removing the wrap early may result in heavy scabbing, a longer healing time and/or the need for touchups.',
+    body: 'The wrap should be left on for a full 7 days after it is changed. Removing the wrap early may result in heavy scabbing, a longer healing time and/or the need for touchups. Only remove the wrap early if the tattoo has become exposed or the wrap has become compromised in some way.',
   },
   {
     label: 'Showering',
@@ -32,11 +32,11 @@ const protocol = [
 
 const changeSteps = [
   'Jillaine will give you a package with measured out wrap and gloves. In most cases you will need someone to help you. The gloves are for your helper.',
-  '24 hours after your tattoo, go in the shower, peel the wrap off under the warm water and gently wash with unscented soap. Scented soap can burn and cause damage to your tattoo.',
-  'After the shower, dry your tattoo with paper towel. Do not use a regular towel as this may have bacteria and fuzzies. Make sure your tattoo is dry before replacing the wrap — it will not stick to anything wet. Do not apply lotion before reapplying your wrap as it will not stick to lotion.',
+  '24 hours after your tattoo, go in the shower, peel the wrap off under the warm water and gently wash with soap that is provided. Scented soap can burn and cause damage to your tattoo.',
+  'After the shower, dry your tattoo with paper towel that is provided. Do not use a regular towel as this may have bacteria and fuzzies. Make sure your tattoo is dry before replacing the wrap — it will not stick to anything wet. Do not apply lotion before reapplying your wrap as it will not stick to lotion.',
   'Fold the wrap back on itself so it is more flat. There is a crack down the middle — peel off the half without the red line first. If the wrap folds in on itself at this point it\'s ruined, so do your best to keep it flat.',
-  'Place the sticky half of the wrap over your tattoo, extending past the edge at least half an inch. Then peel off the other half with the red line and tag it down. Peel off the whole outer layer — it will all detach from the red line.',
-  'Apply multiple sheets if needed. Some overlap is okay as the wrap is still breathable.',
+  'Place the sticky half of the wrap over your tattoo, extending past the edge at least an inch and a half. Then peel off the other half with the red line and tag it down. Peel off the whole outer layer — it will all detach from the red line.',
+  'Apply multiple sheets if needed. An inch and a half overlap is required. The wrap is still breathable despite it being overlapped.',
 ]
 
 const fadeUp = (delay = 0) => ({

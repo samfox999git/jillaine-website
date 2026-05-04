@@ -134,11 +134,7 @@ export default function Contact() {
             </div>
             <div className="guidelines-row">
               <span className="guidelines-dot" />
-              <p>My Rates: <strong>Half Day: $1500 (CAD)</strong> | <strong>Full Day: $2500 (CAD)</strong> | Rates for ongoing work may differ.</p>
-            </div>
-            <div className="guidelines-row">
-              <span className="guidelines-dot" />
-              <p>Please review my <a href="https://www.instagram.com/jillaine.tattoo/" target="_blank" rel="noopener noreferrer">Instagram portfolio</a> to ensure you like my style</p>
+              <p>My Rates: <strong>Half Day: $1500 (CAD)</strong> | <strong>Full Day: $3000 (CAD)</strong> | Rates for ongoing work may differ.</p>
             </div>
             <div className="guidelines-row">
               <span className="guidelines-dot" />
