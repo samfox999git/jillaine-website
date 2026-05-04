@@ -4,6 +4,58 @@ import fs from 'fs'
 
 export const config = { api: { bodyParser: false } }
 
+const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+
+const makeTransporter = () => nodemailer.createTransport({
+  service: 'gmail',
+  auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD },
+})
+
+const sendErrorReport = async (err, fields) => {
+  try {
+    const rows = fields
+      ? Object.entries(fields)
+          .map(([k, v]) => {
+            const val = Array.isArray(v) ? v[0] : v
+            return `<tr>
+              <td style="padding:5px 10px;color:#aaaaaa;font-size:13px;white-space:nowrap;">${esc(k)}</td>
+              <td style="padding:5px 10px;color:#ffffff;font-size:13px;">${esc(String(val ?? ''))}</td>
+            </tr>`
+          })
+          .join('')
+      : `<tr><td colspan="2" style="padding:8px 10px;color:#aaaaaa;">No form data available</td></tr>`
+
+    const errorLine = esc(err?.message || String(err))
+    const codeLine = err?.code ? `<p style="margin:0 0 4px;font-size:13px;color:#aaaaaa;"><strong style="color:#ff6b6b;">Code:</strong> ${esc(String(err.code))}</p>` : ''
+
+    await makeTransporter().sendMail({
+      from: `"Jillaine Website" <${process.env.GMAIL_USER}>`,
+      to: 'samfox999@gmail.com',
+      subject: `⚠️ Form Error — ${new Date().toLocaleString('en-CA', { timeZone: 'America/Vancouver' })}`,
+      html: `
+        <!DOCTYPE html><html><body style="margin:0;padding:24px;background:#111111;font-family:'Helvetica Neue',Arial,sans-serif;">
+          <div style="max-width:600px;margin:0 auto;background:#1a1a1a;border-radius:10px;overflow:hidden;">
+            <div style="height:4px;background:linear-gradient(90deg,#ff6b6b,#ff9f43);"></div>
+            <div style="padding:24px 28px;">
+              <p style="margin:0 0 4px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#ff6b6b;">Jillaine Website</p>
+              <h1 style="margin:0 0 16px;font-size:20px;color:#ffffff;">Form Submission Error</h1>
+              <p style="margin:0 0 4px;font-size:13px;color:#aaaaaa;"><strong style="color:#ff6b6b;">Error:</strong> ${errorLine}</p>
+              ${codeLine}
+            </div>
+            <div style="height:1px;background:#2a2a2a;"></div>
+            <div style="padding:20px 28px;">
+              <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2dd4a8;">Form Data Submitted</p>
+              <table style="width:100%;border-collapse:collapse;">${rows}</table>
+            </div>
+            <div style="height:3px;background:linear-gradient(90deg,#ff6b6b,#ff9f43);"></div>
+          </div>
+        </body></html>`,
+    })
+  } catch (reportErr) {
+    console.error('Failed to send error report:', reportErr)
+  }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -15,11 +67,11 @@ export default async function handler(req, res) {
     ;[fields, files] = await form.parse(req)
   } catch (err) {
     console.error('Form parse error:', err)
+    await sendErrorReport(err, null)
     return res.status(500).json({ error: 'Failed to parse form data' })
   }
 
   const get = (f) => (Array.isArray(fields[f]) ? fields[f][0] : fields[f]) ?? ''
-  const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
 
   // Basic server-side validation
   if (!get('from_name').trim() || !get('email').trim()) {
@@ -126,15 +178,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-    })
-
-    await transporter.sendMail({
+    await makeTransporter().sendMail({
       from: `"Jillaine Website" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_TO || process.env.GMAIL_USER,
       replyTo: get('email'),
@@ -146,6 +190,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true })
   } catch (err) {
     console.error('Email error:', err)
+    await sendErrorReport(err, fields)
     return res.status(500).json({ error: err.message })
   }
 }
