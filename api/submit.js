@@ -64,11 +64,11 @@ export default async function handler(req, res) {
             <!-- Right column -->
             <td style="padding:8px 28px 8px 16px;vertical-align:top;width:50%;">
               <table width="100%" cellpadding="0" cellspacing="0">
-                ${field('Email',          `<a href="mailto:${get('email')}" style="color:#ffffff;text-decoration:none;">${get('email')}</a>`)}
                 ${field('Tattoo Type',    get('tattoo_type'))}
                 ${field('Skin Type',      get('skin_type'))}
                 ${field('Location & Size', get('location'))}
                 ${field('How They Found You', get('referral'))}
+                ${field('Email',          `<a href="mailto:${get('email')}" style="color:#ffffff;text-decoration:none;">${get('email')}</a>`)}
               </table>
             </td>
           </tr>
