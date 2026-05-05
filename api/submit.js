@@ -57,7 +57,7 @@ const sendErrorReport = async (err, fields) => {
   }
 }
 
-const SHEET_NAME = 'intake forms'
+const SHEET_NAME = 'Intake Forms'
 
 const addToSheet = async (row) => {
   try {

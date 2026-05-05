@@ -56,7 +56,7 @@ export default async function handler(req, res) {
   // 5. Try writing a test row
   try {
     const sheets = google.sheets({ version: 'v4', auth })
-    const sheetName = 'intake forms'
+    const sheetName = 'Intake Forms'
 
     const tab = results.tabs.find(t => t.name === sheetName)
     if (!tab) {
