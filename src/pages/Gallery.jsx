@@ -91,6 +91,18 @@ export default function Gallery() {
         title="Color Realism Tattoo Gallery"
         description="Browse Jillaine's colour realism tattoo portfolio — northern lights, nature, space, animals, and cover-ups. Award-winning tattoo artist in Kelowna, BC."
         path="/gallery"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Colour Realism Tattoo Portfolio — Jillaine",
+          "description": "Gallery of colour realism tattoos including northern lights, nature, space, animals, and cover-ups by Jillaine, tattoo artist in Kelowna, BC.",
+          "url": "https://www.jillaine.ca/gallery",
+          "author": {
+            "@type": "Person",
+            "name": "Jillaine",
+            "jobTitle": "Colour Realism Tattoo Artist"
+          }
+        }}
       />
       <div className="page-hero">
         <div className="container">

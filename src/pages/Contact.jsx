@@ -208,6 +208,13 @@ export default function Contact() {
         title="Book A Free Consultation"
         description="Book a free tattoo consultation with Jillaine — award-winning colour realism tattoo artist in Kelowna, BC. Specializing in cover-ups, nature, space, and animal tattoos."
         path="/contact"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Book A Free Consultation — Jillaine Tattoo",
+          "description": "Request a free tattoo consultation with Jillaine, colour realism tattoo artist in Kelowna, BC.",
+          "url": "https://www.jillaine.ca/contact"
+        }}
       />
       <div className="page-hero">
         <div className="container">

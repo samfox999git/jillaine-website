@@ -122,6 +122,15 @@ export default function FAQ() {
         title="FAQ"
         description="Frequently asked questions about booking a tattoo with Jillaine — colour realism tattoo artist in Kelowna, BC. Learn about deposits, touch-ups, pricing, and aftercare."
         path="/faq"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqData.flatMap(cat => cat.items.map(item => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": { "@type": "Answer", "text": item.a }
+          })))
+        }}
       />
       <div className="page-hero">
         <div className="container">

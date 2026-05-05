@@ -227,6 +227,34 @@ export default function Home() {
         title="Award-Winning Colour Realism Tattoo Artist"
         description="Award-winning colour realism tattoo artist in Kelowna, BC. Vibrant nature, northern lights, space, animals, and cover-up tattoos. Book a free consultation."
         path="/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "TattooParlor",
+          "name": "Jillaine Tattoo",
+          "description": "Award-winning colour realism and cover-up tattoo specialist in Kelowna, BC. One of Canada's best cover-up tattoo artists.",
+          "url": "https://www.jillaine.ca",
+          "image": "https://www.jillaine.ca/images/og-preview.jpg",
+          "priceRange": "$$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1990 Landsdowne Pl #3",
+            "addressLocality": "Kelowna",
+            "addressRegion": "BC",
+            "addressCountry": "CA"
+          },
+          "areaServed": ["Kelowna", "British Columbia", "Canada"],
+          "sameAs": [
+            "https://www.instagram.com/jillaine.tattoo/",
+            "https://www.tiktok.com/@jillaine.tattoo",
+            "https://www.youtube.com/@jillaine.tattoo"
+          ],
+          "employee": {
+            "@type": "Person",
+            "name": "Jillaine",
+            "jobTitle": "Colour Realism Tattoo Artist",
+            "knowsAbout": ["colour realism tattoos", "cover-up tattoos", "nature tattoos", "space tattoos", "animal portrait tattoos", "northern lights tattoos"]
+          }
+        }}
       />
 
       {/* ═══════════════ HERO ═══════════════ */}
