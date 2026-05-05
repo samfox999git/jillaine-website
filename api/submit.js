@@ -57,6 +57,8 @@ const sendErrorReport = async (err, fields) => {
   }
 }
 
+const SHEET_NAME = 'How they found Jillaine (2026)'
+
 const addToSheet = async (row) => {
   try {
     const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON)
@@ -67,13 +69,18 @@ const addToSheet = async (row) => {
     const sheets = google.sheets({ version: 'v4', auth })
     const spreadsheetId = process.env.GOOGLE_SHEET_ID
 
+    // Look up the sheetId by tab name
+    const meta = await sheets.spreadsheets.get({ spreadsheetId })
+    const sheet = meta.data.sheets.find(s => s.properties.title === SHEET_NAME)
+    const sheetId = sheet?.properties?.sheetId ?? 0
+
     // Insert a blank row at position 2 (after header), pushing existing data down
     await sheets.spreadsheets.batchUpdate({
       spreadsheetId,
       requestBody: {
         requests: [{
           insertDimension: {
-            range: { sheetId: 0, dimension: 'ROWS', startIndex: 1, endIndex: 2 },
+            range: { sheetId, dimension: 'ROWS', startIndex: 1, endIndex: 2 },
             inheritFromBefore: false,
           },
         }],
@@ -83,7 +90,7 @@ const addToSheet = async (row) => {
     // Write the new submission into that row
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: 'Sheet1!A2',
+      range: `'${SHEET_NAME}'!A2`,
       valueInputOption: 'RAW',
       requestBody: { values: [row] },
     })
