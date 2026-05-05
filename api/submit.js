@@ -57,7 +57,7 @@ const sendErrorReport = async (err, fields) => {
   }
 }
 
-const SHEET_NAME = 'How they found Jillaine (2026)'
+const SHEET_NAME = 'intake forms'
 
 const addToSheet = async (row) => {
   try {
