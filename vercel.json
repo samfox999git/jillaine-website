@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
   "redirects": [
     { "source": "/gallery",    "destination": "/colour-realism-tattoos", "permanent": true },
     { "source": "/cover-ups",  "destination": "/cover-up-tattoos",        "permanent": true },
