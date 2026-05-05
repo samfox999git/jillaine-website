@@ -101,11 +101,11 @@ export default function BeforeAfter({ beforeSrc, afterSrc, beforeAlt = 'Before',
       aria-valuenow={Math.round(sliderPos)}
     >
       {/* After Image (full) */}
-      <img src={afterSrc} alt={afterAlt} className="ba-image ba-after" />
+      <img src={afterSrc} alt={afterAlt} className="ba-image ba-after" loading="lazy" />
 
       {/* Before Image (clipped) */}
       <div className="ba-before-clip" style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}>
-        <img src={beforeSrc} alt={beforeAlt} className="ba-image ba-before" />
+        <img src={beforeSrc} alt={beforeAlt} className="ba-image ba-before" loading="lazy" />
       </div>
 
       {/* Slider Line */}

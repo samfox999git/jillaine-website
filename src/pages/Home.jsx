@@ -350,6 +350,7 @@ export default function Home() {
               src="/images/about/jillaine-portrait.jpg"
               alt="Jillaine - Tattoo Artist"
               className="about-portrait"
+              loading="lazy"
             />
           </motion.div>
 
@@ -413,7 +414,7 @@ export default function Home() {
                   <span className="testimonial-card-quote">"</span>
                   <p className="testimonial-card-text">{t.text}</p>
                   <div className="testimonial-card-author">
-                    <img src={t.photo} alt={t.name} className="testimonial-card-avatar" />
+                    <img src={t.photo} alt={t.name} className="testimonial-card-avatar" loading="lazy" />
                     <span className="testimonial-card-name">{t.name}</span>
                   </div>
                 </motion.div>
