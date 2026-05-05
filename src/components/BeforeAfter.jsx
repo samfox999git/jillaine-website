@@ -8,6 +8,9 @@ export default function BeforeAfter({ beforeSrc, afterSrc, beforeAlt = 'Before',
   const bottomSentinelRef = useRef(null)
   const isDragging = useRef(false)
   const animCancelled = useRef(false)
+  const touchStartX = useRef(0)
+  const touchStartY = useRef(0)
+  const isHorizontalDrag = useRef(false)
 
   useEffect(() => {
     if (!autoDemo) return
@@ -81,9 +84,45 @@ export default function BeforeAfter({ beforeSrc, afterSrc, beforeAlt = 'Before',
     if (isDragging.current) handleMove(e.clientX)
   }
 
-  const handleTouchMove = (e) => {
-    handleMove(e.touches[0].clientX)
-  }
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    const onTouchStart = (e) => {
+      touchStartX.current = e.touches[0].clientX
+      touchStartY.current = e.touches[0].clientY
+      isHorizontalDrag.current = false
+      isDragging.current = true
+      animCancelled.current = true
+    }
+
+    const onTouchMove = (e) => {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX.current)
+      const dy = Math.abs(e.touches[0].clientY - touchStartY.current)
+      if (!isHorizontalDrag.current && (dx > 5 || dy > 5)) {
+        isHorizontalDrag.current = dx > dy
+      }
+      if (isHorizontalDrag.current) {
+        e.preventDefault()
+        handleMove(e.touches[0].clientX)
+      }
+    }
+
+    const onTouchEnd = () => {
+      isDragging.current = false
+      isHorizontalDrag.current = false
+    }
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true })
+    el.addEventListener('touchmove', onTouchMove, { passive: false })
+    el.addEventListener('touchend', onTouchEnd, { passive: true })
+
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart)
+      el.removeEventListener('touchmove', onTouchMove)
+      el.removeEventListener('touchend', onTouchEnd)
+    }
+  }, [])
 
   return (
     <div
@@ -93,9 +132,6 @@ export default function BeforeAfter({ beforeSrc, afterSrc, beforeAlt = 'Before',
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
       onMouseMove={handleMouseMove}
-      onTouchMove={handleTouchMove}
-      onTouchStart={() => { isDragging.current = true; animCancelled.current = true }}
-      onTouchEnd={() => isDragging.current = false}
       role="slider"
       aria-label="Before and after comparison slider"
       aria-valuenow={Math.round(sliderPos)}
