@@ -7,6 +7,21 @@ export const config = { api: { bodyParser: false } }
 
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
 
+// Rate limiting: 3 submissions per IP per hour
+const rateLimitMap = new Map()
+const isRateLimited = (ip) => {
+  const now = Date.now()
+  const windowMs = 60 * 60 * 1000
+  const entry = rateLimitMap.get(ip)
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + windowMs })
+    return false
+  }
+  if (entry.count >= 3) return true
+  entry.count++
+  return false
+}
+
 const makeTransporter = () => nodemailer.createTransport({
   service: 'gmail',
   auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD },
@@ -138,6 +153,11 @@ const addToSheet = async (row, source) => {
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
+  }
+
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown'
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many submissions. Please try again in an hour.' })
   }
 
   let fields, files
