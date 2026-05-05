@@ -1,6 +1,7 @@
 import { formidable } from 'formidable'
 import nodemailer from 'nodemailer'
 import fs from 'fs'
+import { google } from 'googleapis'
 
 export const config = { api: { bodyParser: false } }
 
@@ -53,6 +54,41 @@ const sendErrorReport = async (err, fields) => {
     })
   } catch (reportErr) {
     console.error('Failed to send error report:', reportErr)
+  }
+}
+
+const addToSheet = async (row) => {
+  try {
+    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON)
+    const auth = new google.auth.GoogleAuth({
+      credentials,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    })
+    const sheets = google.sheets({ version: 'v4', auth })
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+
+    // Insert a blank row at position 2 (after header), pushing existing data down
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [{
+          insertDimension: {
+            range: { sheetId: 0, dimension: 'ROWS', startIndex: 1, endIndex: 2 },
+            inheritFromBefore: false,
+          },
+        }],
+      },
+    })
+
+    // Write the new submission into that row
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: 'Sheet1!A2',
+      valueInputOption: 'RAW',
+      requestBody: { values: [row] },
+    })
+  } catch (err) {
+    console.error('Google Sheets error:', err)
   }
 }
 
@@ -186,6 +222,27 @@ export default async function handler(req, res) {
       html,
       attachments,
     })
+
+    const referral = get('referral')
+    const source = referral.startsWith('Other: ') ? 'Other' : referral
+    const sourceDetails = referral.startsWith('Other: ') ? referral.slice(7) : ''
+    const dateSubmitted = new Date().toLocaleString('en-CA', { timeZone: 'America/Vancouver' })
+
+    await addToSheet([
+      dateSubmitted,
+      get('from_name'),
+      get('email'),
+      get('phone'),
+      get('age'),
+      get('city'),
+      get('tattoo_type'),
+      get('skin_type'),
+      get('location'),
+      get('description'),
+      source,
+      sourceDetails,
+      get('social_media'),
+    ])
 
     return res.status(200).json({ success: true })
   } catch (err) {
