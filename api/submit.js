@@ -59,7 +59,35 @@ const sendErrorReport = async (err, fields) => {
 
 const SHEET_NAME = 'Intake Forms'
 
-const addToSheet = async (row) => {
+const SOURCE_COLORS = {
+  'Instagram':               'FCE4EC',
+  'TikTok':                  'E8EAF6',
+  'Word of Mouth':           'E8F5E9',
+  'Google Search':           'FFF9C4',
+  'Tattoo Convention':       'F3E5F5',
+  'YouTube':                 'FBE9E7',
+  'Other':                   'E0F7FA',
+  'AI (Chat GPT, Claude, etc)': 'EDE7F6',
+}
+
+const hexToRgb = (hex) => ({
+  red:   parseInt(hex.slice(0, 2), 16) / 255,
+  green: parseInt(hex.slice(2, 4), 16) / 255,
+  blue:  parseInt(hex.slice(4, 6), 16) / 255,
+})
+
+const formatPhone = (raw) => {
+  const digits = raw.replace(/\D/g, '')
+  if (digits.length === 11 && digits[0] === '1') {
+    return `(${digits.slice(1, 4)}) ${digits.slice(4, 7)} ${digits.slice(7)}`
+  }
+  if (digits.length === 10) {
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)} ${digits.slice(6)}`
+  }
+  return raw
+}
+
+const addToSheet = async (row, source) => {
   try {
     const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON)
     const auth = new google.auth.GoogleAuth({
@@ -74,18 +102,26 @@ const addToSheet = async (row) => {
     const sheet = meta.data.sheets.find(s => s.properties.title === SHEET_NAME)
     const sheetId = sheet?.properties?.sheetId ?? 0
 
-    // Insert a blank row at position 2 (after header), pushing existing data down
-    await sheets.spreadsheets.batchUpdate({
-      spreadsheetId,
-      requestBody: {
-        requests: [{
-          insertDimension: {
-            range: { sheetId, dimension: 'ROWS', startIndex: 1, endIndex: 2 },
-            inheritFromBefore: false,
-          },
-        }],
+    // Insert blank row + apply source color in one batchUpdate
+    const requests = [{
+      insertDimension: {
+        range: { sheetId, dimension: 'ROWS', startIndex: 1, endIndex: 2 },
+        inheritFromBefore: false,
       },
-    })
+    }]
+
+    const colorHex = SOURCE_COLORS[source]
+    if (colorHex) {
+      requests.push({
+        repeatCell: {
+          range: { sheetId, startRowIndex: 1, endRowIndex: 2, startColumnIndex: 10, endColumnIndex: 11 },
+          cell: { userEnteredFormat: { backgroundColor: hexToRgb(colorHex) } },
+          fields: 'userEnteredFormat.backgroundColor',
+        },
+      })
+    }
+
+    await sheets.spreadsheets.batchUpdate({ spreadsheetId, requestBody: { requests } })
 
     // Write the new submission into that row
     await sheets.spreadsheets.values.update({
@@ -233,13 +269,13 @@ export default async function handler(req, res) {
     const referral = get('referral')
     const source = referral.startsWith('Other: ') ? 'Other' : referral
     const sourceDetails = referral.startsWith('Other: ') ? referral.slice(7) : ''
-    const dateSubmitted = new Date().toLocaleString('en-CA', { timeZone: 'America/Vancouver' })
+    const dateSubmitted = new Date().toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric', timeZone: 'America/Vancouver' })
 
     await addToSheet([
       dateSubmitted,
       get('from_name'),
       get('email'),
-      get('phone'),
+      formatPhone(get('phone')),
       get('age'),
       get('city'),
       get('tattoo_type'),
@@ -249,7 +285,7 @@ export default async function handler(req, res) {
       source,
       sourceDetails,
       get('social_media'),
-    ])
+    ], source)
 
     return res.status(200).json({ success: true })
   } catch (err) {
