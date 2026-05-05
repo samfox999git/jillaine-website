@@ -15,6 +15,7 @@ const referralSources = [
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [failed, setFailed] = useState(false)
+  const [rateLimited, setRateLimited] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [errors, setErrors] = useState({})
@@ -116,6 +117,9 @@ export default function Contact() {
       if (data.success) {
         setSubmitted(true)
         window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else if (res.status === 429) {
+        setRateLimited(true)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         setFailed(true)
         window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -126,6 +130,26 @@ export default function Contact() {
     } finally {
       setUploading(false)
     }
+  }
+
+  if (rateLimited) {
+    return (
+      <main className="contact-page">
+        <div className="page-hero">
+          <div className="container">
+            <motion.div
+              className="submission-success"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <div className="success-icon">⏱️</div>
+              <h1>Too Many Submissions</h1>
+              <p>You've reached the submission limit. Please wait an hour and try again.</p>
+            </motion.div>
+          </div>
+        </div>
+      </main>
+    )
   }
 
   if (failed) {
