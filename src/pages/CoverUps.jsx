@@ -36,7 +36,7 @@ export default function CoverUps() {
       <PageMeta
         title="Cover-Up Tattoo Specialist | Before & After Transformations"
         description="One of Canada's best cover-up tattoo artists. Jillaine transforms old, unwanted, or faded tattoos into stunning colour realism artwork in Kelowna, BC. See before & after photos."
-        path="/cover-ups"
+        path="/cover-up-tattoos"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Service",
@@ -60,7 +60,7 @@ export default function CoverUps() {
             }
           },
           "areaServed": ["Kelowna", "British Columbia", "Canada"],
-          "url": "https://www.jillaine.ca/cover-ups"
+          "url": "https://www.jillaine.ca/cover-up-tattoos"
         }}
       />
       <div className="page-hero">
@@ -98,8 +98,8 @@ export default function CoverUps() {
                 <BeforeAfter
                   beforeSrc={item.before}
                   afterSrc={item.after}
-                  beforeAlt={`Before: ${item.title}`}
-                  afterAlt={`After: ${item.title}`}
+                  beforeAlt={`Before: ${item.title} — old tattoo, cover-up by Jillaine, Kelowna BC`}
+                  afterAlt={`After: ${item.title} — colour realism cover-up tattoo by Jillaine, Kelowna BC`}
                   autoDemo={i === 0}
                 />
                 <p className="coverup-title">{item.title}</p>

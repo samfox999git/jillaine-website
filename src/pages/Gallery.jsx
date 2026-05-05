@@ -88,15 +88,15 @@ export default function Gallery() {
   return (
     <main className="gallery-page">
       <PageMeta
-        title="Color Realism Tattoo Gallery"
+        title="Colour Realism Tattoo Gallery — Kelowna, BC"
         description="Browse Jillaine's colour realism tattoo portfolio — northern lights, nature, space, animals, and cover-ups. Award-winning tattoo artist in Kelowna, BC."
-        path="/gallery"
+        path="/colour-realism-tattoos"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           "name": "Colour Realism Tattoo Portfolio — Jillaine",
           "description": "Gallery of colour realism tattoos including northern lights, nature, space, animals, and cover-ups by Jillaine, tattoo artist in Kelowna, BC.",
-          "url": "https://www.jillaine.ca/gallery",
+          "url": "https://www.jillaine.ca/colour-realism-tattoos",
           "author": {
             "@type": "Person",
             "name": "Jillaine",
@@ -129,7 +129,7 @@ export default function Gallery() {
               )}
             </button>
           ))}
-          <Link to="/cover-ups" className="gallery-filter-btn">
+          <Link to="/cover-up-tattoos" className="gallery-filter-btn">
             Cover-Ups
           </Link>
         </div>
@@ -145,7 +145,7 @@ export default function Gallery() {
               transition={{ duration: 0.4, delay: i * 0.03 }}
               onClick={() => setLightboxImage(item)}
             >
-              <img src={item.src} alt={item.title} loading="lazy" />
+              <img src={item.src} alt={item.categories.includes('black-and-grey') ? `Black and grey ${item.title} tattoo by Jillaine — Kelowna, BC` : `Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" />
               <div className="gallery-item-overlay">
                 <span className="gallery-item-title">{item.title}</span>
               </div>
@@ -186,7 +186,7 @@ export default function Gallery() {
             <button className="lightbox-close" onClick={() => setLightboxImage(null)}>✕</button>
             <motion.img
               src={lightboxImage.src}
-              alt={lightboxImage.title}
+              alt={lightboxImage.categories.includes('black-and-grey') ? `Black and grey ${lightboxImage.title} tattoo by Jillaine — Kelowna, BC` : `Colour realism ${lightboxImage.title} tattoo by Jillaine — Kelowna, BC`}
               initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               className="lightbox-img"

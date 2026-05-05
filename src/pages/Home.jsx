@@ -295,7 +295,7 @@ export default function Home() {
               transition={{ delay: i * 0.04, duration: 0.5 }}
               onClick={() => setLightboxImage(item)}
             >
-              <img src={item.src} alt={item.title} loading="lazy" />
+              <img src={item.src} alt={`Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" />
             </motion.div>
           ))}
         </div>
@@ -306,7 +306,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <Link to="/gallery" className="btn btn-secondary">
+          <Link to="/colour-realism-tattoos" className="btn btn-secondary">
             <span>View Full Gallery →</span>
           </Link>
         </motion.div>
@@ -339,22 +339,22 @@ export default function Home() {
               <BeforeAfter
                 beforeSrc="/images/gallery/cover-ups/coverup-wolf-before.jpg"
                 afterSrc="/images/gallery/cover-ups/coverup-wolf-after.jpg"
-                beforeAlt="Before: Old tattoo"
-                afterAlt="After: Wolf space cover-up by Jillaine"
+                beforeAlt="Before: Old unwanted tattoo — cover-up transformation by Jillaine, Kelowna BC"
+                afterAlt="After: Wolf in space colour realism cover-up tattoo by Jillaine — Kelowna, BC"
               />
             </div>
             <div className="coverup-item">
               <BeforeAfter
                 beforeSrc="/images/gallery/cover-ups/coverup-fineline-before.jpg"
                 afterSrc="/images/gallery/cover-ups/coverup-fineline-after.jpg"
-                beforeAlt="Before: Fine line tattoo"
-                afterAlt="After: Campfire nature fire cover-up by Jillaine"
+                beforeAlt="Before: Fine line tattoo — cover-up transformation by Jillaine, Kelowna BC"
+                afterAlt="After: Campfire and nature colour realism cover-up tattoo by Jillaine — Kelowna, BC"
               />
             </div>
           </motion.div>
 
           <div className="coverup-cta">
-            <Link to="/cover-ups" className="btn btn-secondary">
+            <Link to="/cover-up-tattoos" className="btn btn-secondary">
               <span>View All Cover-Ups →</span>
             </Link>
           </div>
@@ -376,7 +376,7 @@ export default function Home() {
           >
             <img
               src="/images/about/jillaine-portrait.jpg"
-              alt="Jillaine - Tattoo Artist"
+              alt="Jillaine, colour realism tattoo artist in Kelowna, BC"
               className="about-portrait"
               loading="lazy"
             />
@@ -442,7 +442,7 @@ export default function Home() {
                   <span className="testimonial-card-quote">"</span>
                   <p className="testimonial-card-text">{t.text}</p>
                   <div className="testimonial-card-author">
-                    <img src={t.photo} alt={t.name} className="testimonial-card-avatar" loading="lazy" />
+                    <img src={t.photo} alt={`${t.name} — client of Jillaine Tattoo, Kelowna BC`} className="testimonial-card-avatar" loading="lazy" />
                     <span className="testimonial-card-name">{t.name}</span>
                   </div>
                 </motion.div>

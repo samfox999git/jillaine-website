@@ -31,10 +31,10 @@ export default function Footer() {
           <div className="footer-section">
             <h4 className="footer-heading">Explore</h4>
             <div className="footer-links">
-              <Link to="/gallery">Gallery</Link>
-              <Link to="/gallery#cover-ups">Cover-Up Tattoos</Link>
+              <Link to="/colour-realism-tattoos">Gallery</Link>
+              <Link to="/cover-up-tattoos">Cover-Up Tattoos</Link>
               <Link to="/faq">FAQ</Link>
-              <Link to="/aftercare">After Care</Link>
+              <Link to="/after-care">After Care</Link>
               <Link to="/contact">Book A Consultation</Link>
             </div>
           </div>

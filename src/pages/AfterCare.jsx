@@ -52,7 +52,7 @@ export default function AfterCare() {
       <PageMeta
         title="Tattoo After Care"
         description="Tattoo aftercare instructions from Jillaine — colour realism tattoo artist in Kelowna, BC. How to care for your new tattoo and keep it looking vibrant for years."
-        path="/aftercare"
+        path="/after-care"
       />
 
       {/* Hero */}

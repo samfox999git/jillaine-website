@@ -25,10 +25,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/cover-ups" element={<CoverUps />} />
+        <Route path="/colour-realism-tattoos" element={<Gallery />} />
+        <Route path="/cover-up-tattoos" element={<CoverUps />} />
         <Route path="/faq" element={<FAQ />} />
-        <Route path="/aftercare" element={<AfterCare />} />
+        <Route path="/after-care" element={<AfterCare />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />

@@ -1,8 +1,8 @@
 {
   "redirects": [
-    { "source": "/after-care",            "destination": "/aftercare",  "permanent": true },
-    { "source": "/cover-up-tattoos",      "destination": "/cover-ups",  "permanent": true },
-    { "source": "/colour-realism-tattoos","destination": "/gallery",    "permanent": true }
+    { "source": "/gallery",    "destination": "/colour-realism-tattoos", "permanent": true },
+    { "source": "/cover-ups",  "destination": "/cover-up-tattoos",        "permanent": true },
+    { "source": "/aftercare",  "destination": "/after-care",              "permanent": true }
   ],
   "headers": [
     {
