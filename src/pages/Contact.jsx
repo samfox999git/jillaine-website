@@ -19,6 +19,7 @@ export default function Contact() {
   const [uploading, setUploading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [errors, setErrors] = useState({})
+  const [honeypot, setHoneypot] = useState('')
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', phone: '', age: '', city: '',
     tattooType: [], skinType: [], referencePhotos: [],
@@ -94,6 +95,12 @@ export default function Contact() {
       return
     }
 
+    // Honeypot: silently succeed if a bot filled the hidden field
+    if (honeypot) {
+      setSubmitted(true)
+      return
+    }
+
     setUploading(true)
 
     try {
@@ -109,6 +116,7 @@ export default function Contact() {
       body.append('description',  formData.description)
       body.append('social_media', formData.socialMedia)
       body.append('referral',     formData.referral === 'Other' ? `Other: ${formData.referralOther}` : formData.referral)
+      body.append('_hp',          honeypot)
       formData.referencePhotos.forEach(file => body.append('referencePhotos', file))
 
       const res = await fetch('/api/submit', { method: 'POST', body })
@@ -165,7 +173,7 @@ export default function Contact() {
               <div className="success-icon">⚠️</div>
               <h1>Message Didn't Go Through</h1>
               <p>Sorry, our form had an error.</p>
-              <p className="success-note">Please email <a href="mailto:jillainetattoo.book@gmail.com">jillainetattoo.book@gmail.com</a> directly to set up a consultation.</p>
+              <p className="success-note">Please email <a href={['mailto:', 'jillainetattoo.book', '@', 'gmail.com'].join('')}>{['jillainetattoo.book', '@', 'gmail.com'].join('')}</a> directly to set up a consultation.</p>
             </motion.div>
           </div>
         </div>
@@ -375,6 +383,18 @@ export default function Contact() {
               )}
             </div>
           </div>
+
+          {/* Honeypot — hidden from real users, bots will fill it */}
+          <input
+            type="text"
+            name="website"
+            value={honeypot}
+            onChange={e => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
+          />
 
           {errorMsg && (
             <p style={{ color: '#ff6b6b', fontSize: '14px', marginBottom: '16px' }}>{errorMsg}</p>

@@ -172,6 +172,11 @@ export default async function handler(req, res) {
 
   const get = (f) => (Array.isArray(fields[f]) ? fields[f][0] : fields[f]) ?? ''
 
+  // Honeypot check — silently succeed to confuse bots
+  if (get('_hp')) {
+    return res.status(200).json({ success: true })
+  }
+
   // Basic server-side validation
   if (!get('from_name').trim() || !get('email').trim()) {
     return res.status(400).json({ error: 'Name and email are required.' })
