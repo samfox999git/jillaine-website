@@ -341,6 +341,7 @@ export default function Home() {
                 afterSrc="/images/gallery/cover-ups/coverup-wolf-after.jpg"
                 beforeAlt="Before: Old unwanted tattoo — cover-up transformation by Jillaine, Kelowna BC"
                 afterAlt="After: Wolf in space colour realism cover-up tattoo by Jillaine — Kelowna, BC"
+                autoDemo
               />
             </div>
             <div className="coverup-item">
