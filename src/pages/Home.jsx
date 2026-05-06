@@ -11,16 +11,16 @@ import './Home.css'
 /* ── Gallery data ── */
 const galleryItems = [
   // Top row (cols 1–5)
-  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg', title: 'Campfire Northern Lights', objectPosition: 'center 20%' },
+  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg', title: 'Campfire Northern Lights', posClass: 'pos-20' },
   { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg', title: 'Dog Portrait', zoom: true },
   { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png', title: 'Grizzly Bear Aurora' },
   { id: 17, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg', title: 'Kayak Aurora & Campfire' },
   { id: 11, src: '/images/gallery/nature-landscapes/black-widow-flowers.png', title: 'Black Widow & Flowers' },
   // Row 2+
-  { id: 25, src: '/images/gallery/space/space-astronaut-galaxy.jpg', title: 'Astro Sleeve', objectPosition: 'left center' },
+  { id: 25, src: '/images/gallery/space/space-astronaut-galaxy.jpg', title: 'Astro Sleeve', posClass: 'pos-left' },
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png', title: 'Tropical Hibiscus' },
   { id: 1,  src: '/images/gallery/animals/wolf-aurora.png', title: 'Howling Wolf Aurora' },
-  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg', title: 'Waterfall Aurora', objectPosition: 'center top' },
+  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg', title: 'Waterfall Aurora', posClass: 'pos-top' },
   { id: 5,  src: '/images/gallery/space/lobster-space.png', title: 'Space Lobster' },
   { id: 14, src: '/images/gallery/northern-lights/moose-river-aurora.jpg', title: 'Moose River Aurora' },
   { id: 8,  src: '/images/gallery/nature-landscapes/unicorn-sunset.png', title: 'Unicorn at Sunset' },
@@ -288,14 +288,14 @@ export default function Home() {
           {galleryItems.slice(0, 10).map((item, i) => (
             <motion.div
               key={item.id}
-              className={`gallery-grid-item${item.zoom === true ? ' gallery-grid-item--zoomed' : item.zoom === 'sm' ? ' gallery-grid-item--zoomed-sm' : item.zoom === 'lg' ? ' gallery-grid-item--zoomed-lg' : ''}`}
+              className={`gallery-grid-item${item.zoom === true ? ' gallery-grid-item--zoomed' : item.zoom === 'sm' ? ' gallery-grid-item--zoomed-sm' : item.zoom === 'lg' ? ' gallery-grid-item--zoomed-lg' : ''}${item.posClass ? ` gallery-grid-item--${item.posClass}` : ''}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.04, duration: 0.5 }}
               onClick={() => setLightboxImage(item)}
             >
-              <img src={item.src} alt={`Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined} />
+              <img src={item.src} alt={`Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" />
             </motion.div>
           ))}
         </div>

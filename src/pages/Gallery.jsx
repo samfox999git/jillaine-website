@@ -9,19 +9,19 @@ const galleryItems = [
   // Row 1
   { id: 29, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg',        categories: ['northern-lights', 'nature-landscapes'],            title: 'Kayak Aurora & Campfire' },
   { id: 2,  src: '/images/gallery/nature-landscapes/peony-butterflies.png',          categories: ['nature-landscapes', 'animals'],                    title: 'Peony & Butterflies' },
-  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg',              categories: ['northern-lights', 'nature-landscapes'],            title: 'Campfire Northern Lights', objectPosition: 'center 20%' },
+  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg',              categories: ['northern-lights', 'nature-landscapes'],            title: 'Campfire Northern Lights', posClass: 'pos-20' },
   // Row 2
   { id: 40, src: '/images/gallery/nature-landscapes/flowers-moon-mountain.jpg',      categories: ['nature-landscapes'],                               title: 'Flowers, Moon & Mountain' },
   { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png',               categories: ['northern-lights', 'animals'],                      title: 'Grizzly Bear Aurora' },
   { id: 17, src: '/images/gallery/nature-landscapes/forest-woman-ravens.jpg',        categories: ['nature-landscapes'],                               title: 'Forest Woman & Ravens' },
   // Row 3
   { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg',                 categories: ['animals'],                                         title: 'Dog Portrait', zoom: true },
-  { id: 26, src: '/images/gallery/space/space-astronaut-galaxy.jpg',                 categories: ['space'],                                           title: 'Astro Sleeve', objectPosition: 'left center' },
+  { id: 26, src: '/images/gallery/space/space-astronaut-galaxy.jpg',                 categories: ['space'],                                           title: 'Astro Sleeve', posClass: 'pos-left' },
   { id: 38, src: '/images/gallery/northern-lights/bear-northern-lights.jpg',         categories: ['northern-lights', 'animals'],                      title: 'Bear & Northern Lights' },
   // Row 4
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png',          categories: ['nature-landscapes'],                               title: 'Tropical Hibiscus' },
   { id: 5,  src: '/images/gallery/space/lobster-space.png',                          categories: ['space', 'animals'],                               title: 'Space Lobster' },
-  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg',             categories: ['northern-lights', 'nature-landscapes'],            title: 'Waterfall Aurora', objectPosition: 'center top' },
+  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg',             categories: ['northern-lights', 'nature-landscapes'],            title: 'Waterfall Aurora', posClass: 'pos-top' },
   // Row 5
   { id: 49, src: '/images/gallery/black-and-grey/bg-elephant-back.jpg',              categories: ['black-and-grey', 'animals'],                       title: 'Elephant Full Back' },
   { id: 1,  src: '/images/gallery/animals/wolf-aurora.png',                          categories: ['animals', 'northern-lights'],                      title: 'Howling Wolf Aurora' },
@@ -32,7 +32,7 @@ const galleryItems = [
   { id: 30, src: '/images/gallery/animals/portrait-dogs-frame.png',                  categories: ['animals'],                                         title: 'Dog Portrait Triptych' },
   // Row 7
   { id: 15, src: '/images/gallery/space/pyramid-portal-space.jpg',                   categories: ['space'],                                           title: 'Pyramid Portal' },
-  { id: 37, src: '/images/gallery/northern-lights/alaska-northern-lights-elk.jpg',   categories: ['northern-lights'],                                 title: 'Alaska Northern Lights & Elk', objectPosition: 'center 20%' },
+  { id: 37, src: '/images/gallery/northern-lights/alaska-northern-lights-elk.jpg',   categories: ['northern-lights'],                                 title: 'Alaska Northern Lights & Elk', posClass: 'pos-20' },
   { id: 21, src: '/images/gallery/black-and-grey/wwii-pilot-planes.jpg',             categories: ['black-and-grey'],                                  title: 'WWII Pilot & Planes' },
   // Row 8
   { id: 32, src: '/images/gallery/space/jellyfish-thigh.jpg',                        categories: ['space', 'animals'],                               title: 'Glowing Jellyfish' },
@@ -138,14 +138,14 @@ export default function Gallery() {
           {filteredItems.map((item, i) => (
             <motion.div
               key={item.id}
-              className={`gallery-masonry-item${item.zoom === true ? ' gallery-masonry-item--zoomed' : item.zoom === 'sm' ? ' gallery-masonry-item--zoomed-sm' : item.zoom === 'lg' ? ' gallery-masonry-item--zoomed-lg' : ''}`}
+              className={`gallery-masonry-item${item.zoom === true ? ' gallery-masonry-item--zoomed' : item.zoom === 'sm' ? ' gallery-masonry-item--zoomed-sm' : item.zoom === 'lg' ? ' gallery-masonry-item--zoomed-lg' : ''}${item.posClass ? ` gallery-masonry-item--${item.posClass}` : ''}`}
               layout
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: i * 0.03 }}
               onClick={() => setLightboxImage(item)}
             >
-              <img src={item.src} alt={item.categories.includes('black-and-grey') ? `Black and grey ${item.title} tattoo by Jillaine — Kelowna, BC` : `Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined} />
+              <img src={item.src} alt={item.categories.includes('black-and-grey') ? `Black and grey ${item.title} tattoo by Jillaine — Kelowna, BC` : `Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" />
               <div className="gallery-item-overlay">
                 <span className="gallery-item-title">{item.title}</span>
               </div>
