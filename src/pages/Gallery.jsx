@@ -13,7 +13,7 @@ const galleryItems = [
   // Row 2
   { id: 40, src: '/images/gallery/nature-landscapes/flowers-moon-mountain.jpg',      categories: ['nature-landscapes'],                               title: 'Flowers, Moon & Mountain' },
   { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png',               categories: ['northern-lights', 'animals'],                      title: 'Grizzly Bear Aurora' },
-  { id: 17, src: '/images/gallery/nature-landscapes/forest-woman-ravens.jpg',        categories: ['nature-landscapes', 'animals'],                    title: 'Forest Woman & Ravens' },
+  { id: 17, src: '/images/gallery/nature-landscapes/forest-woman-ravens.jpg',        categories: ['nature-landscapes'],                               title: 'Forest Woman & Ravens' },
   // Row 3
   { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg',                 categories: ['animals'],                                         title: 'Dog Portrait' },
   { id: 26, src: '/images/gallery/space/astro-sleeve-1.jpg',                         categories: ['space'],                                           title: 'Astro Sleeve' },
@@ -28,11 +28,11 @@ const galleryItems = [
   { id: 19, src: '/images/gallery/space/jellyfish-galaxy.jpg',                       categories: ['space', 'animals'],                               title: 'Jellyfish Galaxy' },
   // Row 6
   { id: 35, src: '/images/gallery/nature-landscapes/fall-forest-river.jpg',          categories: ['nature-landscapes'],                               title: 'Fall Forest River' },
-  { id: 6,  src: '/images/gallery/northern-lights/aurora-wolf-mountain.png',         categories: ['northern-lights', 'animals', 'nature-landscapes'], title: 'Aurora Wolf Landscape' },
+  { id: 6,  src: '/images/gallery/northern-lights/aurora-wolf-mountain.png',         categories: ['northern-lights', 'nature-landscapes'],            title: 'Aurora Wolf Landscape' },
   { id: 30, src: '/images/gallery/animals/portrait-dogs-frame.png',                  categories: ['animals'],                                         title: 'Dog Portrait Triptych' },
   // Row 7
   { id: 15, src: '/images/gallery/space/pyramid-portal-space.jpg',                   categories: ['space'],                                           title: 'Pyramid Portal' },
-  { id: 37, src: '/images/gallery/northern-lights/alaska-northern-lights-elk.jpg',   categories: ['northern-lights', 'animals'],                      title: 'Alaska Northern Lights & Elk' },
+  { id: 37, src: '/images/gallery/northern-lights/alaska-northern-lights-elk.jpg',   categories: ['northern-lights'],                                 title: 'Alaska Northern Lights & Elk' },
   { id: 21, src: '/images/gallery/black-and-grey/wwii-pilot-planes.jpg',             categories: ['black-and-grey'],                                  title: 'WWII Pilot & Planes' },
   // Row 8
   { id: 32, src: '/images/gallery/space/jellyfish-thigh.jpg',                        categories: ['space', 'animals'],                               title: 'Glowing Jellyfish' },
@@ -52,7 +52,7 @@ const galleryItems = [
   { id: 25, src: '/images/gallery/space/astronaut-planet.jpg',                       categories: ['space'],                                           title: 'Astronaut on Planet' },
   // Row 12
   { id: 28, src: '/images/gallery/space/astro-sleeve-3.jpg',                         categories: ['space'],                                           title: 'Astro Sleeve III' },
-  { id: 20, src: '/images/gallery/northern-lights/maple-leaf-moose-aurora.jpg',      categories: ['northern-lights', 'animals', 'nature-landscapes'], title: 'Maple Leaf Moose Aurora' },
+  { id: 20, src: '/images/gallery/northern-lights/maple-leaf-moose-aurora.jpg',      categories: ['northern-lights', 'nature-landscapes'],            title: 'Maple Leaf Moose Aurora' },
   { id: 50, src: '/images/gallery/black-and-grey/bg-lion.jpg',                       categories: ['black-and-grey', 'animals'],                       title: 'Lion Portrait' },
   // Row 13
   { id: 33, src: '/images/gallery/animals/octopus-sleeve.jpg',                       categories: ['animals'],                                         title: 'Octopus Sleeve' },
