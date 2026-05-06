@@ -11,7 +11,7 @@ import './Home.css'
 /* ── Gallery data ── */
 const galleryItems = [
   // Top row (cols 1–5)
-  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg', title: 'Campfire Northern Lights' },
+  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg', title: 'Campfire Northern Lights', objectPosition: 'center 70%' },
   { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg', title: 'Dog Portrait', zoom: true },
   { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png', title: 'Grizzly Bear Aurora' },
   { id: 17, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg', title: 'Kayak Aurora & Campfire' },
@@ -295,7 +295,7 @@ export default function Home() {
               transition={{ delay: i * 0.04, duration: 0.5 }}
               onClick={() => setLightboxImage(item)}
             >
-              <img src={item.src} alt={`Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" />
+              <img src={item.src} alt={`Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined} />
             </motion.div>
           ))}
         </div>

@@ -9,7 +9,7 @@ const galleryItems = [
   // Row 1
   { id: 29, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg',        categories: ['northern-lights', 'nature-landscapes'],            title: 'Kayak Aurora & Campfire' },
   { id: 2,  src: '/images/gallery/nature-landscapes/peony-butterflies.png',          categories: ['nature-landscapes', 'animals'],                    title: 'Peony & Butterflies' },
-  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg',              categories: ['northern-lights', 'nature-landscapes'],            title: 'Campfire Northern Lights' },
+  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg',              categories: ['northern-lights', 'nature-landscapes'],            title: 'Campfire Northern Lights', objectPosition: 'center 70%' },
   // Row 2
   { id: 40, src: '/images/gallery/nature-landscapes/flowers-moon-mountain.jpg',      categories: ['nature-landscapes'],                               title: 'Flowers, Moon & Mountain' },
   { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png',               categories: ['northern-lights', 'animals'],                      title: 'Grizzly Bear Aurora' },
@@ -145,7 +145,7 @@ export default function Gallery() {
               transition={{ duration: 0.4, delay: i * 0.03 }}
               onClick={() => setLightboxImage(item)}
             >
-              <img src={item.src} alt={item.categories.includes('black-and-grey') ? `Black and grey ${item.title} tattoo by Jillaine — Kelowna, BC` : `Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" />
+              <img src={item.src} alt={item.categories.includes('black-and-grey') ? `Black and grey ${item.title} tattoo by Jillaine — Kelowna, BC` : `Colour realism ${item.title} tattoo by Jillaine — Kelowna, BC`} loading="lazy" style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined} />
               <div className="gallery-item-overlay">
                 <span className="gallery-item-title">{item.title}</span>
               </div>
