@@ -20,7 +20,7 @@ const galleryItems = [
   { id: 25, src: '/images/gallery/space/space-astronaut-galaxy.jpg', title: 'Astro Sleeve', objectPosition: 'left center' },
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png', title: 'Tropical Hibiscus' },
   { id: 1,  src: '/images/gallery/animals/wolf-aurora.png', title: 'Howling Wolf Aurora' },
-  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg', title: 'Waterfall Aurora', zoom: 'lg', objectPosition: 'center 30%' },
+  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg', title: 'Waterfall Aurora', zoom: 'lg', objectPosition: 'center 10%' },
   { id: 5,  src: '/images/gallery/space/lobster-space.png', title: 'Space Lobster' },
   { id: 14, src: '/images/gallery/northern-lights/moose-river-aurora.jpg', title: 'Moose River Aurora' },
   { id: 8,  src: '/images/gallery/nature-landscapes/unicorn-sunset.png', title: 'Unicorn at Sunset' },
