@@ -21,7 +21,7 @@ const galleryItems = [
   // Row 4
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png',          categories: ['nature-landscapes'],                               title: 'Tropical Hibiscus' },
   { id: 5,  src: '/images/gallery/space/lobster-space.png',                          categories: ['space', 'animals'],                               title: 'Space Lobster' },
-  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg',             categories: ['northern-lights', 'nature-landscapes'],            title: 'Waterfall Aurora', zoom: 'lg', objectPosition: 'center 10%' },
+  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg',             categories: ['northern-lights', 'nature-landscapes'],            title: 'Waterfall Aurora', objectPosition: 'center top' },
   // Row 5
   { id: 49, src: '/images/gallery/black-and-grey/bg-elephant-back.jpg',              categories: ['black-and-grey', 'animals'],                       title: 'Elephant Full Back' },
   { id: 1,  src: '/images/gallery/animals/wolf-aurora.png',                          categories: ['animals', 'northern-lights'],                      title: 'Howling Wolf Aurora' },
