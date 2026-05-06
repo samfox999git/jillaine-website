@@ -6,10 +6,9 @@ import PageMeta from '../components/PageMeta'
 import './Gallery.css'
 
 const coverUps = [
-  { id: 11, before: '/images/gallery/cover-ups/coverup-wolf-before.jpg',      after: '/images/gallery/cover-ups/coverup-wolf-after.jpg',      title: 'Wolf Space Cover-Up' },
+  { id: 2,  before: '/images/gallery/cover-ups/coverup-2-before.jpg',         after: '/images/gallery/cover-ups/coverup-2-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 5,  before: '/images/gallery/cover-ups/coverup-5-before.jpg',         after: '/images/gallery/cover-ups/coverup-5-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 13, before: '/images/gallery/cover-ups/coverup-snake-before.jpg',     after: '/images/gallery/cover-ups/coverup-snake-after.jpg',     title: 'Full Sleeve Snake Lady Cover-Up' },
-  { id: 2,  before: '/images/gallery/cover-ups/coverup-2-before.jpg',         after: '/images/gallery/cover-ups/coverup-2-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 10, before: '/images/gallery/cover-ups/coverup-10-before.png',        after: '/images/gallery/cover-ups/coverup-10-after.png',        title: 'Mountain Landscape Cover-Up' },
   { id: 7,  before: '/images/gallery/cover-ups/coverup-7-before.jpg',         after: '/images/gallery/cover-ups/coverup-7-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 12, before: '/images/gallery/cover-ups/coverup-polarbear-before.jpg', after: '/images/gallery/cover-ups/coverup-polarbear-after.jpg', title: 'Polar Bear Northern Lights Cover-Up' },
@@ -20,6 +19,7 @@ const coverUps = [
   { id: 4,  before: '/images/gallery/cover-ups/coverup-4-before.jpg',         after: '/images/gallery/cover-ups/coverup-4-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 8,  before: '/images/gallery/cover-ups/coverup-8-before.jpg',         after: '/images/gallery/cover-ups/coverup-8-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 14, before: '/images/gallery/cover-ups/coverup-fineline-before.jpg',  after: '/images/gallery/cover-ups/coverup-fineline-after.jpg',  title: 'Fine Line to Campfire Nature Cover-Up' },
+  { id: 11, before: '/images/gallery/cover-ups/coverup-wolf-before.jpg',      after: '/images/gallery/cover-ups/coverup-wolf-after.jpg',      title: 'Wolf Space Cover-Up' },
 ]
 
 const fadeUp = {
