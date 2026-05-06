@@ -12,7 +12,7 @@ import './Home.css'
 const galleryItems = [
   // Top row (cols 1–5)
   { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg', title: 'Campfire Northern Lights' },
-  { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg', title: 'Dog Portrait' },
+  { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg', title: 'Dog Portrait', zoom: true },
   { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png', title: 'Grizzly Bear Aurora' },
   { id: 17, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg', title: 'Kayak Aurora & Campfire' },
   { id: 11, src: '/images/gallery/nature-landscapes/black-widow-flowers.png', title: 'Black Widow & Flowers' },
@@ -288,7 +288,7 @@ export default function Home() {
           {galleryItems.slice(0, 10).map((item, i) => (
             <motion.div
               key={item.id}
-              className="gallery-grid-item"
+              className={`gallery-grid-item${item.zoom ? ' gallery-grid-item--zoomed' : ''}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

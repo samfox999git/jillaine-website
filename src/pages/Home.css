@@ -93,6 +93,14 @@
   transform: scale(1.04);
 }
 
+.gallery-grid-item--zoomed img {
+  transform: scale(1.2);
+}
+
+.gallery-grid-item--zoomed:hover img {
+  transform: scale(1.24);
+}
+
 .gallery-grid-cta {
   text-align: center;
   padding: var(--space-2xl) 0 var(--space-lg);

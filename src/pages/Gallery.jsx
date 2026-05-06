@@ -15,7 +15,7 @@ const galleryItems = [
   { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png',               categories: ['northern-lights', 'animals'],                      title: 'Grizzly Bear Aurora' },
   { id: 17, src: '/images/gallery/nature-landscapes/forest-woman-ravens.jpg',        categories: ['nature-landscapes'],                               title: 'Forest Woman & Ravens' },
   // Row 3
-  { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg',                 categories: ['animals'],                                         title: 'Dog Portrait' },
+  { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg',                 categories: ['animals'],                                         title: 'Dog Portrait', zoom: true },
   { id: 26, src: '/images/gallery/space/astro-sleeve-1.jpg',                         categories: ['space'],                                           title: 'Astro Sleeve' },
   { id: 38, src: '/images/gallery/northern-lights/bear-northern-lights.jpg',         categories: ['northern-lights', 'animals'],                      title: 'Bear & Northern Lights' },
   // Row 4
@@ -138,7 +138,7 @@ export default function Gallery() {
           {filteredItems.map((item, i) => (
             <motion.div
               key={item.id}
-              className="gallery-masonry-item"
+              className={`gallery-masonry-item${item.zoom ? ' gallery-masonry-item--zoomed' : ''}`}
               layout
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
