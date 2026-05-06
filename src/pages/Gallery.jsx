@@ -32,7 +32,7 @@ const galleryItems = [
   { id: 30, src: '/images/gallery/animals/portrait-dogs-frame.png',                  categories: ['animals'],                                         title: 'Dog Portrait Triptych' },
   // Row 7
   { id: 15, src: '/images/gallery/space/pyramid-portal-space.jpg',                   categories: ['space'],                                           title: 'Pyramid Portal' },
-  { id: 37, src: '/images/gallery/northern-lights/alaska-northern-lights-elk.jpg',   categories: ['northern-lights'],                                 title: 'Alaska Northern Lights & Elk' },
+  { id: 37, src: '/images/gallery/northern-lights/alaska-northern-lights-elk.jpg',   categories: ['northern-lights'],                                 title: 'Alaska Northern Lights & Elk', objectPosition: 'center 20%' },
   { id: 21, src: '/images/gallery/black-and-grey/wwii-pilot-planes.jpg',             categories: ['black-and-grey'],                                  title: 'WWII Pilot & Planes' },
   // Row 8
   { id: 32, src: '/images/gallery/space/jellyfish-thigh.jpg',                        categories: ['space', 'animals'],                               title: 'Glowing Jellyfish' },
