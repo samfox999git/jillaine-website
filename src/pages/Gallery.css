@@ -118,6 +118,14 @@
   transform: scale(1.25);
 }
 
+.gallery-masonry-item--zoomed-sm img {
+  transform: scale(1.1);
+}
+
+.gallery-masonry-item--zoomed-sm:hover img {
+  transform: scale(1.15);
+}
+
 .gallery-item-overlay {
   position: absolute;
   inset: 0;

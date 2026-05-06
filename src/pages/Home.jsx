@@ -17,7 +17,7 @@ const galleryItems = [
   { id: 17, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg', title: 'Kayak Aurora & Campfire' },
   { id: 11, src: '/images/gallery/nature-landscapes/black-widow-flowers.png', title: 'Black Widow & Flowers' },
   // Row 2+
-  { id: 25, src: '/images/gallery/space/astro-sleeve-1.jpg', title: 'Astro Sleeve' },
+  { id: 25, src: '/images/gallery/space/space-astronaut-galaxy.jpg', title: 'Astro Sleeve', zoom: 'sm' },
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png', title: 'Tropical Hibiscus' },
   { id: 1,  src: '/images/gallery/animals/wolf-aurora.png', title: 'Howling Wolf Aurora' },
   { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg', title: 'Waterfall Aurora' },
@@ -288,7 +288,7 @@ export default function Home() {
           {galleryItems.slice(0, 10).map((item, i) => (
             <motion.div
               key={item.id}
-              className={`gallery-grid-item${item.zoom ? ' gallery-grid-item--zoomed' : ''}`}
+              className={`gallery-grid-item${item.zoom === true ? ' gallery-grid-item--zoomed' : item.zoom === 'sm' ? ' gallery-grid-item--zoomed-sm' : ''}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
