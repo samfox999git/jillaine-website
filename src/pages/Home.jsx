@@ -11,7 +11,7 @@ import './Home.css'
 /* ── Gallery data ── */
 const galleryItems = [
   // Top row (cols 1–5)
-  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora.png', title: 'Campfire Northern Lights' },
+  { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg', title: 'Campfire Northern Lights' },
   { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg', title: 'Dog Portrait' },
   { id: 3,  src: '/images/gallery/northern-lights/grizzly-aurora.png', title: 'Grizzly Bear Aurora' },
   { id: 17, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg', title: 'Kayak Aurora & Campfire' },
