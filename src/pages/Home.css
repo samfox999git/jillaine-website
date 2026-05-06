@@ -64,7 +64,7 @@
 
 /* ═══════════════ MASONRY GALLERY ═══════════════ */
 .home-gallery {
-  padding: 0 40px 60px;
+  padding: 0 40px 16px;
   background: #000000;
 }
 
@@ -135,7 +135,7 @@
 
 .gallery-grid-cta {
   text-align: center;
-  padding: var(--space-2xl) 0 var(--space-lg);
+  padding: var(--space-2xl) 0 var(--space-sm);
 }
 
 /* ═══════════════ ABOUT — with space canvas ═══════════════ */
@@ -204,6 +204,7 @@
 /* ═══════════════ COVER-UP ═══════════════ */
 .coverup-section {
   background: var(--color-bg-primary);
+  padding-top: 48px;
 }
 
 .coverup-pair {
