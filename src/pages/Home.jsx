@@ -17,7 +17,7 @@ const galleryItems = [
   { id: 17, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg', title: 'Kayak Aurora & Campfire' },
   { id: 11, src: '/images/gallery/nature-landscapes/black-widow-flowers.png', title: 'Black Widow & Flowers' },
   // Row 2+
-  { id: 25, src: '/images/gallery/space/space-astronaut-galaxy.jpg', title: 'Astro Sleeve', objectPosition: '15% center' },
+  { id: 25, src: '/images/gallery/space/space-astronaut-galaxy.jpg', title: 'Astro Sleeve', objectPosition: 'left center' },
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png', title: 'Tropical Hibiscus' },
   { id: 1,  src: '/images/gallery/animals/wolf-aurora.png', title: 'Howling Wolf Aurora' },
   { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg', title: 'Waterfall Aurora', zoom: 'lg', objectPosition: 'center 30%' },
