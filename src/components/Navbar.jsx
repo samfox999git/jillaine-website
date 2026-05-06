@@ -23,6 +23,7 @@ export default function Navbar() {
         </Link>
 
         <div className={`nav-links ${mobileOpen ? 'open' : ''}`}>
+          <button className="nav-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">✕</button>
           <NavLink to="/" end onClick={() => setMobileOpen(false)}>Home</NavLink>
           <NavLink to="/colour-realism-tattoos" onClick={() => setMobileOpen(false)}>Gallery</NavLink>
           <NavLink to="/cover-up-tattoos" onClick={() => setMobileOpen(false)}>Cover Ups</NavLink>

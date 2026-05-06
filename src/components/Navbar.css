@@ -144,6 +144,24 @@
   .nav-hamburger { display: flex; }
   .nav-cta { display: none; }
 
+  .nav-close {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    background: none;
+    border: none;
+    color: var(--color-bone);
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity var(--transition-base);
+    padding: 4px;
+  }
+
+  .nav-close:hover {
+    opacity: 1;
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
