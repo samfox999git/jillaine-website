@@ -14,6 +14,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       {mobileOpen && <div className="nav-overlay" onClick={() => setMobileOpen(false)} />}
