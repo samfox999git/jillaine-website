@@ -16,12 +16,12 @@ const galleryItems = [
   { id: 17, src: '/images/gallery/nature-landscapes/forest-woman-ravens.jpg',        categories: ['nature-landscapes'],                               title: 'Forest Woman & Ravens' },
   // Row 3
   { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg',                 categories: ['animals'],                                         title: 'Dog Portrait', zoom: true },
-  { id: 26, src: '/images/gallery/space/space-astronaut-galaxy.jpg',                 categories: ['space'],                                           title: 'Astro Sleeve', posClass: 'pos-left' },
+  { id: 26, src: '/images/gallery/space/space-astronaut-galaxy.jpg',                 categories: ['space'],                                           title: 'Astro Sleeve', zoom: 'sm', posClass: 'pos-left' },
   { id: 38, src: '/images/gallery/northern-lights/bear-northern-lights.jpg',         categories: ['northern-lights', 'animals'],                      title: 'Bear & Northern Lights' },
   // Row 4
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png',          categories: ['nature-landscapes'],                               title: 'Tropical Hibiscus' },
   { id: 5,  src: '/images/gallery/space/lobster-space.png',                          categories: ['space', 'animals'],                               title: 'Space Lobster' },
-  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg',             categories: ['northern-lights', 'nature-landscapes'],            title: 'Waterfall Aurora', posClass: 'pos-top' },
+  { id: 24, src: '/images/gallery/northern-lights/waterfall-aurora.jpg',             categories: ['northern-lights', 'nature-landscapes'],            title: 'Waterfall Aurora', zoom: 'sm', posClass: 'pos-top' },
   // Row 5
   { id: 49, src: '/images/gallery/black-and-grey/bg-elephant-back.jpg',              categories: ['black-and-grey', 'animals'],                       title: 'Elephant Full Back' },
   { id: 1,  src: '/images/gallery/animals/wolf-aurora.png',                          categories: ['animals', 'northern-lights'],                      title: 'Howling Wolf Aurora' },
