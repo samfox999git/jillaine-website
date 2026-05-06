@@ -96,6 +96,23 @@
 
 .nav-links .nav-cta-mobile-only { display: none !important; }
 
+/* Mobile overlay */
+.nav-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 998;
+  }
+}
+
 /* Hamburger */
 .nav-hamburger {
   display: none;

@@ -16,6 +16,7 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      {mobileOpen && <div className="nav-overlay" onClick={() => setMobileOpen(false)} />}
       <div className="nav-inner container">
         <Link to="/" className="nav-logo" onClick={() => setMobileOpen(false)}>
           <img src="/images/logo/jillaine-logo.png" alt="Jillaine Tattoo" className="nav-logo-img" />
