@@ -240,6 +240,7 @@ export default async function handler(req, res) {
             <td style="padding:8px 28px 8px 16px;vertical-align:top;width:50%;">
               <table width="100%" cellpadding="0" cellspacing="0">
                 ${field('Tattoo Type',    esc(get('tattoo_type')))}
+                ${field('Cover-Up?',      esc(get('cover_up')))}
                 ${field('Skin Type',      esc(get('skin_type')))}
                 ${field('Location & Size', esc(get('location')))}
                 ${field('How They Found You', esc(get('referral')))}

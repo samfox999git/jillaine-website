@@ -23,7 +23,8 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', phone: '', age: '', city: '',
     tattooType: [], skinType: [], referencePhotos: [],
-    location: '', description: '', socialMedia: '', referral: '', referralOther: ''
+    location: '', description: '', socialMedia: '', referral: '', referralOther: '',
+    coverUp: ''
   })
 
   const updateField = (field, value) => {
@@ -110,6 +111,7 @@ export default function Contact() {
       body.append('phone',        formData.phone)
       body.append('age',          formData.age)
       body.append('city',         formData.city)
+      body.append('cover_up',     formData.coverUp)
       body.append('tattoo_type',  formData.tattooType.join(', '))
       body.append('skin_type',    formData.skinType.join(', '))
       body.append('location',     formData.location)
@@ -316,6 +318,23 @@ export default function Contact() {
                 ))}
               </div>
             </div>
+            <div className="form-group">
+              <label>Is it a cover-up?</label>
+              <div className="checkbox-group">
+                {['Yes', 'No'].map(option => (
+                  <label key={option} className={`checkbox-btn ${formData.coverUp === option ? 'checked' : ''}`}>
+                    <input type="radio" name="coverUp" checked={formData.coverUp === option} onChange={() => updateField('coverUp', option)} />
+                    {option}
+                  </label>
+                ))}
+              </div>
+              {formData.coverUp === 'Yes' && (
+                <div className="coverup-note">
+                  Please include a photo of the tattoo you want covered up in the reference photos below.
+                </div>
+              )}
+            </div>
+
             <div className="form-group">
               <label>Skin Type *</label>
               <div className="checkbox-group">
