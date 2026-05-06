@@ -110,6 +110,9 @@
 .gallery-masonry-item--pos-top img    { object-position: center top !important; }
 .gallery-masonry-item--pos-left img   { object-position: left center !important; }
 .gallery-masonry-item--pos-20 img     { object-position: center 20% !important; }
+.gallery-masonry-item--pos-70 img     { object-position: center 70% !important; }
+.gallery-masonry-item--pos-85 img     { object-position: center 85% !important; }
+.gallery-masonry-item--pos-93 img     { object-position: center 93% !important; }
 
 .gallery-masonry-item:hover img {
   transform: scale(1.05);
@@ -129,6 +132,14 @@
 
 .gallery-masonry-item--zoomed-sm:hover img {
   transform: scale(1.15);
+}
+
+.gallery-masonry-item--zoomed-md img {
+  transform: scale(1.25);
+}
+
+.gallery-masonry-item--zoomed-md:hover img {
+  transform: scale(1.29);
 }
 
 .gallery-masonry-item--zoomed-lg img {

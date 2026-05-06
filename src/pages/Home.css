@@ -93,6 +93,9 @@
 .gallery-grid-item--pos-top img    { object-position: center top !important; }
 .gallery-grid-item--pos-left img   { object-position: left center !important; }
 .gallery-grid-item--pos-20 img     { object-position: center 20% !important; }
+.gallery-grid-item--pos-70 img     { object-position: center 70% !important; }
+.gallery-grid-item--pos-85 img     { object-position: center 85% !important; }
+.gallery-grid-item--pos-93 img     { object-position: center 93% !important; }
 
 .gallery-grid-item:hover img {
   transform: scale(1.04);
@@ -112,6 +115,14 @@
 
 .gallery-grid-item--zoomed-sm:hover img {
   transform: scale(1.14);
+}
+
+.gallery-grid-item--zoomed-md img {
+  transform: scale(1.25);
+}
+
+.gallery-grid-item--zoomed-md:hover img {
+  transform: scale(1.29);
 }
 
 .gallery-grid-item--zoomed-lg img {
