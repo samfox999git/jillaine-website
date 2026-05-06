@@ -16,7 +16,7 @@ const galleryItems = [
   { id: 17, src: '/images/gallery/nature-landscapes/forest-woman-ravens.jpg',        categories: ['nature-landscapes'],                               title: 'Forest Woman & Ravens' },
   // Row 3
   { id: 13, src: '/images/gallery/animals/dog-portrait-realism.jpg',                 categories: ['animals'],                                         title: 'Dog Portrait', zoom: true },
-  { id: 26, src: '/images/gallery/space/space-astronaut-galaxy.jpg',                 categories: ['space'],                                           title: 'Astro Sleeve', objectPosition: '30% center' },
+  { id: 26, src: '/images/gallery/space/space-astronaut-galaxy.jpg',                 categories: ['space'],                                           title: 'Astro Sleeve', objectPosition: '15% center' },
   { id: 38, src: '/images/gallery/northern-lights/bear-northern-lights.jpg',         categories: ['northern-lights', 'animals'],                      title: 'Bear & Northern Lights' },
   // Row 4
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png',          categories: ['nature-landscapes'],                               title: 'Tropical Hibiscus' },
