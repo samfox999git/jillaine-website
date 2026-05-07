@@ -8,8 +8,8 @@ const skinTypes = [
 ]
 
 const referralSources = [
-  'Instagram', 'TikTok', 'Facebook', 'Word of Mouth', 'Google Search',
-  'AI (Chat GPT, Claude, etc)', 'Tattoo Convention', 'YouTube', 'Other'
+  'Instagram', 'TikTok', 'Facebook', 'YouTube', 'Word of Mouth', 'Google Search',
+  'AI (Chat GPT, Claude, etc)', 'Tattoo Convention', 'Other'
 ]
 
 export default function Contact() {
