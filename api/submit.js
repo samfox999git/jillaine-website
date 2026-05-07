@@ -284,7 +284,7 @@ export default async function handler(req, res) {
 
   try {
     await makeTransporter().sendMail({
-      from: `"Jillaine Website" <${process.env.GMAIL_USER}>`,
+      from: `"${get('from_name')}" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_TO || process.env.GMAIL_USER,
       replyTo: get('email'),
       subject: `New Consultation Request — ${get('from_name')} — ${get('city')}`,
