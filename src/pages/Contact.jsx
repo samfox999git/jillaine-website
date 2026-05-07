@@ -8,7 +8,7 @@ const skinTypes = [
 ]
 
 const referralSources = [
-  'Instagram', 'TikTok', 'Word of Mouth', 'Google Search',
+  'Instagram', 'TikTok', 'Facebook', 'Word of Mouth', 'Google Search',
   'AI (Chat GPT, Claude, etc)', 'Tattoo Convention', 'YouTube', 'Other'
 ]
 
