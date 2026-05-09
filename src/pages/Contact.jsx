@@ -80,6 +80,12 @@ export default function Contact() {
   const handleFileChange = async (e) => {
     const files = Array.from(e.target.files).slice(0, 6)
     const compressed = await Promise.all(files.map(compressImage))
+    const oversized = compressed.filter(f => f.size > 20 * 1024 * 1024)
+    if (oversized.length > 0) {
+      setErrorMsg(`One or more photos are too large to upload. If you're on iPhone, go to Settings → Camera → Formats → Most Compatible to save photos as JPG instead of HEIC.`)
+    } else {
+      setErrorMsg('')
+    }
     updateField('referencePhotos', compressed)
   }
 
@@ -370,7 +376,7 @@ export default function Contact() {
                 <div className="file-upload-label">
                   <span className="file-upload-icon">📷</span>
                   <p>Drop reference photos here or <span className="file-upload-link">browse</span></p>
-                  <p className="file-upload-hint">PNG, JPG up to 10MB each • Max 6 photos</p>
+                  <p className="file-upload-hint">PNG, JPG, HEIC up to 25MB each • Max 6 photos</p>
                 </div>
               </div>
               {formData.referencePhotos.length > 0 && (

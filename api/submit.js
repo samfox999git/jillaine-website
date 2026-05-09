@@ -162,7 +162,7 @@ export default async function handler(req, res) {
 
   let fields, files
   try {
-    const form = formidable({ multiples: true, maxFileSize: 4 * 1024 * 1024 })
+    const form = formidable({ multiples: true, maxFileSize: 25 * 1024 * 1024, maxTotalFileSize: 50 * 1024 * 1024 })
     ;[fields, files] = await form.parse(req)
   } catch (err) {
     console.error('Form parse error:', err)
