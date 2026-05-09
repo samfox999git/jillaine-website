@@ -16,6 +16,12 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [failed, setFailed] = useState(false)
   const [rateLimited, setRateLimited] = useState(false)
+
+  useEffect(() => {
+    if (submitted || failed || rateLimited) {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [submitted, failed, rateLimited])
   const [uploading, setUploading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [errors, setErrors] = useState({})
@@ -126,17 +132,13 @@ export default function Contact() {
 
       if (data.success) {
         setSubmitted(true)
-        window.scrollTo({ top: 0, behavior: 'smooth' })
       } else if (res.status === 429) {
         setRateLimited(true)
-        window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         setFailed(true)
-        window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } catch (err) {
       setFailed(true)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
     } finally {
       setUploading(false)
     }
