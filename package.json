@@ -13,6 +13,7 @@
     "@paper-design/shaders-react": "^0.0.72",
     "@vercel/analytics": "^2.0.1",
     "@vercel/blob": "^2.3.3",
+    "@vercel/speed-insights": "^2.0.0",
     "formidable": "^3.5.4",
     "framer-motion": "^12.38.0",
     "googleapis": "^171.4.0",
