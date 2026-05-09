@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import PageMeta from '../components/PageMeta'
 import './Contact.css'
@@ -16,12 +16,6 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [failed, setFailed] = useState(false)
   const [rateLimited, setRateLimited] = useState(false)
-
-  useEffect(() => {
-    if (submitted || failed || rateLimited) {
-      window.scrollTo({ top: 0, behavior: 'instant' })
-    }
-  }, [submitted, failed, rateLimited])
   const [uploading, setUploading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [errors, setErrors] = useState({})
@@ -32,6 +26,12 @@ export default function Contact() {
     location: '', description: '', socialMedia: '', referral: '', referralOther: '',
     coverUp: ''
   })
+
+  useEffect(() => {
+    if (submitted || failed || rateLimited) {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [submitted, failed, rateLimited])
 
   const updateField = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }))
