@@ -376,7 +376,7 @@ export default function Contact() {
                 <div className="file-upload-label">
                   <span className="file-upload-icon">📷</span>
                   <p>Drop reference photos here or <span className="file-upload-link">browse</span></p>
-                  <p className="file-upload-hint">PNG, JPG, HEIC up to 25MB each • Max 6 photos</p>
+                  <p className="file-upload-hint">PNG, JPG, HEIC up to 20MB each • Max 6 photos</p>
                 </div>
               </div>
               {formData.referencePhotos.length > 0 && (
