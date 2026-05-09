@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { motion } from 'framer-motion'
 import PageMeta from '../components/PageMeta'
 import './Contact.css'
@@ -27,9 +27,11 @@ export default function Contact() {
     coverUp: ''
   })
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (submitted || failed || rateLimited) {
-      window.scrollTo({ top: 0, behavior: 'instant' })
+      window.scrollTo(0, 0)
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
     }
   }, [submitted, failed, rateLimited])
 
