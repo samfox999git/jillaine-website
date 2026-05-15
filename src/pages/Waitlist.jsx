@@ -72,7 +72,7 @@ export default function Waitlist() {
           transition={{ duration: 0.7, delay: 0.1 }}
         >
           <h1 className="waitlist-headline">
-            <span className="waitlist-headline--accent">Bookings are closed.</span>
+            <span className="waitlist-headline--accent">Bookings are closed. <span className="waitlist-heart">♥</span></span>
             Be the first to know when openings become available.
           </h1>
         </motion.div>
