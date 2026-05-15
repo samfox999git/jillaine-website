@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           email_address: email,
-          status: 'subscribed',
+          status: 'pending',
         }),
       }
     )
