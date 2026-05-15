@@ -10,9 +10,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid email address.' })
   }
 
-  const API_KEY    = process.env.MAILCHIMP_API_KEY
-  const SERVER     = process.env.MAILCHIMP_SERVER    // e.g. "us14"
-  const LIST_ID    = process.env.MAILCHIMP_LIST_ID
+  const API_KEY    = (process.env.MAILCHIMP_API_KEY || '').trim()
+  const LIST_ID    = (process.env.MAILCHIMP_LIST_ID || '').trim()
+  // Derive server from API key (e.g. "...abc-us15" → "us15") as fallback
+  const SERVER     = (process.env.MAILCHIMP_SERVER || API_KEY.split('-').pop()).trim()
 
   if (!API_KEY || !SERVER || !LIST_ID) {
     console.error('Missing Mailchimp environment variables')
@@ -44,7 +45,7 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       console.error('Mailchimp error status:', response.status, 'title:', data.title, 'detail:', data.detail)
-      return res.status(500).json({ error: `Mailchimp: ${data.title} — ${data.detail}` })
+      return res.status(500).json({ error: 'Could not add to list. Please try again.' })
     }
 
     // Tag the subscriber as Waitlist 2026
