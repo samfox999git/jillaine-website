@@ -33,7 +33,7 @@ function App() {
         <Route path="/cover-up-tattoos" element={<CoverUps />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/after-care" element={<AfterCare />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact2" element={<Contact />} />
         <Route path="/waitlist" element={<Waitlist />} />
         <Route path="/waitlist-confirmed" element={<WaitlistConfirmed />} />
       </Routes>

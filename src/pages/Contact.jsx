@@ -219,7 +219,7 @@ export default function Contact() {
       <PageMeta
         title="Book A Free Consultation"
         description="Book a free tattoo consultation with Jillaine — award-winning colour realism tattoo artist in Kelowna, BC. Specializing in cover-ups, nature, space, and animal tattoos."
-        path="/contact"
+        path="/contact2"
         noindex
         jsonLd={{
           "@context": "https://schema.org",
