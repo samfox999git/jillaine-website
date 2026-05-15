@@ -2,3 +2,38 @@
   font-size: 56px;
   line-height: 1;
 }
+
+.confirmed-socials {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.confirmed-social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(232, 224, 213, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.confirmed-social-link svg {
+  width: 32px;
+  height: 32px;
+}
+
+.confirmed-social-link span {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.confirmed-social-link:hover {
+  color: var(--color-aurora-teal);
+  transform: translateY(-3px);
+}
