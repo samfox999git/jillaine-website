@@ -105,7 +105,7 @@ export default function Waitlist() {
               animate={{ opacity: 1, scale: 1 }}
             >
               <span className="waitlist-success-icon">✨</span>
-              <p>You're on the list! I'll reach out when books open.</p>
+              <p>Almost there! Check your inbox and confirm your email to secure your spot.</p>
             </motion.div>
           ) : (
             <motion.form
