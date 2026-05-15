@@ -10,6 +10,7 @@ import CoverUps from './pages/CoverUps'
 import FAQ from './pages/FAQ'
 import AfterCare from './pages/AfterCare'
 import Contact from './pages/Contact'
+import Waitlist from './pages/Waitlist'
 import './styles/global.css'
 
 function ScrollToTop() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/after-care" element={<AfterCare />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/waitlist" element={<Waitlist />} />
       </Routes>
       <Footer />
       <Analytics />
