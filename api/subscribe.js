@@ -43,8 +43,8 @@ export default async function handler(req, res) {
     }
 
     if (!response.ok) {
-      console.error('Mailchimp error status:', response.status, 'title:', data.title, 'detail:', data.detail, 'errors:', JSON.stringify(data.errors))
-      return res.status(500).json({ error: 'Could not add to list. Please try again.' })
+      console.error('Mailchimp error status:', response.status, 'title:', data.title, 'detail:', data.detail)
+      return res.status(500).json({ error: `Mailchimp: ${data.title} — ${data.detail}` })
     }
 
     // Tag the subscriber as Waitlist 2026
