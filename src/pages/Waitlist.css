@@ -122,6 +122,10 @@
 .waitlist-heart {
   font-size: 0.4em;
   vertical-align: middle;
+  background: linear-gradient(90deg, #2dd4a8 0%, #818cf8 55%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .waitlist-divider {
