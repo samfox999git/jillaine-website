@@ -82,14 +82,6 @@ export default function WaitlistConfirmed() {
           </a>
         </motion.div>
 
-        <motion.p
-          className="waitlist-year"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-        >
-          Winter 2026
-        </motion.p>
 
       </div>
     </main>
