@@ -133,7 +133,7 @@ export default function CoverUps() {
           >
             <h2>Ready to Start Your <span className="gradient-text">Next Piece</span>?</h2>
             <p>Book a free consultation and let's create something beautiful together.</p>
-            <Link to="/contact" className="btn btn-primary btn-lg">
+            <Link to="/waitlist" className="btn btn-primary btn-lg">
               <span>Book A Consultation</span>
             </Link>
           </motion.div>

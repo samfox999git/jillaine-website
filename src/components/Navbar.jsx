@@ -6,7 +6,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { pathname } = useLocation()
-  const onContactPage = pathname === '/contact'
+  const onWaitlistPage = pathname === '/waitlist'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -49,15 +49,15 @@ export default function Navbar() {
           <NavLink to="/cover-up-tattoos" onClick={() => setMobileOpen(false)}>Cover Ups</NavLink>
           <NavLink to="/faq" onClick={() => setMobileOpen(false)}>FAQ</NavLink>
           <NavLink to="/after-care" onClick={() => setMobileOpen(false)}>After Care</NavLink>
-          {!onContactPage && (
-            <Link to="/contact" className="btn btn-primary nav-cta-mobile-only" onClick={() => setMobileOpen(false)}>
+          {!onWaitlistPage && (
+            <Link to="/waitlist" className="btn btn-primary nav-cta-mobile-only" onClick={() => setMobileOpen(false)}>
               Book A Consultation
             </Link>
           )}
         </div>
 
-        {!onContactPage && (
-          <Link to="/contact" className="btn btn-primary nav-cta">
+        {!onWaitlistPage && (
+          <Link to="/waitlist" className="btn btn-primary nav-cta">
             Book A<br />Consultation
           </Link>
         )}

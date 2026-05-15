@@ -38,7 +38,7 @@ export default function Footer() {
               <Link to="/cover-up-tattoos">Cover-Up Tattoos</Link>
               <Link to="/faq">FAQ</Link>
               <Link to="/after-care">After Care</Link>
-              <Link to="/contact">Book A Consultation</Link>
+              <Link to="/waitlist">Book A Consultation</Link>
             </div>
           </div>
 
