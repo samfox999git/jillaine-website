@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 const BASE_URL = 'https://www.jillaine.ca'
 const DEFAULT_IMAGE = `${BASE_URL}/images/og-preview.jpg`
 
-export default function PageMeta({ title, description, path = '', jsonLd = null }) {
+export default function PageMeta({ title, description, path = '', jsonLd = null, noindex = false }) {
   const fullTitle = `${title} | Jillaine Tattoo`
   const url = `${BASE_URL}${path}`
 
@@ -11,6 +11,7 @@ export default function PageMeta({ title, description, path = '', jsonLd = null 
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={url} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={fullTitle} />
