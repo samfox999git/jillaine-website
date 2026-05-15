@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://api.brevo.com/v3/contacts', {
+    const response = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,13 +25,14 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         email,
-        listIds: [LIST_ID],
-        updateEnabled: true,
+        includeListIds: [LIST_ID],
+        templateId: 1,
+        redirectionUrl: 'https://jillaine.ca/waitlist-confirmed',
       }),
     })
 
     if (!response.ok) {
-      const data = await response.json()
+      const data = await response.json().catch(() => ({}))
       console.error('Brevo error:', response.status, data)
       return res.status(500).json({ error: 'Could not add to list. Please try again.' })
     }

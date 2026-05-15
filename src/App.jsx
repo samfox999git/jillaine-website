@@ -11,6 +11,7 @@ import FAQ from './pages/FAQ'
 import AfterCare from './pages/AfterCare'
 import Contact from './pages/Contact'
 import Waitlist from './pages/Waitlist'
+import WaitlistConfirmed from './pages/WaitlistConfirmed'
 import './styles/global.css'
 
 function ScrollToTop() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/after-care" element={<AfterCare />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/waitlist" element={<Waitlist />} />
+        <Route path="/waitlist-confirmed" element={<WaitlistConfirmed />} />
       </Routes>
       <Footer />
       <Analytics />
