@@ -134,7 +134,7 @@ export default function Waitlist() {
                 </button>
               </div>
               {errorMsg && <p className="waitlist-error">{errorMsg}</p>}
-              <p className="waitlist-privacy">No spam, ever. Unsubscribe any time.</p>
+              <p className="waitlist-privacy">No spam. Unsubscribe anytime.</p>
             </motion.form>
           )}
         </AnimatePresence>

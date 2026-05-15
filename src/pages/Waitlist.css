@@ -163,7 +163,7 @@
 .waitlist-input {
   flex: 1;
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(232, 224, 213, 0.12);
+  border: 1px solid rgba(232, 224, 213, 0.35);
   border-radius: 4px;
   padding: 14px 18px;
   font-family: var(--font-body);
@@ -196,7 +196,7 @@
 
 .waitlist-privacy {
   font-size: 11px;
-  color: rgba(232, 224, 213, 0.3);
+  color: rgba(232, 224, 213, 0.55);
   margin: 0;
   letter-spacing: 0.5px;
 }
