@@ -30,7 +30,7 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           email_address: email,
-          status: 'pending', // double opt-in — sends Mailchimp confirmation email
+          status: 'subscribed',
         }),
       }
     )
