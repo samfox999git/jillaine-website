@@ -76,6 +76,10 @@ export default function WaitlistConfirmed() {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="4"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg>
             <span>YouTube</span>
           </a>
+          <a href="https://www.facebook.com/Jillaine.Tattoo" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="confirmed-social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <span>Facebook</span>
+          </a>
         </motion.div>
 
         <motion.p

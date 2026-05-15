@@ -24,6 +24,9 @@ export default function Footer() {
               <a href="https://www.tiktok.com/@jillaine.tattoo" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="footer-social-link">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.27a8.16 8.16 0 004.76 1.52v-3.4a4.85 4.85 0 01-1-.7z"/></svg>
               </a>
+              <a href="https://www.facebook.com/Jillaine.Tattoo" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="footer-social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
             </div>
           </div>
 
