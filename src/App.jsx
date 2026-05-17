@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
@@ -9,7 +9,6 @@ import Gallery from './pages/Gallery'
 import CoverUps from './pages/CoverUps'
 import FAQ from './pages/FAQ'
 import AfterCare from './pages/AfterCare'
-import Contact from './pages/Contact'
 import Waitlist from './pages/Waitlist'
 import WaitlistConfirmed from './pages/WaitlistConfirmed'
 import './styles/global.css'
@@ -33,7 +32,7 @@ function App() {
         <Route path="/cover-up-tattoos" element={<CoverUps />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/after-care" element={<AfterCare />} />
-        <Route path="/contact2" element={<Contact />} />
+        <Route path="/contact" element={<Navigate to="/waitlist" replace />} />
         <Route path="/waitlist" element={<Waitlist />} />
         <Route path="/waitlist-confirmed" element={<WaitlistConfirmed />} />
       </Routes>
