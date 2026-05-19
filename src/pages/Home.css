@@ -343,7 +343,7 @@
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(232, 224, 213, 0.35);
+  color: rgba(232, 224, 213, 0.55);
   margin-top: 10px;
   transition: opacity 0.6s ease;
 }
