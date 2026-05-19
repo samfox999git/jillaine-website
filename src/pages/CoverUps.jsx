@@ -9,6 +9,7 @@ const coverUps = [
   { id: 2,  before: '/images/gallery/cover-ups/coverup-2-before.jpg',         after: '/images/gallery/cover-ups/coverup-2-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 5,  before: '/images/gallery/cover-ups/coverup-5-before.jpg',         after: '/images/gallery/cover-ups/coverup-5-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 13, before: '/images/gallery/cover-ups/coverup-snake-before.jpg',     after: '/images/gallery/cover-ups/coverup-snake-after.jpg',     title: 'Full Sleeve Snake Lady Cover-Up' },
+  { id: 15, before: '/images/gallery/cover-ups/coverup-ribs-space-before.jpg', after: '/images/gallery/cover-ups/coverup-ribs-space-after.jpg', title: 'Ribs Space Planets Cover-Up' },
   { id: 10, before: '/images/gallery/cover-ups/coverup-10-before.png',        after: '/images/gallery/cover-ups/coverup-10-after.png',        title: 'Mountain Landscape Cover-Up' },
   { id: 7,  before: '/images/gallery/cover-ups/coverup-7-before.jpg',         after: '/images/gallery/cover-ups/coverup-7-after.jpg',         title: 'Cover-Up Transformation' },
   { id: 12, before: '/images/gallery/cover-ups/coverup-polarbear-before.jpg', after: '/images/gallery/cover-ups/coverup-polarbear-after.jpg', title: 'Polar Bear Northern Lights Cover-Up' },
