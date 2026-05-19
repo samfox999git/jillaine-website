@@ -228,6 +228,14 @@ export default function Home() {
   const [testimonialIndex, setTestimonialIndex] = useState(0)
   const prevTestimonial = () => setTestimonialIndex(i => (i - 1 + testimonials.length) % testimonials.length)
   const nextTestimonial = () => setTestimonialIndex(i => (i + 1) % testimonials.length)
+  const touchStartX = useRef(null)
+  const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX }
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return
+    const diff = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 50) diff > 0 ? nextTestimonial() : prevTestimonial()
+    touchStartX.current = null
+  }
 
   return (
     <main className="home-page">
@@ -442,7 +450,7 @@ export default function Home() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
               </button>
 
-              <div className="testimonial-slider-track">
+              <div className="testimonial-slider-track" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
                 {testimonials.map((t, i) => (
                   <div
                     key={t.name}

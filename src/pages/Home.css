@@ -485,11 +485,23 @@
   }
 
   .testimonial-slider {
-    gap: var(--space-sm);
+    gap: 0;
+  }
+
+  .testimonial-arrow {
+    display: none;
+  }
+
+  .testimonial-slider-track {
+    width: 100%;
   }
 
   .testimonial-card {
-    padding: 28px 20px 24px;
+    padding: 24px 20px;
+  }
+
+  .testimonial-card-text {
+    white-space: normal;
   }
 
   .testimonial-card-quote {
