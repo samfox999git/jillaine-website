@@ -36,6 +36,11 @@ const testimonials = [
     text: `I can't thank you enough for everything you've done.\n\nIf anyone needs a coverup, it's worth getting a consultation with Jillaine. She addressed every single question and concern I had — and I ask a lot of questions 😂\n\nJillaine's work has reinvigorated my self-confidence, and I hope it can do the same for you.\n\nI don't travel often, but flying from California to Kelowna for this was absolutely worth it.\n\n10 out of 10.`,
   },
   {
+    name: 'Chelsea Turner',
+    photo: '/images/testimonials/chelsea-turner.png',
+    text: `Jillaine is a brilliant artist that creates an amazing environment.\n\nI had a tattoo on my shoulder that I got young and always hid. I never wore tank tops or anything that showed my shoulder.\n\nJillaine took one look and was like "I got this" — I sat for 8 hours and she took me from hiding my arm to flaunting it at every opportunity.`,
+  },
+  {
     name: 'Jaimie Wilson',
     photo: '/images/testimonials/jaimie-wilson.png',
     text: `Jillaine is a tremendously talented tattoo artist and her work is phenomenal.\n\nMy journey with Jillaine started off by me challenging her with a request for a teacup with the northern lights and somehow a whale incorporated.\n\nShe knocked it out of the park and I've been hooked since then.`,
@@ -220,6 +225,9 @@ function SpaceBackground() {
 
 export default function Home() {
   const [lightboxImage, setLightboxImage] = useState(null)
+  const [testimonialIndex, setTestimonialIndex] = useState(0)
+  const prevTestimonial = () => setTestimonialIndex(i => (i - 1 + testimonials.length) % testimonials.length)
+  const nextTestimonial = () => setTestimonialIndex(i => (i + 1) % testimonials.length)
 
   return (
     <main className="home-page">
@@ -429,24 +437,47 @@ export default function Home() {
               <h2 className="testimonial-subheading">from <span className="gradient-text">clients</span></h2>
             </motion.div>
 
-            <div className="testimonial-cards">
-              {testimonials.map((t, i) => (
-                <motion.div
-                  key={t.name}
-                  className={`testimonial-card ${i === 1 ? 'testimonial-card--offset' : ''}`}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: '-60px' }}
-                  variants={fadeUp}
-                  custom={i}
-                >
-                  <span className="testimonial-card-quote">"</span>
-                  <p className="testimonial-card-text" style={{ whiteSpace: 'pre-line' }}>{t.text}</p>
-                  <div className="testimonial-card-author">
-                    <img src={t.photo} alt={`${t.name} — client of Jillaine Tattoo, Kelowna BC`} className="testimonial-card-avatar" loading="lazy" />
-                    <span className="testimonial-card-name">{t.name}</span>
+            <div className="testimonial-slider">
+              <button className="testimonial-arrow testimonial-arrow--prev" onClick={prevTestimonial} aria-label="Previous testimonial">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+
+              <div className="testimonial-slider-track">
+                {testimonials.map((t, i) => (
+                  <div
+                    key={t.name}
+                    className="testimonial-card"
+                    style={{
+                      opacity: i === testimonialIndex ? 1 : 0,
+                      pointerEvents: i === testimonialIndex ? 'auto' : 'none',
+                      transition: 'opacity 0.35s ease',
+                      position: i === testimonialIndex ? 'relative' : 'absolute',
+                      top: 0, left: 0, right: 0,
+                    }}
+                  >
+                    <span className="testimonial-card-quote">"</span>
+                    <p className="testimonial-card-text" style={{ whiteSpace: 'pre-line' }}>{t.text}</p>
+                    <div className="testimonial-card-author">
+                      <img src={t.photo} alt={`${t.name} — client of Jillaine Tattoo, Kelowna BC`} className="testimonial-card-avatar" loading="lazy" />
+                      <span className="testimonial-card-name">{t.name}</span>
+                    </div>
                   </div>
-                </motion.div>
+                ))}
+              </div>
+
+              <button className="testimonial-arrow testimonial-arrow--next" onClick={nextTestimonial} aria-label="Next testimonial">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+
+            <div className="testimonial-dots">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  className={`testimonial-dot ${i === testimonialIndex ? 'testimonial-dot--active' : ''}`}
+                  onClick={() => setTestimonialIndex(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                />
               ))}
             </div>
           </div>
