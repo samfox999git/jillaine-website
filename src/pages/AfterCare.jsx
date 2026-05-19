@@ -53,6 +53,39 @@ export default function AfterCare() {
         title="Tattoo After Care"
         description="Tattoo aftercare instructions from Jillaine — colour realism tattoo artist in Kelowna, BC. How to care for your new tattoo and keep it looking vibrant for years."
         path="/after-care"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "How to Care for Your New Tattoo",
+          "description": "Tattoo aftercare guide from Jillaine, colour realism tattoo artist in Kelowna, BC. Follow these steps to heal your tattoo properly and keep the colours vibrant.",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "First 24 Hours",
+              "text": "There may be a build up of plasma and ink under the wrap — this is normal. Wait 24 hours before changing the wrap. Take Advil to reduce swelling and keep the tattoo elevated. Ice no more than 15 minutes at a time."
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Days 1–7",
+              "text": "Leave the wrap on for a full 7 days after it is changed. Removing it early may result in heavy scabbing or the need for touchups."
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Showering",
+              "text": "You may shower normally while wearing the wrap, but avoid soaking in baths, pools, hot tubs, or saunas."
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Itchiness",
+              "text": "Do not scratch your tattoo. Use ice to soothe the skin, no more than 15 minutes at a time with a barrier between skin and ice."
+            },
+            {
+              "@type": "HowToStep",
+              "name": "After Day 7",
+              "text": "Remove the wrap in a warm shower. Gently wash with unscented soap. Moisturize with unscented lotion 3 times a day for the next month. Do not pick or scratch any scabs."
+            }
+          ]
+        }}
       />
 
       {/* Hero */}

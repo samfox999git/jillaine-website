@@ -282,7 +282,35 @@ export default function Home() {
           "sameAs": [
             "https://www.instagram.com/jillaine.tattoo/",
             "https://www.tiktok.com/@jillaine.tattoo",
-            "https://www.youtube.com/@jillaine.tattoo"
+            "https://www.youtube.com/@jillaine.tattoo",
+            "https://www.facebook.com/Jillaine.Tattoo"
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "3",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Dan Wen" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "I can't thank you enough for everything you've done. Jillaine's work has reinvigorated my self-confidence. Flying from California to Kelowna for this was absolutely worth it. 10 out of 10."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Chelsea Turner" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Jillaine is a brilliant artist that creates an amazing environment. She took me from hiding my arm to flaunting it at every opportunity."
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Jaimie Wilson" },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "Jillaine is a tremendously talented tattoo artist and her work is phenomenal. She knocked it out of the park and I've been hooked since then."
+            }
           ],
           "employee": {
             "@type": "Person",
