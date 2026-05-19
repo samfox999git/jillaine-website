@@ -296,6 +296,7 @@
 .testimonial-dots {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
   margin-top: var(--space-xl);
 }
@@ -320,18 +321,20 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border: none;
   background: none;
-  color: rgba(232, 224, 213, 0.6);
+  color: rgba(232, 224, 213, 0.85);
   cursor: pointer;
   padding: 0;
+  margin: 0 16px;
+  line-height: 1;
 }
 
 .testimonial-dot-arrow svg {
-  width: 18px;
-  height: 18px;
+  width: 26px;
+  height: 26px;
 }
 
 .testimonial-swipe-hint {
