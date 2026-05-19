@@ -316,6 +316,39 @@
   transform: scale(1.3);
 }
 
+.testimonial-dot-arrow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: rgba(232, 224, 213, 0.6);
+  cursor: pointer;
+  padding: 0;
+}
+
+.testimonial-dot-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.testimonial-swipe-hint {
+  display: none;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(232, 224, 213, 0.35);
+  margin-top: 10px;
+  transition: opacity 0.6s ease;
+}
+
+.testimonial-swipe-hint--hidden {
+  opacity: 0;
+}
+
 .testimonial-card {
   position: relative;
   background: rgba(255, 255, 255, 0.03);
@@ -490,6 +523,14 @@
 
   .testimonial-arrow {
     display: none;
+  }
+
+  .testimonial-dot-arrow {
+    display: flex;
+  }
+
+  .testimonial-swipe-hint {
+    display: block;
   }
 
   .testimonial-slider-track {

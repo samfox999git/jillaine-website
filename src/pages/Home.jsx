@@ -229,7 +229,11 @@ export default function Home() {
   const prevTestimonial = () => setTestimonialIndex(i => (i - 1 + testimonials.length) % testimonials.length)
   const nextTestimonial = () => setTestimonialIndex(i => (i + 1) % testimonials.length)
   const touchStartX = useRef(null)
-  const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX }
+  const [showSwipeHint, setShowSwipeHint] = useState(true)
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+    setShowSwipeHint(false)
+  }
   const handleTouchEnd = (e) => {
     if (touchStartX.current === null) return
     const diff = touchStartX.current - e.changedTouches[0].clientX
@@ -479,6 +483,9 @@ export default function Home() {
             </div>
 
             <div className="testimonial-dots">
+              <button className="testimonial-dot-arrow" onClick={prevTestimonial} aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
               {testimonials.map((_, i) => (
                 <button
                   key={i}
@@ -487,7 +494,11 @@ export default function Home() {
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}
+              <button className="testimonial-dot-arrow" onClick={nextTestimonial} aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
+            <p className={`testimonial-swipe-hint ${showSwipeHint ? '' : 'testimonial-swipe-hint--hidden'}`}>swipe to browse</p>
           </div>
         </BeamsBackground>
       </section>
