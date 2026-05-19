@@ -33,17 +33,17 @@ const testimonials = [
   {
     name: 'Dan Wen',
     photo: '/images/testimonials/dan-wen.jpg',
-    text: `I can't thank you enough for everything you've done.\n\nIf anyone needs a coverup, it's worth getting a consultation with Jillaine. She addressed every single question and concern I had — and I ask a lot of questions 😂\n\nJillaine's work has reinvigorated my self-confidence, and I hope it can do the same for you.\n\nI don't travel often, but flying from California to Kelowna for this was absolutely worth it.\n\n10 out of 10.`,
+    text: `I can't thank you enough for everything you've done. If anyone needs a coverup, it's worth getting a consultation with Jillaine. She addressed every single question and concern I had — and I ask a lot of questions 😂 Jillaine's work has reinvigorated my self-confidence, and I hope it can do the same for you. I don't travel often, but flying from California to Kelowna for this was absolutely worth it. 10 out of 10.`,
   },
   {
     name: 'Chelsea Turner',
     photo: '/images/testimonials/chelsea-turner.png',
-    text: `Jillaine is a brilliant artist that creates an amazing environment.\n\nI had a tattoo on my shoulder that I got young and always hid. I never wore tank tops or anything that showed my shoulder.\n\nJillaine took one look and was like "I got this" — I sat for 8 hours and she took me from hiding my arm to flaunting it at every opportunity.`,
+    text: `Jillaine is a brilliant artist that creates an amazing environment. I had a tattoo on my shoulder that I got young and always hid. I never wore tank tops or anything that showed my shoulder. Jillaine took one look and was like "I got this" — I sat for 8 hours and she took me from hiding my arm to flaunting it at every opportunity.`,
   },
   {
     name: 'Jaimie Wilson',
     photo: '/images/testimonials/jaimie-wilson.png',
-    text: `Jillaine is a tremendously talented tattoo artist and her work is phenomenal.\n\nMy journey with Jillaine started off by me challenging her with a request for a teacup with the northern lights and somehow a whale incorporated.\n\nShe knocked it out of the park and I've been hooked since then.`,
+    text: `Jillaine is a tremendously talented tattoo artist and her work is phenomenal. My journey with Jillaine started off by me challenging her with a request for a teacup with the northern lights and somehow a whale incorporated. She knocked it out of the park and I've been hooked since then.`,
   },
 ]
 
@@ -468,7 +468,7 @@ export default function Home() {
                     }}
                   >
                     <span className="testimonial-card-quote">"</span>
-                    <p className="testimonial-card-text" style={{ whiteSpace: 'pre-line' }}>{t.text}</p>
+                    <p className="testimonial-card-text">{t.text}</p>
                     <div className="testimonial-card-author">
                       <img src={t.photo} alt={`${t.name} — client of Jillaine Tattoo, Kelowna BC`} className="testimonial-card-avatar" loading="lazy" />
                       <span className="testimonial-card-name">{t.name}</span>
