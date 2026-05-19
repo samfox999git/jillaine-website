@@ -348,9 +348,6 @@
   transition: opacity 0.6s ease;
 }
 
-.testimonial-swipe-hint--hidden {
-  opacity: 0;
-}
 
 .testimonial-card {
   position: relative;

@@ -229,16 +229,32 @@ export default function Home() {
   const prevTestimonial = () => setTestimonialIndex(i => (i - 1 + testimonials.length) % testimonials.length)
   const nextTestimonial = () => setTestimonialIndex(i => (i + 1) % testimonials.length)
   const touchStartX = useRef(null)
-  const [showSwipeHint, setShowSwipeHint] = useState(true)
+  const touchStartY = useRef(null)
+  const sliderTrackRef = useRef(null)
+
+  useEffect(() => {
+    const el = sliderTrackRef.current
+    if (!el) return
+    const onTouchMove = (e) => {
+      if (touchStartX.current === null) return
+      const diffX = Math.abs(e.touches[0].clientX - touchStartX.current)
+      const diffY = Math.abs(e.touches[0].clientY - touchStartY.current)
+      if (diffX > diffY) e.preventDefault()
+    }
+    el.addEventListener('touchmove', onTouchMove, { passive: false })
+    return () => el.removeEventListener('touchmove', onTouchMove)
+  }, [])
+
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX
-    setShowSwipeHint(false)
+    touchStartY.current = e.touches[0].clientY
   }
   const handleTouchEnd = (e) => {
     if (touchStartX.current === null) return
     const diff = touchStartX.current - e.changedTouches[0].clientX
     if (Math.abs(diff) > 50) diff > 0 ? nextTestimonial() : prevTestimonial()
     touchStartX.current = null
+    touchStartY.current = null
   }
 
   return (
@@ -454,7 +470,7 @@ export default function Home() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
               </button>
 
-              <div className="testimonial-slider-track" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+              <div className="testimonial-slider-track" ref={sliderTrackRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
                 {testimonials.map((t, i) => (
                   <div
                     key={t.name}
@@ -498,7 +514,7 @@ export default function Home() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
               </button>
             </div>
-            <p className={`testimonial-swipe-hint ${showSwipeHint ? '' : 'testimonial-swipe-hint--hidden'}`}>swipe to browse</p>
+            <p className="testimonial-swipe-hint">swipe to browse</p>
           </div>
         </BeamsBackground>
       </section>
