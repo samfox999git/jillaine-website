@@ -1,3 +1,22 @@
+import nodemailer from 'nodemailer'
+
+const notifyManualAdd = async (email) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD },
+    })
+    await transporter.sendMail({
+      from: `"Jillaine Website" <${process.env.GMAIL_USER}>`,
+      to: 'samfox999@gmail.com',
+      subject: 'Waitlist — Manual Add Needed',
+      text: `A waitlist signup failed to reach Brevo. Please manually add this email:\n\n${email}`,
+    })
+  } catch (err) {
+    console.error('Failed to send manual add notification:', err)
+  }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -13,7 +32,8 @@ export default async function handler(req, res) {
 
   if (!API_KEY || !LIST_ID) {
     console.error('Missing Brevo environment variables')
-    return res.status(500).json({ error: 'Server configuration error.' })
+    await notifyManualAdd(email)
+    return res.status(200).json({ success: true })
   }
 
   try {
@@ -34,12 +54,14 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const data = await response.json().catch(() => ({}))
       console.error('Brevo error:', response.status, data)
-      return res.status(500).json({ error: 'Could not add to list. Please try again.' })
+      await notifyManualAdd(email)
+      return res.status(200).json({ success: true })
     }
 
     return res.status(200).json({ success: true })
   } catch (err) {
     console.error('Subscribe error:', err)
-    return res.status(500).json({ error: 'Something went wrong. Please try again.' })
+    await notifyManualAdd(email)
+    return res.status(200).json({ success: true })
   }
 }
