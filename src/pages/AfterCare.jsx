@@ -26,16 +26,16 @@ const protocol = [
   },
   {
     label: 'After Day 7',
-    body: 'Remove the wrap in the shower — warm water makes it easier to pull off. Gently wash your tattoo with unscented soap. The tattoo should be mostly healed. Moisturize with an unscented lotion ~3 times a day for the next month. If there are any scabs, avoid lotion in those areas. Do not pick or scratch scabs as this will pull out the ink.',
+    body: 'Remove the wrap in the shower, as warm water makes it easier to pull off. Gently wash your tattoo with unscented soap. The tattoo should be mostly healed. Moisturize with an unscented lotion ~3 times a day for the next month. If there are any scabs, avoid lotion in those areas. Do not pick or scratch scabs as this will pull out the ink.',
   },
 ]
 
 const changeSteps = [
   'Jillaine will give you a package with measured out wrap and gloves. In most cases you will need someone to help you. The gloves are for your helper.',
   '24 hours after your tattoo, go in the shower, peel the wrap off under the warm water and gently wash with soap that is provided. Scented soap can burn and cause damage to your tattoo.',
-  'After the shower, dry your tattoo with paper towel that is provided. Do not use a regular towel as this may have bacteria and fuzzies. Make sure your tattoo is dry before replacing the wrap — it will not stick to anything wet. Do not apply lotion before reapplying your wrap as it will not stick to lotion.',
-  'Fold the wrap back on itself so it is more flat. There is a crack down the middle — peel off the half without the red line first. If the wrap folds in on itself at this point it\'s ruined, so do your best to keep it flat.',
-  'Place the sticky half of the wrap over your tattoo, extending past the edge at least an inch and a half. Then peel off the other half with the red line and tag it down. Peel off the whole outer layer — it will all detach from the red line.',
+  'After the shower, dry your tattoo with paper towel that is provided. Do not use a regular towel as this may have bacteria and fuzzies. Make sure your tattoo is dry before replacing the wrap, as it will not stick to anything wet. Do not apply lotion before reapplying your wrap as it will not stick to lotion.',
+  'Fold the wrap back on itself so it is more flat. There is a crack down the middle, so peel off the half without the red line first. If the wrap folds in on itself at this point it\'s ruined, so do your best to keep it flat.',
+  'Place the sticky half of the wrap over your tattoo, extending past the edge at least an inch and a half. Then peel off the other half with the red line and tag it down. Peel off the whole outer layer and it will all detach from the red line.',
   'Apply multiple sheets if needed. An inch and a half overlap is required. The wrap is still breathable despite it being overlapped.',
 ]
 
@@ -51,7 +51,7 @@ export default function AfterCare() {
     <main className="aftercare-page">
       <PageMeta
         title="Tattoo After Care"
-        description="Tattoo aftercare instructions from Jillaine — colour realism tattoo artist in Kelowna, BC. How to care for your new tattoo and keep it looking vibrant for years."
+        description="Tattoo aftercare instructions from Jillaine, colour realism tattoo artist in Kelowna, BC. How to care for your new tattoo and keep it looking vibrant for years."
         path="/after-care"
         jsonLd={{
           "@context": "https://schema.org",
@@ -62,7 +62,7 @@ export default function AfterCare() {
             {
               "@type": "HowToStep",
               "name": "First 24 Hours",
-              "text": "There may be a build up of plasma and ink under the wrap — this is normal. Wait 24 hours before changing the wrap. Take Advil to reduce swelling and keep the tattoo elevated. Ice no more than 15 minutes at a time."
+              "text": "There may be a build up of plasma and ink under the wrap, which is completely normal. Wait 24 hours before changing the wrap. Take Advil to reduce swelling and keep the tattoo elevated. Ice no more than 15 minutes at a time."
             },
             {
               "@type": "HowToStep",
@@ -105,7 +105,7 @@ export default function AfterCare() {
         <motion.div className="derm-intro glass-card" {...fadeUp()}>
           <p className="derm-intro-label">General Aftercare Protocol</p>
           <p className="derm-intro-body">
-            Tattoo derm wrap is an innovative, medical-grade, transparent, adhesive barrier that protects new tattoos while they are healing. It is latex-free, water resistant and breathable — manufactured under quality controlled conditions that have been CE-marked and FDA-registered.
+            Tattoo derm wrap is an innovative, medical-grade, transparent, adhesive barrier that protects new tattoos while they are healing. It is latex-free, water resistant and breathable, manufactured under quality controlled conditions that have been CE-marked and FDA-registered.
           </p>
           <p className="derm-intro-body">
             The first week is a crucial time when it comes to healing tattoos. Because it is breathable and water resistant, this wrap can be left on for this period. It will protect the tattoo from bacteria and debris, and help to prevent infections.
@@ -134,7 +134,7 @@ export default function AfterCare() {
         <motion.div className="warn-callout glass-card" {...fadeUp()}>
           <span className="warn-callout-label">Important</span>
           <p>
-            Saran wrap is not breathable and is not the same thing as derm wrap — do not put saran wrap on your fresh tattoo. Vaseline or petroleum jelly is not breathable either and is not the same thing as lotion — do not use petroleum jelly on your fresh tattoo.
+            Saran wrap is not breathable and is not the same thing as derm wrap. Do not put saran wrap on your fresh tattoo. Vaseline or petroleum jelly is not breathable either and is not the same thing as lotion. Do not use petroleum jelly on your fresh tattoo.
           </p>
         </motion.div>
       </section>
