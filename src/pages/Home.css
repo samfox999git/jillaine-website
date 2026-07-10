@@ -226,6 +226,25 @@
   margin-top: var(--space-2xl);
 }
 
+/* ═══════════════ FRESH VS HEALED ═══════════════ */
+.healed-home-section {
+  background: var(--color-bg-primary);
+  padding-top: 48px;
+}
+
+.healed-home-item {
+  max-width: 360px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: var(--border-subtle);
+}
+
+.healed-home-cta {
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
 /* ═══════════════ TESTIMONIALS ═══════════════ */
 .testimonial-section {
   position: relative;

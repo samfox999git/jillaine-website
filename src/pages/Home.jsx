@@ -478,6 +478,48 @@ export default function Home() {
 
       <div className="divider" />
 
+      {/* ═══════════════ FRESH VS HEALED ═══════════════ */}
+      <section className="section healed-home-section" id="healed">
+        <div className="container">
+          <motion.div
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={fadeUp}
+          >
+            <h2>Fresh <span className="gradient-text">vs</span> Healed</h2>
+            <p>Drag the slider to see how this piece healed.</p>
+          </motion.div>
+
+          <motion.div
+            className="healed-home-item"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <BeforeAfter
+              beforeSrc="/images/gallery/healed/healed-1-fresh.jpg"
+              afterSrc="/images/gallery/healed/healed-1-healed.jpg"
+              beforeLabel="Fresh"
+              afterLabel="Healed"
+              beforeAlt="Fresh: Northern Lights Tattoo — freshly done colour realism tattoo by Jillaine, Kelowna BC"
+              afterAlt="Healed: Northern Lights Tattoo — fully healed colour realism tattoo by Jillaine, Kelowna BC"
+              autoDemo
+            />
+          </motion.div>
+
+          <div className="healed-home-cta">
+            <Link to="/healed" className="btn btn-secondary">
+              <span>See More →</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="divider" />
+
       {/* ═══════════════ TESTIMONIALS ═══════════════ */}
       <section className="testimonial-section" id="testimonials">
         <BeamsBackground intensity="subtle">
