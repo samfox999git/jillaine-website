@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import './BeforeAfter.css'
 
-export default function BeforeAfter({ beforeSrc, afterSrc, beforeAlt = 'Before', afterAlt = 'After', autoDemo = false }) {
+export default function BeforeAfter({ beforeSrc, afterSrc, beforeAlt = 'Before', afterAlt = 'After', beforeLabel = 'Before', afterLabel = 'After', autoDemo = false }) {
   const [sliderPos, setSliderPos] = useState(50)
   const [showHint, setShowHint] = useState(autoDemo)
   const containerRef = useRef(null)
@@ -155,8 +155,8 @@ export default function BeforeAfter({ beforeSrc, afterSrc, beforeAlt = 'Before',
       </div>
 
       {/* Labels */}
-      <span className="ba-label ba-label-before" style={{ opacity: sliderPos > 15 ? 1 : 0 }}>Before</span>
-      <span className="ba-label ba-label-after" style={{ opacity: sliderPos < 85 ? 1 : 0 }}>After</span>
+      <span className="ba-label ba-label-before" style={{ opacity: sliderPos > 15 ? 1 : 0 }}>{beforeLabel}</span>
+      <span className="ba-label ba-label-after" style={{ opacity: sliderPos < 85 ? 1 : 0 }}>{afterLabel}</span>
 
       {/* Bottom sentinel — triggers animation when bottom of image enters viewport */}
       <div ref={bottomSentinelRef} style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', pointerEvents: 'none' }} />

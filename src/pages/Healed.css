@@ -1,0 +1,30 @@
+/* Fresh vs Healed — hero title with ink-line divider */
+.healed-hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.healed-hero-fresh {
+  color: var(--color-bone);
+}
+
+.healed-page .cta-inner p {
+  color: var(--color-text-secondary);
+}
+
+.healed-hero-vs {
+  font-size: 0.5em;
+  background: linear-gradient(90deg, var(--color-aurora-purple), var(--color-aurora-teal));
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .healed-hero-title {
+    gap: var(--space-md);
+  }
+}

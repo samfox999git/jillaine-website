@@ -47,6 +47,7 @@ export default function Navbar() {
           <NavLink to="/" end onClick={() => setMobileOpen(false)}>Home</NavLink>
           <NavLink to="/colour-realism-tattoos" onClick={() => setMobileOpen(false)}>Gallery</NavLink>
           <NavLink to="/cover-up-tattoos" onClick={() => setMobileOpen(false)}>Cover Ups</NavLink>
+          <NavLink to="/healed" onClick={() => setMobileOpen(false)}>Healed</NavLink>
           <NavLink to="/faq" onClick={() => setMobileOpen(false)}>FAQ</NavLink>
           <NavLink to="/after-care" onClick={() => setMobileOpen(false)}>After Care</NavLink>
           {!onWaitlistPage && (

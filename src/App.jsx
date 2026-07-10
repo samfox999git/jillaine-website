@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Gallery from './pages/Gallery'
 import CoverUps from './pages/CoverUps'
+import Healed from './pages/Healed'
 import FAQ from './pages/FAQ'
 import AfterCare from './pages/AfterCare'
 import Waitlist from './pages/Waitlist'
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/colour-realism-tattoos" element={<Gallery />} />
         <Route path="/cover-up-tattoos" element={<CoverUps />} />
+        <Route path="/healed" element={<Healed />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/after-care" element={<AfterCare />} />
         <Route path="/contact" element={<Navigate to="/waitlist" replace />} />
