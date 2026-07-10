@@ -7,9 +7,9 @@ import './Gallery.css'
 import './Healed.css'
 
 const healedPairs = [
-  { id: 1, healed: '/images/gallery/healed/healed-1-healed.jpg', fresh: '/images/gallery/healed/healed-1-fresh.jpg', title: 'Northern Lights Tattoo' },
-  { id: 2, healed: '/images/gallery/healed/healed-2-healed.jpg', fresh: '/images/gallery/healed/healed-2-fresh.jpg', title: 'Space Nebula Tattoo' },
-  { id: 3, healed: '/images/gallery/healed/healed-3-healed.jpg', fresh: '/images/gallery/healed/healed-3-fresh.jpg', title: 'Alien Woman Space Eye Tattoo' },
+  { id: 1, healed: '/images/gallery/healed/healed-2-healed.jpg', fresh: '/images/gallery/healed/healed-2-fresh.jpg', title: 'Space Nebula Tattoo' },
+  { id: 2, healed: '/images/gallery/healed/healed-3-healed.jpg', fresh: '/images/gallery/healed/healed-3-fresh.jpg', title: 'Alien Woman Space Eye Tattoo' },
+  { id: 3, healed: '/images/gallery/healed/healed-1-healed.jpg', fresh: '/images/gallery/healed/healed-1-fresh.jpg', title: 'Northern Lights Tattoo' },
   { id: 4, healed: '/images/gallery/healed/healed-4-healed.jpg', fresh: '/images/gallery/healed/healed-4-fresh.jpg', title: 'Space Flower Cover-Up Tattoo' },
 ]
 
@@ -69,7 +69,7 @@ export default function Healed() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            Drag to reveal.
+            Drag the slider to see how this piece healed.
           </motion.p>
         </div>
       </div>
