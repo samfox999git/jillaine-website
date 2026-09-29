@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Gallery from './pages/Gallery'
 import CoverUps from './pages/CoverUps'
 import Healed from './pages/Healed'
+import Links from './pages/Links'
 import FAQ from './pages/FAQ'
 import AfterCare from './pages/AfterCare'
 import Waitlist from './pages/Waitlist'
@@ -22,23 +23,39 @@ function ScrollToTop() {
   return null
 }
 
+const NO_NAVBAR_PATHS = ['/links']
+const NO_FOOTER_PATHS = ['/links']
+
+function ConditionalNavbar() {
+  const { pathname } = useLocation()
+  if (NO_NAVBAR_PATHS.includes(pathname)) return null
+  return <Navbar />
+}
+
+function ConditionalFooter() {
+  const { pathname } = useLocation()
+  if (NO_FOOTER_PATHS.includes(pathname)) return null
+  return <Footer />
+}
+
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Navbar />
+      <ConditionalNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/colour-realism-tattoos" element={<Gallery />} />
         <Route path="/cover-up-tattoos" element={<CoverUps />} />
         <Route path="/healed" element={<Healed />} />
+        <Route path="/links" element={<Links />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/after-care" element={<AfterCare />} />
         <Route path="/contact" element={<Navigate to="/waitlist" replace />} />
         <Route path="/waitlist" element={<Waitlist />} />
         <Route path="/waitlist-confirmed" element={<WaitlistConfirmed />} />
       </Routes>
-      <Footer />
+      <ConditionalFooter />
       <Analytics />
       <SpeedInsights />
     </Router>
