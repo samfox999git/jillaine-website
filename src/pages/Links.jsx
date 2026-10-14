@@ -5,15 +5,15 @@ import './Links.css'
 
 const links = [
   {
+    title: 'Saturated Podcast',
+    subtitle: 'Episode 2: Boyfriend vs Tattoo Slang',
+    href: 'https://youtu.be/7oAhP2bZudw',
+    icon: 'mic',
+  },
+  {
     title: 'Book a Consultation',
     to: '/waitlist',
     icon: 'calendar',
-  },
-  {
-    title: 'My Amazon Store',
-    subtitle: 'Pre-tattoo care and other things I love',
-    href: '#',
-    icon: 'cart',
   },
   {
     title: 'Jillaine.ca',
@@ -40,6 +40,13 @@ function LinkArrow() {
 }
 
 const icons = {
+  mic: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M5.5 11C5.5 14.59 8.41 17.5 12 17.5C15.59 17.5 18.5 14.59 18.5 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M12 17.5V21M9 21H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
   calendar: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
       <rect x="3.5" y="5" width="17" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
