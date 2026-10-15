@@ -145,7 +145,7 @@ async function subscribeToBrevo(submission, firstName, lastName) {
         email: submission.email,
         includeListIds: [LIST_ID],
         templateId: TEMPLATE_ID,
-        redirectionUrl: (process.env.SOCIAL_REVIEW_CONFIRM_URL || 'https://www.jillaine.ca/review?confirmed=1').trim(),
+        redirectionUrl: (process.env.SOCIAL_REVIEW_CONFIRM_URL || 'https://www.jillaine.ca/social-review?confirmed=1').trim(),
         attributes: {
           FIRSTNAME: firstName || '',
           LASTNAME: lastName,

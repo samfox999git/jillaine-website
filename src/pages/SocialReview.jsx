@@ -107,7 +107,7 @@ export default function SocialReview() {
       <PageMeta
         title="Get Your Socials Reviewed"
         description="Submit your tattoo social media for a full-length YouTube review by Jillaine."
-        path="/review"
+        path="/social-review"
       />
 
       {status !== 'confirmed' && (

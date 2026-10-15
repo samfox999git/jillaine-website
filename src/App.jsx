@@ -24,6 +24,12 @@ function ScrollToTop() {
   return null
 }
 
+// Already-sent confirmation emails link to /review?confirmed=1, so the query must survive the redirect.
+function RedirectKeepingQuery({ to }) {
+  const { search } = useLocation()
+  return <Navigate to={`${to}${search}`} replace />
+}
+
 const NO_NAVBAR_PATHS = ['/links']
 const NO_FOOTER_PATHS = ['/links']
 
@@ -50,8 +56,8 @@ function App() {
         <Route path="/cover-up-tattoos" element={<CoverUps />} />
         <Route path="/healed" element={<Healed />} />
         <Route path="/links" element={<Links />} />
-        <Route path="/review" element={<SocialReview />} />
-        <Route path="/social-review" element={<Navigate to="/review" replace />} />
+        <Route path="/social-review" element={<SocialReview />} />
+        <Route path="/review" element={<RedirectKeepingQuery to="/social-review" />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/after-care" element={<AfterCare />} />
         <Route path="/contact" element={<Navigate to="/waitlist" replace />} />
