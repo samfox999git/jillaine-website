@@ -98,7 +98,7 @@ export default function SocialReview() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            I'm making full-length YouTube videos reviewing tattoo artists' social media. Submit your account below and yours could be featured.
+            I'm making full-length YouTube videos reviewing tattoo artists' social media posts and profiles. Submit your account below and yours could be featured.
           </motion.p>
         </div>
       </div>
