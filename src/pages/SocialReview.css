@@ -162,14 +162,16 @@
 }
 
 .sr-success-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
+  text-align: center;
+  text-wrap: balance;
 }
 
 .sr-check-icon {
-  flex-shrink: 0;
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 0.3em;
+  vertical-align: -0.08em;
   color: var(--color-aurora-teal);
 }
 

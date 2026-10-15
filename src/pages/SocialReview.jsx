@@ -14,6 +14,15 @@ const focusOptions = [
   'Not sure, surprise me',
 ]
 
+function CheckIcon() {
+  return (
+    <svg className="sr-check-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M7.5 12.5L10.5 15.5L16.5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 const MAX_EXTRA_ACCOUNTS = 4
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -124,18 +133,12 @@ export default function SocialReview() {
             >
               {status === 'success' ? (
                 <>
-                  <h2 className="sr-success-title">
-                    <svg className="sr-check-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
-                      <path d="M7.5 12.5L10.5 15.5L16.5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    Check Your Inbox
-                  </h2>
+                  <h2 className="sr-success-title"><CheckIcon />Check Your Inbox</h2>
                   <p>Please confirm your email address so we know it's really you. Just click the link in the email we sent.</p>
                 </>
               ) : (
                 <>
-                  <h2>You Are Confirmed <span aria-hidden="true">🎆</span></h2>
+                  <h2 className="sr-success-title"><CheckIcon />You Are Confirmed</h2>
                   <p>Your submission is in. Keep an eye on YouTube. We'll get to as many profiles as we can!</p>
                 </>
               )}
