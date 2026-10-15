@@ -1,5 +1,11 @@
 /* Social media review submission page */
 
+/* Confirmed view has no hero, so the section clears the fixed navbar itself. */
+.sr-page .sr-section.sr-section--solo {
+  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-bottom: var(--space-4xl);
+}
+
 .sr-page .section-label {
   font-size: var(--text-xl);
 }
@@ -153,6 +159,18 @@
 
 .sr-success h2 {
   margin-bottom: var(--space-sm);
+}
+
+.sr-success-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.sr-check-icon {
+  flex-shrink: 0;
+  color: var(--color-aurora-teal);
 }
 
 .sr-success p {

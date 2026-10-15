@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import PageMeta from '../components/PageMeta'
@@ -24,6 +24,13 @@ export default function SocialReview() {
   const [searchParams] = useSearchParams()
   const [status, setStatus] = useState(searchParams.get('confirmed') ? 'confirmed' : 'idle')
   const [errorMsg, setErrorMsg] = useState('')
+
+  // The success box is much shorter than the form it replaces, so bring it into view.
+  const scrollIntoView = useCallback((el) => {
+    if (!el) return
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    el.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' })
+  }, [])
 
   const update = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value })
@@ -84,6 +91,7 @@ export default function SocialReview() {
         path="/review"
       />
 
+      {status !== 'confirmed' && (
       <div className="page-hero">
         <div className="container container-narrow">
           <motion.p className="section-label" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -102,25 +110,33 @@ export default function SocialReview() {
           </motion.p>
         </div>
       </div>
+      )}
 
-      <section className="section container sr-section">
+      <section className={`section container sr-section${status === 'confirmed' ? ' sr-section--solo' : ''}`}>
         <AnimatePresence mode="wait">
           {status === 'success' || status === 'confirmed' ? (
             <motion.div
               key="success"
+              ref={status === 'success' ? scrollIntoView : undefined}
               className="sr-success"
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
             >
               {status === 'success' ? (
                 <>
-                  <h2>Check Your Inbox</h2>
-                  <p>One last step. Click the link in the email we just sent you to confirm your submission.</p>
+                  <h2 className="sr-success-title">
+                    <svg className="sr-check-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
+                      <path d="M7.5 12.5L10.5 15.5L16.5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Check Your Inbox
+                  </h2>
+                  <p>Please confirm your email address so we know it's really you. Just click the link in the email we sent.</p>
                 </>
               ) : (
                 <>
-                  <h2>You're In</h2>
-                  <p>Your submission is confirmed. Keep an eye on your inbox and on YouTube.</p>
+                  <h2>You Are Confirmed <span aria-hidden="true">🎆</span></h2>
+                  <p>Your submission is in. Keep an eye on YouTube. We'll get to as many profiles as we can!</p>
                 </>
               )}
             </motion.div>
