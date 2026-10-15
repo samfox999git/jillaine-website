@@ -14,11 +14,21 @@ const focusOptions = [
   'Not sure, surprise me',
 ]
 
-function CheckIcon({ after = false }) {
+function CheckIcon({ after = false, solid = false }) {
+  const className = ['sr-check-icon', after && 'sr-check-icon--after', solid && 'sr-check-icon--solid'].filter(Boolean).join(' ')
   return (
-    <svg className={`sr-check-icon${after ? ' sr-check-icon--after' : ''}`} width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M7.5 12.5L10.5 15.5L16.5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className={className} width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      {solid ? (
+        <>
+          <circle cx="12" cy="12" r="11" fill="currentColor" />
+          <path className="sr-check-mark" d="M7 12.5L10.5 16L17 8.5" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+        </>
+      ) : (
+        <>
+          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
+          <path d="M7.5 12.5L10.5 15.5L16.5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </>
+      )}
     </svg>
   )
 }
@@ -138,7 +148,7 @@ export default function SocialReview() {
                 </>
               ) : (
                 <>
-                  <h2 className="sr-success-title">You Are Confirmed<CheckIcon after /></h2>
+                  <h2 className="sr-success-title sr-success-title--oneline">You Are Confirmed<CheckIcon after solid /></h2>
                   <p>Your submission is in. Keep an eye on YouTube. We'll get to as many profiles as we can!</p>
                 </>
               )}

@@ -180,6 +180,16 @@
   margin-left: 0.3em;
 }
 
+.sr-check-icon--solid .sr-check-mark {
+  stroke: var(--color-ink);
+}
+
+/* Sized to stay on one line down to ~320px-wide phones. */
+.sr-success-title--oneline {
+  white-space: nowrap;
+  font-size: clamp(1.4rem, 6.5vw, 2rem);
+}
+
 .sr-success p {
   color: #d4cfc9;
 }
