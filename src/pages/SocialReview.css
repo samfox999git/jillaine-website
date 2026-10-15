@@ -175,6 +175,11 @@
   color: var(--color-aurora-teal);
 }
 
+.sr-check-icon--after {
+  margin-right: 0;
+  margin-left: 0.3em;
+}
+
 .sr-success p {
   color: #d4cfc9;
 }
