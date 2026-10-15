@@ -1,5 +1,9 @@
 /* Social media review submission page */
 
+.sr-page .section-label {
+  font-size: var(--text-xl);
+}
+
 /* Gap to the hero text is section padding + the hero's 16px bottom padding; these values cut it by a third. */
 .sr-page .sr-section {
   padding-top: 61px;
