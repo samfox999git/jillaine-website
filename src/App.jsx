@@ -9,6 +9,7 @@ import Gallery from './pages/Gallery'
 import CoverUps from './pages/CoverUps'
 import Healed from './pages/Healed'
 import Links from './pages/Links'
+import SocialReview from './pages/SocialReview'
 import FAQ from './pages/FAQ'
 import AfterCare from './pages/AfterCare'
 import Waitlist from './pages/Waitlist'
@@ -49,6 +50,8 @@ function App() {
         <Route path="/cover-up-tattoos" element={<CoverUps />} />
         <Route path="/healed" element={<Healed />} />
         <Route path="/links" element={<Links />} />
+        <Route path="/review" element={<SocialReview />} />
+        <Route path="/social-review" element={<Navigate to="/review" replace />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/after-care" element={<AfterCare />} />
         <Route path="/contact" element={<Navigate to="/waitlist" replace />} />
