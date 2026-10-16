@@ -33,6 +33,9 @@ function CheckIcon({ after = false, solid = false }) {
   )
 }
 
+// Plain text keyboard (not type="url") so phones show @ for people typing a bare handle.
+const HANDLE_INPUT_PROPS = { autoCapitalize: 'none', autoCorrect: 'off', spellCheck: false }
+
 const MAX_EXTRA_ACCOUNTS = 4
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -175,7 +178,7 @@ export default function SocialReview() {
 
               <div className="sr-field">
                 <label htmlFor="sr-main">Main social media account <span className="sr-required">*</span></label>
-                <input id="sr-main" type="url" placeholder="instagram.com/yourhandle" value={form.mainAccount} onChange={update('mainAccount')} disabled={loading} required />
+                <input id="sr-main" type="text" {...HANDLE_INPUT_PROPS} placeholder="instagram.com/yourhandle" value={form.mainAccount} onChange={update('mainAccount')} disabled={loading} required />
               </div>
 
               <div className="sr-field">
@@ -185,7 +188,8 @@ export default function SocialReview() {
                     <input
                       key={i}
                       id={`sr-extra-${i}`}
-                      type="url"
+                      type="text"
+                      {...HANDLE_INPUT_PROPS}
                       placeholder="tiktok.com/@yourhandle"
                       value={acct}
                       onChange={updateExtra(i)}
