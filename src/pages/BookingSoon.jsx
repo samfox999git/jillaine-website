@@ -159,7 +159,7 @@ export default function BookingSoon() {
         </motion.div>
 
         <motion.div className="bs-signoff" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <p>I’m so excited to see what everyone has in mind and can’t wait to get started on some new projects</p>
+          <p>I’m so excited to see what everyone has in mind and can’t wait to get started on some new projects.</p>
         </motion.div>
       </section>
     </main>
