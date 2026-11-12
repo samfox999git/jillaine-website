@@ -99,6 +99,15 @@
   padding-bottom: var(--space-3xl);
 }
 
+/* Pricing sits right under "things to know" with no divider, so close the gap. */
+.bs-section:has(+ .bs-section--follow) {
+  padding-bottom: var(--space-lg);
+}
+
+.bs-section.bs-section--follow {
+  padding-top: var(--space-lg);
+}
+
 .bs-heading {
   text-align: center;
   margin-bottom: var(--space-xl);

@@ -118,9 +118,7 @@ export default function BookingSoon() {
         </ul>
       </section>
 
-      <div className="divider" />
-
-      <section className="section container container-narrow bs-section">
+      <section className="section container container-narrow bs-section bs-section--follow">
         <motion.h2 className="bs-heading" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           Pricing &amp; <span className="gradient-text">Project Estimates</span>
         </motion.h2>
@@ -143,9 +141,7 @@ export default function BookingSoon() {
         <p className="bs-small">These are estimates, and the actual number of sessions will depend on the individual project.</p>
       </section>
 
-      <div className="divider" />
-
-      <section className="section container container-narrow bs-section">
+      <section className="section container container-narrow bs-section bs-section--follow">
         <motion.h2 className="bs-heading" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           A Note About <span className="gradient-text">Booking</span>
         </motion.h2>
