@@ -7,6 +7,7 @@ import './Gallery.css'
 
 const galleryItems = [
   // Row 1
+  { id: 51, src: '/images/gallery/nature-landscapes/sunset-river-forearm.jpg',        categories: ['nature-landscapes'],                               title: 'Sunset River & Wildflowers' },
   { id: 29, src: '/images/gallery/northern-lights/kayak-aurora-campfire.jpg',        categories: ['northern-lights', 'nature-landscapes'],            title: 'Kayak Aurora & Campfire' },
   { id: 2,  src: '/images/gallery/nature-landscapes/peony-butterflies.png',          categories: ['nature-landscapes', 'animals'],                    title: 'Peony & Butterflies' },
   { id: 7,  src: '/images/gallery/northern-lights/campfire-aurora-snow.jpg',              categories: ['northern-lights', 'nature-landscapes'],            title: 'Campfire Northern Lights', posClass: 'pos-20' },

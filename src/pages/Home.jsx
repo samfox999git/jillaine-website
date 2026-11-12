@@ -19,7 +19,7 @@ const galleryItems = [
   // Row 2+
   { id: 25, src: '/images/gallery/space/space-astronaut-galaxy.jpg', title: 'Astro Sleeve', posClass: 'pos-left' },
   { id: 10, src: '/images/gallery/nature-landscapes/hibiscus-tropical.png', title: 'Tropical Hibiscus' },
-  { id: 1,  src: '/images/gallery/animals/wolf-aurora.png', title: 'Howling Wolf Aurora' },
+  { id: 51, src: '/images/gallery/nature-landscapes/sunset-river-forearm.jpg', title: 'Sunset River & Wildflowers' },
   { id: 24, src: '/images/gallery/northern-lights/northern-lights-aurora-colour-realism.png', title: 'Northern Lights Aurora' },
   { id: 5,  src: '/images/gallery/space/lobster-space.png', title: 'Space Lobster' },
   { id: 14, src: '/images/gallery/northern-lights/moose-river-aurora.jpg', title: 'Moose River Aurora' },
@@ -456,16 +456,16 @@ export default function Home() {
           >
             <motion.p className="section-label" variants={fadeUp}>About Me</motion.p>
             <motion.p variants={fadeUp}>
-              Hi, I'm Jillaine — a tattoo artist located in Kelowna BC, Canada. With 8 years of tattooing
+              Hi, I'm Jillaine, a tattoo artist located in Kelowna BC, Canada. With 8 years of tattooing
               experience, I've had the honour of welcoming clients from all across North America.
               One of my proudest moments was winning an award at Canada's largest tattoo
-              convention — the Calgary Tattoo and Arts Festival.
+              convention, the Calgary Tattoo and Arts Festival.
             </motion.p>
             <motion.p variants={fadeUp}>
               Raised on a farm in Alberta, I developed a deep love for nature, which continues
               to inspire much of my work. I specialize in colour realism and love creating
               detailed landscapes, northern lights, florals, underwater scenes, space themes,
-              and wildlife — anything that captures the beauty of the natural world.
+              and wildlife. Anything that captures the beauty of the natural world.
             </motion.p>
             <motion.p variants={fadeUp}>
               Cover-up tattoos are another passion of mine. I love the challenge of transforming
