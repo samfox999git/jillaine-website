@@ -160,7 +160,7 @@ export default function BookingSoon() {
         </motion.div>
 
         <motion.div className="bs-waitlist" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <p>Want the booking link sent straight to your inbox the moment it opens? Join the waitlist and you’ll be the first to know.</p>
+          <p>Want the booking link sent straight to your inbox the moment it opens?</p>
           <Link to="/waitlist" className="btn btn-primary">
             <span>Join the Waitlist</span>
           </Link>
