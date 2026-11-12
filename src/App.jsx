@@ -10,6 +10,7 @@ import CoverUps from './pages/CoverUps'
 import Healed from './pages/Healed'
 import Links from './pages/Links'
 import SocialReview from './pages/SocialReview'
+import BookingSoon from './pages/BookingSoon'
 import FAQ from './pages/FAQ'
 import AfterCare from './pages/AfterCare'
 import Waitlist from './pages/Waitlist'
@@ -57,6 +58,7 @@ function App() {
         <Route path="/healed" element={<Healed />} />
         <Route path="/links" element={<Links />} />
         <Route path="/social-review" element={<SocialReview />} />
+        <Route path="/booking-soon" element={<BookingSoon />} />
         <Route path="/review" element={<RedirectKeepingQuery to="/social-review" />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/after-care" element={<AfterCare />} />
